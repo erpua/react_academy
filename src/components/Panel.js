@@ -1,12 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/* const Panel = ({ title, children }) => (
+  <div
+    style={{
+      width: 200,
+      border: '1px solid red',
+    }}
+  >
+    {title && <h2>{title}</h2>}
+
+    {children}
+  </div>
+); */
+
 const styles = {
-  outline: '1px solid teal',
+  container: {
+    width: 200,
+    border: '1px solid red',
+  },
 };
 
 const Panel = ({ title, children }) => (
-  <div style={styles}>
+  <div style={styles.container}>
     {title && <h2>{title}</h2>}
 
     {children}
