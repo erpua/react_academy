@@ -51,7 +51,7 @@ during commit and making extra operations for developing
 - create file .huskyrc
 - create file .lintstagedrc
 - create file .pretierrc.json
-- npm install modern-normalize
+- npm install modern-normalize => no link in html
 
 ---
 
