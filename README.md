@@ -2,10 +2,7 @@
 
 JSON:
 
-{
-
 - "window.zoomLevel": 0,
-- "editor.tabSize": 2,
 - "editor.renderWhitespace": "all",
 - "editor.wordWrap": "wordWrapColumn",
 - "[html]": { "editor.defaultFormatter": "vscode.html-language-features" },
