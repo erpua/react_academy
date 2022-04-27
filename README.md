@@ -2,8 +2,9 @@
 
 JSON:
 
+{
+
 - "window.zoomLevel": 0,
-- "editor.wordWrapColumn": 100,
 - "editor.tabSize": 2,
 - "editor.renderWhitespace": "all",
 - "editor.wordWrap": "wordWrapColumn",
@@ -24,18 +25,17 @@ JSON:
 - "files.associations": {},
 - "files.autoSave": "onFocusChange",
 - "editor.formatOnSave": true,
-- "editor.codeActionsOnSave": { "source.fixAll.eslint": true }
+- "editor.codeActionsOnSave": { "source.fixAll.eslint": true } }
 
 VSCode extentions:
 
-- Highlight Matching Tag
-- Terminal
-- Path Intellisense
+- Prettier
 - Formatting Toggle
+- Highlight Matching Tag
+- Path Intellisense
 - Babel JavaScript
 - ES7 + React/Redux ...
 - Enable ESLint in workspace
-- ?update: Simple React Snippets
 
 ---
 
