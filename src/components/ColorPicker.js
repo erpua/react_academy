@@ -16,9 +16,15 @@ const ColorPicker = ({ options }) => {
       <h2>
         Color Picker
         <div>
-          {options.map(option => (
-            <span key={option.label} style={styles.option}>
-              {option.color}
+          {options.map(({ label, color }) => (
+            <span
+              key={label}
+              style={{
+                ...styles.option,
+                backgroundColor: color,
+              }}
+            >
+              {color}
             </span>
           ))}
         </div>
