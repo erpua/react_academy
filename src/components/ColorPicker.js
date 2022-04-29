@@ -1,6 +1,7 @@
 import React from 'react';
+import './ColorPicker.css';
 
-const styles = {
+/* const styles = {
   option: {
     display: 'inline-block',
     width: 40,
@@ -23,6 +24,28 @@ const ColorPicker = ({ options }) => {
                 ...styles.option,
                 backgroundColor: color,
               }}
+            >
+              {color}
+            </span>
+          ))}
+        </div>
+      </h2>
+    </div>
+  );
+}; */
+
+const ColorPicker = ({ options }) => {
+  console.log('props', options);
+  return (
+    <div>
+      <h2>
+        Color Picker
+        <div>
+          {options.map(({ label, color }) => (
+            <span
+              key={label}
+              className="ColorPicker__option"
+              style={{ backgroundColor: color }}
             >
               {color}
             </span>

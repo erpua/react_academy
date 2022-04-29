@@ -1,0 +1,12 @@
+.ColorPicker {
+}
+
+.ColorPicker__title {
+}
+
+.ColorPicker__option {
+  display: 'inline-block';
+  width: 40;
+  height: 40;
+  outline: '1px solid teal';
+}
