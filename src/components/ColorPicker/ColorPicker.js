@@ -35,20 +35,17 @@ const ColorPicker = ({ options }) => {
 }; */
 
 const ColorPicker = ({ options }) => {
-  console.log('props', options);
   return (
     <div>
       <h2>
         Color Picker
-        <div>
+        <div className="ColorPicker">
           {options.map(({ label, color }) => (
             <span
               key={label}
               className="ColorPicker__option"
               style={{ backgroundColor: color }}
-            >
-              {color}
-            </span>
+            ></span>
           ))}
         </div>
       </h2>

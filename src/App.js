@@ -3,7 +3,7 @@ import Logo from './components/Logo';
 import PaintingList from './components/PaintingList';
 import Panel from './components/Panel';
 import paintings from './paintings.json';
-import ColorPicker from './components/ColorPicker';
+import ColorPicker from './components/ColorPicker/ColorPicker';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -20,12 +20,10 @@ function App() {
       <ColorPicker options={colorPickerOptions} />
       <Panel title="The fresh news">
         <p>
-          Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Magnam, obcaecati dolorum
-          assumenda vitae aspernatur, aliquid numquam
-          explicabo, facere tenetur unde dolorem quo! Sit
-          iusto natus at, aliquam, repellendus repellat ipsa
-          el
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam,
+          obcaecati dolorum assumenda vitae aspernatur, aliquid numquam
+          explicabo, facere tenetur unde dolorem quo! Sit iusto natus at,
+          aliquam, repellendus repellat ipsa el
         </p>
 
         <a href="https://google.com">Read more...</a>
@@ -33,11 +31,10 @@ function App() {
 
       <Panel>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Unde, explicabo aperiam architecto
-          perspiciatis quae amet. Porro magni laudantium
-          aspernatur debitis deserunt ipsam. Nostrum id
-          accusamus praesentium eum incidunt tenetur cum!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+          explicabo aperiam architecto perspiciatis quae amet. Porro magni
+          laudantium aspernatur debitis deserunt ipsam. Nostrum id accusamus
+          praesentium eum incidunt tenetur cum!
         </p>
       </Panel>
 
