@@ -1,9 +1,14 @@
+//Modules
 import React from 'react';
+
+//Components
 import Logo from './components/Logo';
-import PaintingList from './components/PaintingList';
-import Panel from './components/Panel';
-import paintings from './paintings.json';
+import PaintingList from './components/PaintingList/PaintingList';
+import Panel from './components/Panel/Panel';
 import ColorPicker from './components/ColorPicker/ColorPicker';
+
+//JSON
+import paintings from './paintings.json';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
