@@ -1,7 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Panel.module.css';
 
-/* const Panel = ({ title, children }) => (
+/*
+
+const styles = {
+  container: {
+    width: 200,
+    border: '1px solid red',
+  },
+};
+
+const Panel = ({ title, children }) => (
   <div
     style={{
       width: 200,
@@ -14,15 +24,8 @@ import PropTypes from 'prop-types';
   </div>
 ); */
 
-const styles = {
-  container: {
-    width: 200,
-    border: '1px solid red',
-  },
-};
-
 const Panel = ({ title, children }) => (
-  <div style={styles.container}>
+  <div className={styles.container}>
     {title && <h2>{title}</h2>}
 
     {children}
