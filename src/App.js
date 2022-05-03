@@ -4,7 +4,7 @@ import PaintingList from './components/PaintingList';
 import Panel from './components/Panel';
 import paintings from './paintings.json';
 
-function App() {
+const App = () => {
   return (
     <div>
       <Panel title="The fresh news">
@@ -33,6 +33,6 @@ function App() {
       <PaintingList paintings={paintings} />
     </div>
   );
-}
+};
 
 export default App;
