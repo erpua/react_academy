@@ -10,7 +10,7 @@ const styles = {
 
 const AppBar = () => (
   <header style={styles.header}>
-    <Logo text="ЛОГО" />
+    <Logo text="company LOGO" />
   </header>
 );
 

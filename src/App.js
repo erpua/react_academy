@@ -2,13 +2,11 @@
 import React from 'react';
 
 //Components
-import Logo from './components/Logo';
 import PaintingList from './components/PaintingList/PaintingList';
 import Panel from './components/Panel/Panel';
 import ColorPicker from './components/ColorPicker/ColorPicker';
 import Notification from './components/Notification/Notification';
-import Container from './components/Container/Container';
-import AppBar from './components/AppBar/AppBar';
+import Layout from './components/Layout/Layout';
 
 //JSON
 import paintings from './paintings.json';
@@ -23,53 +21,35 @@ const colorPickerOptions = [
 ];
 
 // <></> => Babel converts to <React.Fragment> < /React.Fragment>
-function App() {
+const App = () => {
   return (
-    <>
-      <AppBar />
+    <Layout>
+      <ColorPicker options={colorPickerOptions} />
 
-      <Container>
-        <ColorPicker options={colorPickerOptions} />
+      <Notification
+        text="Notification component SUCCESS"
+        type="success"
+      />
 
-        <Notification
-          text="Notification component SUCCESS"
-          type="success"
-        />
+      <Notification
+        text="Notification component ERROR"
+        type="error"
+      />
 
-        <Notification
-          text="Notification component ERROR"
-          type="error"
-        />
+      <Panel title="The fresh news">
+        <p>
+          Lorem ipsum dolor sit, amet consectetur
+          adipisicing elit.
+        </p>
 
-        <Panel title="The fresh news">
-          <p>
-            Lorem ipsum dolor sit, amet consectetur
-            adipisicing elit. Magnam, obcaecati dolorum
-            assumenda vitae aspernatur, aliquid numquam
-            explicabo, facere tenetur unde dolorem quo! Sit
-            iusto natus at, aliquam, repellendus repellat
-            ipsa el
-          </p>
+        <a href="https://google.com">Read more...</a>
+      </Panel>
 
-          <a href="https://google.com">Read more...</a>
-        </Panel>
-
-        <Panel>
-          <p>
-            Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Unde, explicabo aperiam
-            architecto perspiciatis quae amet. Porro magni
-            laudantium aspernatur debitis deserunt ipsam.
-            Nostrum id accusamus praesentium eum incidunt
-            tenetur cum!
-          </p>
-        </Panel>
-
-        <Logo text="the main app component-container" />
+      <Panel>
         <PaintingList paintings={paintings} />
-      </Container>
-    </>
+      </Panel>
+    </Layout>
   );
-}
+};
 
 export default App;
