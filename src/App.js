@@ -6,7 +6,6 @@ import PaintingList from './components/PaintingList/PaintingList';
 import Panel from './components/Panel/Panel';
 import ColorPicker from './components/ColorPicker/ColorPicker';
 import Notification from './components/Notification/Notification';
-import Layout from './components/Layout/Layout';
 
 //JSON
 import paintings from './paintings.json';
@@ -23,7 +22,7 @@ const colorPickerOptions = [
 // <></> => Babel converts to <React.Fragment> < /React.Fragment>
 const App = () => {
   return (
-    <Layout>
+    <>
       <ColorPicker options={colorPickerOptions} />
 
       <Notification
@@ -48,7 +47,7 @@ const App = () => {
       <Panel>
         <PaintingList paintings={paintings} />
       </Panel>
-    </Layout>
+    </>
   );
 };
 
