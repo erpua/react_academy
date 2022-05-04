@@ -2,22 +2,79 @@ import React from 'react';
 import './Counter.css';
 
 class Counter extends React.Component {
-  //arrow function automatically binds this with class
-  //event here is a SynthetiEvent Object
-  handleIncrement = event => {
-    console.log('Incremented for 1');
-    console.log('this =>', this); // undefined
-    console.log('event: =>', event);
+  /*  constructor() {
+    super();
+
+    this.state = {
+      value: 5,
+    };
+  } 
+  
+  Babel transiples to => */
+
+  /*  state = {
+    value: 5,
+    a: 1,
+    b: 2,
+  }; */
+
+  /*   currenState = {
+    value: 5,
+    a: 1,
+    b: 2,
   };
 
-  handleDecrement = () => {
-    console.log('Decremented for 1');
+  updatedState = {
+    value: 10,
   };
+
+  newState =
+    { ...currenState, ...updatedState } >
+    { a: 1, b: 2, value: 10 }; */
+
+  /*  state = {
+    value: 5,
+  };
+ */
+  /*  handleIncrement = event => {
+    //REACT does not work that way = this.state.value = 6;
+    this.setState({
+      value: 10,
+    });
+  }; */
+
+  /*   state = {
+    value: 5,
+  }; */
+
+  /* handleIncrement = event => {
+    this.setState({
+      //bad practice
+      // this.state.value + 1 => state for moment of registration
+      value: this.state.value + 1,
+    });
+  }; */
+
+  state = {
+    value: 5,
+  };
+
+  handleIncrement = () => {
+    this.setState(prevState => {
+      return {
+        value: prevState.value + 1,
+      };
+    });
+  };
+
+  handleDecrement = () => {};
 
   render() {
     return (
       <div className="Counter">
-        <span className="Counter__value">0</span>
+        <span className="Counter__value">
+          {this.state.value}
+        </span>
 
         <div className="Counter__controls">
           <button
@@ -37,31 +94,5 @@ class Counter extends React.Component {
     );
   }
 }
-
-/* render() {
-    return (
-      <div className="Counter">
-        <span className="Counter__value">0</span>
-
-        <div className="Counter__controls">
-          <button
-            type="button"
-            onClick={this.handleIncrement}
-          >
-            Icrement for 1
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              console.log('Decremented for 1');
-            }}
-          >
-            Decrment for 1
-          </button>
-        </div>
-      </div>
-    );
-  }
-} */
 
 export default Counter;
