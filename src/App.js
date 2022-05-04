@@ -17,6 +17,7 @@ import Counter from './components/Counter/Counter';
 const App = () => {
   return (
     <>
+      <h1>Component state</h1>
       <Counter text="This is branch 03 - Counter.js Component"></Counter>
     </>
   );
