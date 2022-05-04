@@ -1,64 +1,27 @@
 import React from 'react';
+import { number } from 'prop-types';
+
+import Controls from './Controls';
+import Value from './Value';
+
 import './Counter.css';
 
 class Counter extends React.Component {
-  /*  constructor() {
-    super();
-
-    this.state = {
-      value: 5,
-    };
-  } 
-  
-  Babel transiples to => */
-
-  /*  state = {
-    value: 5,
-    a: 1,
-    b: 2,
-  }; */
-
-  /*   currenState = {
-    value: 5,
-    a: 1,
-    b: 2,
+  //PROPS
+  static defaultProps = {
+    initialValue: 0,
   };
 
-  updatedState = {
-    value: 10,
+  static propTypes = {
+    initialValue: number,
   };
 
-  newState =
-    { ...currenState, ...updatedState } >
-    { a: 1, b: 2, value: 10 }; */
-
-  /*  state = {
-    value: 5,
-  };
- */
-  /*  handleIncrement = event => {
-    //REACT does not work that way = this.state.value = 6;
-    this.setState({
-      value: 10,
-    });
-  }; */
-
-  /*   state = {
-    value: 5,
-  }; */
-
-  /* handleIncrement = event => {
-    this.setState({
-      //bad practice
-      // this.state.value + 1 => state for moment of registration
-      value: this.state.value + 1,
-    });
-  }; */
-
+  //STATE
   state = {
-    value: 5,
+    value: this.props.initialValue,
   };
 
+  //LOGIC
   handleIncrement = () => {
     this.setState(prevState => {
       return {
@@ -67,29 +30,24 @@ class Counter extends React.Component {
     });
   };
 
-  handleDecrement = () => {};
+  handleDecrement = () => {
+    this.setState(prevState => {
+      return {
+        value: prevState.value - 1,
+      };
+    });
+  };
 
+  //COMPONENT RENDER
   render() {
     return (
       <div className="Counter">
-        <span className="Counter__value">
-          {this.state.value}
-        </span>
+        <Value value={this.state.value} />
 
-        <div className="Counter__controls">
-          <button
-            type="button"
-            onClick={this.handleIncrement}
-          >
-            Icrement for 1
-          </button>
-          <button
-            type="button"
-            onClick={this.handleDecrement}
-          >
-            Decrment for 1
-          </button>
-        </div>
+        <Controls
+          onIncrement={this.handleIncrement}
+          onDecrement={this.handleDecrement}
+        />
       </div>
     );
   }

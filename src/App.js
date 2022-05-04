@@ -18,7 +18,7 @@ const App = () => {
   return (
     <>
       <h1>Component state</h1>
-      <Counter text="This is branch 03 - Counter.js Component"></Counter>
+      <Counter text="Counter Component" initialValue={20}></Counter>
     </>
   );
 };
