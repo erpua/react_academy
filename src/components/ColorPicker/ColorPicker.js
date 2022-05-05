@@ -9,12 +9,23 @@ class ColorPicker extends Component {
 
   //STATE
   state = {
-    activeOptionIndex: 0,
+    activeOptionIndex: 2,
   };
 
   //LOGIC
+  /*  makeOptionClassName(index) {
+    const optionClasses = ['ColorPicker__option'];
+
+    if (index === this.state.activeOptionIndex) {
+      optionClasses.push('ColorPicker__option--active');
+    }
+
+    return optionClasses.join(' ');
+  } */
 
   //MARKUP
+
+  /*
   // {this.props.qwe.map(({ label, color }) => (
   render() {
     return (
@@ -36,6 +47,116 @@ class ColorPicker extends Component {
                   }}
                 ></button>
               ),
+            )}
+          </div>
+        </h2>
+      </div>
+    );
+  }
+} */
+
+  /*  render() {
+    return (
+      <div>
+        <h2>
+          Color Picker
+          <div className="ColorPicker">
+            {this.props.options.map(
+              ({ label, color }, index) => {
+                const optionClasses = [
+                  'ColorPicker__option',
+                ];
+
+                if (
+                  index === this.state.activeOptionIndex
+                ) {
+                  optionClasses.push(
+                    'ColorPicker__option--active',
+                  );
+                }
+
+                return (
+                  <button
+                    key={label}
+                    className={optionClasses.join(' ')}
+                    style={{ backgroundColor: color }}
+                  ></button>
+                );
+              },
+            )}
+          </div>
+        </h2>
+      </div>
+    );
+  } */
+
+  /* render() {
+    return (
+      <div>
+        <h2>
+          Color Picker
+          <div className="ColorPicker">
+            {this.props.options.map(
+              ({ label, color }, index) => {
+                const optionClassName =
+                  this.makeOptionClassName(index);
+                return (
+                  <button
+                    key={label}
+                    className={optionClassName}
+                    style={{ backgroundColor: color }}
+                  ></button>
+                );
+              },
+            )}
+          </div>
+        </h2>
+      </div>
+    );
+  } */
+
+  //LOGIC
+
+  setActiveIndex = index => {
+    this.setState({ activeOptionIndex: index });
+  };
+
+  makeOptionClassName = index => {
+    const optionClasses = ['ColorPicker__option'];
+
+    if (index === this.state.activeOptionIndex) {
+      optionClasses.push('ColorPicker__option--active');
+    }
+
+    return optionClasses.join(' ');
+  };
+
+  //MARKUP
+  //onClick=this.setActiveIndex(index)} if we call function =>
+  // we will recieve undefined, because function does not have return state,
+  //so we need to pass reference to function, in order it to have reset the
+  // current state of value
+  render() {
+    return (
+      <div>
+        <h2>
+          Color Picker
+          <div className="ColorPicker">
+            {this.props.options.map(
+              ({ label, color }, index) => {
+                return (
+                  <button
+                    key={label}
+                    className={this.makeOptionClassName(
+                      index,
+                    )}
+                    style={{ backgroundColor: color }}
+                    onClick={() =>
+                      this.setActiveIndex(index)
+                    }
+                  ></button>
+                );
+              },
             )}
           </div>
         </h2>
