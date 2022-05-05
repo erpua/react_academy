@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { number } from 'prop-types';
 
 import Controls from './Controls';
@@ -6,7 +6,7 @@ import Value from './Value';
 
 import './Counter.css';
 
-class Counter extends React.Component {
+class Counter extends Component {
   //PROPS
   static defaultProps = {
     initialValue: 0,
