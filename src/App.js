@@ -22,6 +22,7 @@ const App = () => {
       <h1>Component states-n-events</h1>
       {/*  <Counter text="Counter Component" initialValue={20}></Counter> */}
       {/*      <Dropdown /> */}
+      {/*      <ColorPicker qwe={colorPickerOptions} /> */}
       <ColorPicker options={colorPickerOptions} />
     </>
   );

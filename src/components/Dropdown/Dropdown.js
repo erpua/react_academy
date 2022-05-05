@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Dropdown.css';
 
 class Dropdown extends Component {
-  /*   //STATES
+  /*   //STATE
   state = {
     visible: false,
   };

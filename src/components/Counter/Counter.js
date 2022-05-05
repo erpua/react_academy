@@ -38,7 +38,7 @@ class Counter extends Component {
     });
   };
 
-  //COMPONENT RENDER
+  //MARKUP
   render() {
     return (
       <div className="Counter">
