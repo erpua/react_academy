@@ -9,7 +9,7 @@ class ColorPicker extends Component {
 
   //STATE
   state = {
-    activeOptionIndex: 2,
+    activeOptionIndex: 0,
   };
 
   //LOGIC
@@ -116,7 +116,6 @@ class ColorPicker extends Component {
   } */
 
   //LOGIC
-
   setActiveIndex = index => {
     this.setState({ activeOptionIndex: index });
   };
@@ -133,31 +132,40 @@ class ColorPicker extends Component {
 
   //MARKUP
   //onClick=this.setActiveIndex(index)} if we call function =>
-  // we will recieve undefined, because function does not have return state,
+  //we will recieve undefined, because function does not have return state,
   //so we need to pass reference to function, in order it to have reset the
   // current state of value
   render() {
+    /*    const activeOptionLabel =
+      this.props.options[this.state.activeOptionIndex];
+
+    console.log('activeOptionLabel: =>', activeOptionLabel); */
+
+    /*  const { label } =
+      this.props.options[this.state.activeOptionIndex]; */
+
+    const { activeOptionIndex } = this.state;
+    const { options } = this.props;
+    const { label } = options[activeOptionIndex];
+
     return (
       <div>
         <h2>
           Color Picker
           <div className="ColorPicker">
-            {this.props.options.map(
-              ({ label, color }, index) => {
-                return (
-                  <button
-                    key={label}
-                    className={this.makeOptionClassName(
-                      index,
-                    )}
-                    style={{ backgroundColor: color }}
-                    onClick={() =>
-                      this.setActiveIndex(index)
-                    }
-                  ></button>
-                );
-              },
-            )}
+            <p>Chosen: {label}</p>
+            {options.map(({ label, color }, index) => {
+              return (
+                <button
+                  key={label}
+                  className={this.makeOptionClassName(
+                    index,
+                  )}
+                  style={{ backgroundColor: color }}
+                  onClick={() => this.setActiveIndex(index)}
+                ></button>
+              );
+            })}
           </div>
         </h2>
       </div>

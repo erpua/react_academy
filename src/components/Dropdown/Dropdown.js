@@ -50,6 +50,8 @@ class Dropdown extends Component {
 
   //MARKUP
   render() {
+    const { visible } = this.state;
+
     return (
       <div className="Dropdown">
         <button
@@ -57,10 +59,10 @@ class Dropdown extends Component {
           className="Dropdown__toggle"
           onClick={this.toggle}
         >
-          {this.state.visible ? 'Hide' : 'Show'}
+          {visible ? 'Hide' : 'Show'}
         </button>
 
-        {this.state.visible && (
+        {visible && (
           <div className="Dropdown__menu">
             Dropdown Menu
           </div>
