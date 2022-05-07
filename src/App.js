@@ -1,5 +1,5 @@
 //Modules
-import React from 'react';
+import React, { Component } from 'react';
 
 //Components
 /* import Counter from './components/Counter'; */
@@ -17,21 +17,42 @@ import TodoList from './components/TodoList';
 ]; */
 
 // <></> => Babel converts to <React.Fragment> < /React.Fragment>
-const App = () => {
-  return (
-    <>
-      <h1>Component states-n-events</h1>
-      {/* <Counter
-        text="Counter Component"
-        initialValue={20}
-      ></Counter> */}
-      {/*   <Dropdown /> */}
-      {/*      <ColorPicker qwe={colorPickerOptions} /> */}
-      {/*  <ColorPicker options={colorPickerOptions} /> */}
-      <hr />
-      <TodoList />
-    </>
-  );
-};
+//const App = () => {
+//return (
+//<>
+//<h1>Component states-n-events</h1>
+//{/* <Counter
+// text="Counter Component"
+//initialValue={20}
+//></Counter> */}
+//{/*   <Dropdown /> */}
+//{/*      <ColorPicker qwe={colorPickerOptions} /> */}
+//{/*  <ColorPicker options={colorPickerOptions} /> */}
+//<hr />
+//<TodoList />
+//</>
+//);
+//};
+
+class App extends Component {
+  state = {};
+
+  render() {
+    return (
+      <>
+        <h1>Component states-n-events</h1>
+        {/* <Counter
+          text="Counter Component"
+          initialValue={20}
+          ></Counter> */}
+        {/*   <Dropdown /> */}
+        {/*      <ColorPicker qwe={colorPickerOptions} /> */}
+        {/*  <ColorPicker options={colorPickerOptions} /> */}
+        <hr />
+        <TodoList />
+      </>
+    );
+  }
+}
 
 export default App;

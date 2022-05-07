@@ -2,8 +2,8 @@
 
 TIPS:
 
-- keep state in parent neares / global (in case for many dif
-  children) component
+- keep state in nearest parent, or global one (in case of
+  many dif children), component.
 
 ---
 
