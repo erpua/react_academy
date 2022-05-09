@@ -7,6 +7,10 @@ import React, { Component } from 'react';
 /* import ColorPicker from './components/ColorPicker'; */
 import TodoList from './components/TodoList';
 
+//JSON
+/* SHORT HAND PROPERTY import todos from './todos.json'; */
+import initialTodos from './todos.json';
+
 /* const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
   { label: 'green', color: '#4CAF50' },
@@ -35,9 +39,44 @@ import TodoList from './components/TodoList';
 //};
 
 class App extends Component {
-  state = {};
+  /*  state = {
+    todos: [
+      {
+        id: 'id-1',
+        text: 'Learn React basics',
+        completed: false,
+      },
+      {
+        id: 'id-2',
+        text: 'Understand React Redux',
+        completed: false,
+      },
+      {
+        id: 'id-3',
+        text: 'Survive Redux',
+        completed: false,
+      },
+    ],
+  }; */
 
+  /*  state = {
+    todos: todos,
+  };
+ */
+
+  //SHORT HAND PROPERTY
+  /*  state = {
+    todos,
+  };
+ */
+  state = {
+    todos: initialTodos,
+  };
+
+  //MARKUP
   render() {
+    const { todos } = this.state;
+
     return (
       <>
         <h1>Component states-n-events</h1>
@@ -49,7 +88,7 @@ class App extends Component {
         {/*      <ColorPicker qwe={colorPickerOptions} /> */}
         {/*  <ColorPicker options={colorPickerOptions} /> */}
         <hr />
-        <TodoList />
+        <TodoList todos={todos} />
       </>
     );
   }
