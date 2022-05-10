@@ -73,9 +73,35 @@ class App extends Component {
     todos: initialTodos,
   };
 
+  //LOGIC
+  deleteTodo = todoId => {
+    this.setState(prevState => ({
+      todos: prevState.todos.filter(
+        todo => todo.id !== todoId,
+      ),
+    }));
+  };
+
   //MARKUP
   render() {
     const { todos } = this.state;
+
+    /* const completedTodos = todos.filter(
+      todo => todo.completed,
+    );
+ */
+
+    const totalTodoCount = todos.length;
+
+    const completedTodoCount = todos.reduce(
+      (total, todo) => (todo.completed ? total + 1 : total),
+      0,
+    );
+
+    console.log(
+      'completedTodos.length => ',
+      completedTodoCount,
+    );
 
     return (
       <>
@@ -88,7 +114,18 @@ class App extends Component {
         {/*      <ColorPicker qwe={colorPickerOptions} /> */}
         {/*  <ColorPicker options={colorPickerOptions} /> */}
         <hr />
-        <TodoList todos={todos} />
+
+        <div>
+          {/* <p>Todos general amount: {todos.length} </p> */}
+          <p>Todos general amount: {totalTodoCount} </p>
+          <p>
+            Todos completed amount: {completedTodoCount}
+          </p>
+        </div>
+        <TodoList
+          todos={todos}
+          onDeleteTodo={this.deleteTodo}
+        />
       </>
     );
   }

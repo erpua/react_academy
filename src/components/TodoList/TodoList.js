@@ -1,12 +1,31 @@
 import React from 'react';
 import './TodoList.css';
 
-const TodoList = ({ todos }) => (
+/*
+
+unstable practice
+
+const TodoList = ({ todos, onDeleteTodo }) => (
+  <ul className="TodoList">
+    {todos.map(({ id, text }, index) => (
+      <li key={index} className="TodoList__item">
+        <p className="TodoList__text">{text}</p>
+        <button onClick={() => onDeleteTodo(id)}>
+          Delete
+        </button>
+      </li>
+    ))}
+  </ul>
+); */
+
+const TodoList = ({ todos, onDeleteTodo }) => (
   <ul className="TodoList">
     {todos.map(({ id, text }) => (
       <li key={id} className="TodoList__item">
         <p className="TodoList__text">{text}</p>
-        <button>Delete</button>
+        <button onClick={() => onDeleteTodo(id)}>
+          Delete
+        </button>
       </li>
     ))}
   </ul>
