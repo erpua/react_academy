@@ -5,7 +5,8 @@ import React, { Component } from 'react';
 /* import Counter from './components/Counter'; */
 /* import Dropdown from './components/Dropdown'; */
 /* import ColorPicker from './components/ColorPicker'; */
-import TodoList from './components/TodoList';
+/* import TodoList from './components/TodoList'; */
+import Container from './components/Container/Container';
 
 //JSON
 /* SHORT HAND PROPERTY import todos from './todos.json'; */
@@ -20,92 +21,28 @@ import initialTodos from './todos.json';
   { label: 'indigo', color: '#3F51B5' },
 ]; */
 
-// <></> => Babel converts to <React.Fragment> < /React.Fragment>
-//const App = () => {
-//return (
-//<>
-//<h1>Component states-n-events</h1>
-//{/* <Counter
-// text="Counter Component"
-//initialValue={20}
-//></Counter> */}
-//{/*   <Dropdown /> */}
-//{/*      <ColorPicker qwe={colorPickerOptions} /> */}
-//{/*  <ColorPicker options={colorPickerOptions} /> */}
-//<hr />
-//<TodoList />
-//</>
-//);
-//};
-
 class App extends Component {
-  /*  state = {
-    todos: [
-      {
-        id: 'id-1',
-        text: 'Learn React basics',
-        completed: false,
-      },
-      {
-        id: 'id-2',
-        text: 'Understand React Redux',
-        completed: false,
-      },
-      {
-        id: 'id-3',
-        text: 'Survive Redux',
-        completed: false,
-      },
-    ],
+  //PROPS
+
+  //STATE
+  /*   state = {
+    todos: initialTodos,
   }; */
 
-  /*  state = {
-    todos: todos,
-  };
- */
-
-  //SHORT HAND PROPERTY
-  /*  state = {
-    todos,
-  };
- */
-  state = {
-    todos: initialTodos,
-  };
-
   //LOGIC
-  deleteTodo = todoId => {
+  /* deleteTodo = todoId => {
     this.setState(prevState => ({
       todos: prevState.todos.filter(
         todo => todo.id !== todoId,
       ),
     }));
-  };
+  }; */
 
   //MARKUP
   render() {
-    const { todos } = this.state;
-
-    /* const completedTodos = todos.filter(
-      todo => todo.completed,
-    );
- */
-
-    const totalTodoCount = todos.length;
-
-    const completedTodoCount = todos.reduce(
-      (total, todo) => (todo.completed ? total + 1 : total),
-      0,
-    );
-
-    console.log(
-      'completedTodos.length => ',
-      completedTodoCount,
-    );
-
     return (
-      <>
-        <h1>Component states-n-events</h1>
+      <Container>
+        <h1>React Academy / L_4 / Forms</h1>
         {/* <Counter
           text="Counter Component"
           initialValue={20}
@@ -113,20 +50,18 @@ class App extends Component {
         {/*   <Dropdown /> */}
         {/*      <ColorPicker qwe={colorPickerOptions} /> */}
         {/*  <ColorPicker options={colorPickerOptions} /> */}
-        <hr />
-
         <div>
           {/* <p>Todos general amount: {todos.length} </p> */}
-          <p>Todos general amount: {totalTodoCount} </p>
+          {/* <p>Todos general amount: {totalTodoCount} </p>
           <p>
             Todos completed amount: {completedTodoCount}
-          </p>
+          </p> */}
         </div>
-        <TodoList
+        {/* <TodoList
           todos={todos}
           onDeleteTodo={this.deleteTodo}
-        />
-      </>
+        /> */}
+      </Container>
     );
   }
 }
