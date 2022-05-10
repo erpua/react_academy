@@ -7,7 +7,7 @@ TIPS:
 
 ---
 
-JSON:
+JSON configs:
 
 - "window.zoomLevel": 0,
 - "editor.renderWhitespace": "all",
