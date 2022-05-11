@@ -71,7 +71,6 @@ class App extends Component {
           value={this.state.inputValue}
           onChange={this.handleInputChange}
         /> */}
-
         <form>
           <label>
             Name:{' '}
