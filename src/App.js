@@ -12,14 +12,14 @@ import Container from './components/Container/Container';
 /* SHORT HAND PROPERTY import todos from './todos.json'; */
 import initialTodos from './todos.json';
 
-/* const colorPickerOptions = [
+const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
   { label: 'green', color: '#4CAF50' },
   { label: 'blue', color: '#2196F3' },
   { label: 'grey', color: '#607D8B' },
   { label: 'pink', color: '#E91E63' },
   { label: 'indigo', color: '#3F51B5' },
-]; */
+];
 
 class App extends Component {
   //PROPS
@@ -40,8 +40,8 @@ class App extends Component {
     }));
   };
 
-  /* handleInputChange = event => {
-    // console.log('input event =>', event); 
+  handleInputChange = event => {
+    console.log('input event =>', event);
     console.log(
       'event.currentTarget.value =>',
       event.currentTarget.value,
@@ -50,7 +50,7 @@ class App extends Component {
     this.setState({
       inputValue: event.currentTarget.value,
     });
-  }; */
+  };
 
   handleNameChange = event => {
     console.log(event.currentTarget.value);
@@ -71,6 +71,7 @@ class App extends Component {
           value={this.state.inputValue}
           onChange={this.handleInputChange}
         /> */}
+
         <form>
           <label>
             Name:{' '}
