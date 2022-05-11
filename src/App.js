@@ -25,24 +25,62 @@ class App extends Component {
   //PROPS
 
   //STATE
-  /*   state = {
+  state = {
     todos: initialTodos,
-  }; */
+    inputValue: 'qwe',
+    name: '',
+  };
 
   //LOGIC
-  /* deleteTodo = todoId => {
+  deleteTodo = todoId => {
     this.setState(prevState => ({
       todos: prevState.todos.filter(
         todo => todo.id !== todoId,
       ),
     }));
+  };
+
+  /* handleInputChange = event => {
+    // console.log('input event =>', event); 
+    console.log(
+      'event.currentTarget.value =>',
+      event.currentTarget.value,
+    );
+
+    this.setState({
+      inputValue: event.currentTarget.value,
+    });
   }; */
 
+  handleNameChange = event => {
+    console.log(event.currentTarget.value);
+    this.setState({
+      name: event.currentTarget.value,
+    });
+  };
+
+  //in REACT onChange combines onInput and onBlur (onFocus)
   //MARKUP
   render() {
     return (
       <Container>
         <h1>React Academy / L_4 / Forms</h1>
+
+        {/*  <input
+          type="text"
+          value={this.state.inputValue}
+          onChange={this.handleInputChange}
+        /> */}
+
+        <form>
+          <label>
+            Name:{' '}
+            <input
+              type="text"
+              onChange={this.handleNameChange}
+            />
+          </label>
+        </form>
         {/* <Counter
           text="Counter Component"
           initialValue={20}
