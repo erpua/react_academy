@@ -4,6 +4,9 @@ TIPS:
 
 - keep state in nearest parent, or global one (in case of
   many dif children), component.
+  - REACT has render fase and commit fase => that is why in
+    each method with console it appears double console.
+    React compairs real DOM and virtual DOM.
 
 ---
 
