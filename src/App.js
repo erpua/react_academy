@@ -141,6 +141,7 @@ class App extends Component {
           </label>
         </form> */}
 
+        {/* PATTERN for input / radiobuttons ex. in REACT */}
         <form>
           <label>
             Name:
