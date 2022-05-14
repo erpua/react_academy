@@ -70,6 +70,7 @@ for developing
 - create file .pretierrc.json
 - npm install modern-normalize => no link in html
 - npm install node-sass --save
+- npm i shortid
 
 ---
 

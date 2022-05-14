@@ -47,6 +47,7 @@ class App extends Component {
         <h1>React Academy / L_4 / Forms</h1>
         {/* onSubimt in this case it.s a property */}
         <Form onSubmit={this.formSubmitHandler} />
+        <Form onSubmit={this.formSubmitHandler} />
       </Container>
     );
   }
