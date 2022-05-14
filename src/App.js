@@ -29,7 +29,14 @@ class App extends Component {
   };
 
   formSubmitHandler = data => {
-    console.log('data(this.state), from App.js', data);
+    console.log('data(this.state), from App.js SYNC', data);
+
+    setTimeout(() => {
+      console.log(
+        'data(this.state), from App.js A_SYNC',
+        data,
+      );
+    }, 1000);
   };
 
   //in REACT onChange combines onInput and onBlur (onFocus)
@@ -39,7 +46,7 @@ class App extends Component {
       <Container>
         <h1>React Academy / L_4 / Forms</h1>
         {/* onSubimt in this case it.s a property */}
-        <Form onSubmit={this.formSubmitHandler}></Form>
+        <Form onSubmit={this.formSubmitHandler} />
       </Container>
     );
   }

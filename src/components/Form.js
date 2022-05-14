@@ -23,6 +23,12 @@ class Form extends Component {
     console.log('this.state from Form.js=>', this.state);
 
     this.props.onSubmit(this.state);
+
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ name: '', tag: '' });
   };
 
   //MARKUP - RENDER
