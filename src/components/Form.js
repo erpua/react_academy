@@ -9,16 +9,23 @@ class Form extends Component {
   //PROPS
 
   //STATE
+  //do not set new values for that same array,
+  //create new one! => immutability
+
+  // http://react.tips/checkboxes-in-react-16/
+
   state = {
     name: '',
     tag: '',
+    experience: 'junior',
   };
 
-  //LOGIC
+  //class public properties
   nameInputId = shortid.generate();
 
   tagInputId = shortid.generate();
 
+  //LOGIC
   handleChange = event => {
     const { name, value } = event.currentTarget;
 
@@ -52,6 +59,7 @@ class Form extends Component {
             id={this.nameInputId}
           />
         </label>
+        <br />
 
         <label htmlFor={this.tagInputId}>
           Surname
@@ -63,6 +71,43 @@ class Form extends Component {
             id={this.tagInputId}
           />
         </label>
+        <br />
+
+        <p>Your level: </p>
+        <label>
+          Junior:
+          <input
+            type="radio"
+            name="experience"
+            value="junior"
+            onChange={this.handleChange}
+            checked={this.state.experience === 'junior'}
+          />
+        </label>
+
+        <label>
+          Middle:
+          <input
+            type="radio"
+            name="experience"
+            value="middle"
+            onChange={this.handleChange}
+            checked={this.state.experience === 'middle'}
+          />
+        </label>
+
+        <label>
+          Senior:
+          <input
+            type="radio"
+            name="experience"
+            value="senior"
+            onChange={this.handleChange}
+            checked={this.state.experience === 'senior'}
+          />
+        </label>
+
+        <br />
 
         <button type="submit">Submit</button>
       </form>
