@@ -13,6 +13,7 @@ class Form extends Component {
   //create new one! => immutability
 
   // http://react.tips/checkboxes-in-react-16/
+  //https://github.com/fedosejev/checkboxes-in-react-16
 
   state = {
     name: '',
