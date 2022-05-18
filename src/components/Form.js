@@ -19,6 +19,7 @@ class Form extends Component {
     name: '',
     tag: '',
     experience: 'junior',
+    licence: false,
   };
 
   //class public properties
@@ -27,6 +28,16 @@ class Form extends Component {
   tagInputId = shortid.generate();
 
   //LOGIC
+
+  handleLicenceChange = e => {
+    console.log(
+      'event for single checkbox',
+      e.currentTarget.checked,
+    );
+
+    this.setState({ licence: e.currentTarget.checked });
+  };
+
   handleChange = event => {
     const { name, value } = event.currentTarget;
 
@@ -109,8 +120,27 @@ class Form extends Component {
         </label>
 
         <br />
+        <hr />
 
-        <button type="submit">Submit</button>
+        <label>
+          Agreed with terms and conditions
+          <input
+            type="checkbox"
+            name="licence"
+            checked={this.state.licence}
+            onChange={this.handleLicenceChange}
+          />
+        </label>
+
+        <br />
+        <hr />
+
+        <button
+          type="submit"
+          disabled={!this.state.licence}
+        >
+          Submit
+        </button>
       </form>
     );
   }
