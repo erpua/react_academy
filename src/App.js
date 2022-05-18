@@ -29,12 +29,12 @@ class App extends Component {
   };
 
   //LOGIC CHECKBOXES
-  selectAllCheckboxes = isSelectd => {
+  selectAllCheckboxes = isSelected => {
     Object.keys(this.state.checkboxes).forEach(checkbox => {
       this.setState(prevState => ({
         checkboxes: {
           ...prevState.checkboxes,
-          [checkbox]: isSelectd,
+          [checkbox]: isSelected,
         },
       }));
     });
@@ -46,6 +46,11 @@ class App extends Component {
 
   handleCheckboxChange = changeEvent => {
     const { name } = changeEvent.target;
+
+    console.log(
+      ' const { name } = changeEvent.target =>',
+      name,
+    );
 
     this.setState(prevState => ({
       checkboxes: {
