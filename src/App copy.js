@@ -112,9 +112,6 @@ class App extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    console.log(this.state);
-    console.log('qwe');
   };
 
   //in REACT onChange combines onInput and onBlur (onFocus)
@@ -124,15 +121,15 @@ class App extends Component {
       <Container>
         <h1>React Academy / L_4 / Forms</h1>
 
-        {/*  
+        {/*
         <input
           type="text"
           value={this.state.inputValue}
           onChange={this.handleInputChange}
-        /> 
+        />
         */}
 
-        {/*  
+        {/*
       eventListener for each input
       
        <form>

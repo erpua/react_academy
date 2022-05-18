@@ -47,10 +47,24 @@ class App extends Component {
   handleCheckboxChange = changeEvent => {
     const { name } = changeEvent.target;
 
-    console.log(
+    /*   console.log(
       ' const { name } = changeEvent.target =>',
       name,
     );
+
+    console.log(' const [name]', [name]); */
+
+    /* console.log(
+          'prevState.checkboxes[name]',
+          prevState.checkboxes[name],
+        ) */
+    /* this.setState(prevState => ({
+      checkboxes: {
+        ...prevState.checkboxes,
+        [changeEvent.target.name]:
+          !prevState.checkboxes[changeEvent.target.name],
+      },
+    })); */
 
     this.setState(prevState => ({
       checkboxes: {
@@ -58,6 +72,15 @@ class App extends Component {
         [name]: !prevState.checkboxes[name],
       },
     }));
+
+    console.log('[event.target.name] => ', [
+      changeEvent.target.name,
+    ]);
+
+    console.log(
+      'prevState.checkboxes[changeEvent.target.name] => ',
+      this.state.checkboxes[changeEvent.target.name],
+    );
   };
 
   handleFormSubmit = formSubmitEvent => {
@@ -76,6 +99,18 @@ class App extends Component {
         }),
     );
   };
+
+  /*  createCheckbox = option => (
+    console.log('option =>', option),
+    (
+      <Checkbox
+        label={option}
+        isSelected={this.state.checkboxes[option]}
+        onCheckboxChange={this.handleCheckboxChange}
+        key={option}
+      />
+    )
+  ); */
 
   createCheckbox = option => (
     <Checkbox
@@ -116,8 +151,8 @@ class App extends Component {
         <h1>React Academy / L_4 / Forms</h1>
         <hr />
         {/* onSubimt in this case it.s a property */}
+        {/*  <Form onSubmit={this.formSubmitHandler} /> */}
         <Form onSubmit={this.formSubmitHandler} />
-        {/*    <Form onSubmit={this.formSubmitHandler} /> */}
         <hr />
         <br />
         <h2>Checkbox component</h2>

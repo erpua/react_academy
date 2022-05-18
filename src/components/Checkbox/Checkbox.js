@@ -6,7 +6,6 @@ const Checkbox = ({
   onCheckboxChange,
 }) => (
   <div>
-    {' '}
     <label>
       <input
         type="checkbox"
@@ -15,7 +14,7 @@ const Checkbox = ({
         onChange={onCheckboxChange}
       />
       {label}
-    </label>{' '}
+    </label>
   </div>
 );
 
