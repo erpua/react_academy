@@ -60,88 +60,91 @@ class Form extends Component {
   //MARKUP - RENDER
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nameInputId}>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            id={this.nameInputId}
-          />
-        </label>
-        <br />
+      <>
+        <h1>Form component</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor={this.nameInputId}>
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+              id={this.nameInputId}
+            />
+          </label>
+          <br />
 
-        <label htmlFor={this.tagInputId}>
-          Surname
-          <input
-            type="text"
-            name="tag"
-            value={this.state.tag}
-            onChange={this.handleChange}
-            id={this.tagInputId}
-          />
-        </label>
-        <br />
+          <label htmlFor={this.tagInputId}>
+            Surname
+            <input
+              type="text"
+              name="tag"
+              value={this.state.tag}
+              onChange={this.handleChange}
+              id={this.tagInputId}
+            />
+          </label>
+          <br />
 
-        <p>Your level: </p>
-        <label>
-          Junior:
-          <input
-            type="radio"
-            name="experience"
-            value="junior"
-            onChange={this.handleChange}
-            checked={this.state.experience === 'junior'}
-          />
-        </label>
+          <p>Your level: </p>
+          <label>
+            Junior:
+            <input
+              type="radio"
+              name="experience"
+              value="junior"
+              onChange={this.handleChange}
+              checked={this.state.experience === 'junior'}
+            />
+          </label>
 
-        <label>
-          Middle:
-          <input
-            type="radio"
-            name="experience"
-            value="middle"
-            onChange={this.handleChange}
-            checked={this.state.experience === 'middle'}
-          />
-        </label>
+          <label>
+            Middle:
+            <input
+              type="radio"
+              name="experience"
+              value="middle"
+              onChange={this.handleChange}
+              checked={this.state.experience === 'middle'}
+            />
+          </label>
 
-        <label>
-          Senior:
-          <input
-            type="radio"
-            name="experience"
-            value="senior"
-            onChange={this.handleChange}
-            checked={this.state.experience === 'senior'}
-          />
-        </label>
+          <label>
+            Senior:
+            <input
+              type="radio"
+              name="experience"
+              value="senior"
+              onChange={this.handleChange}
+              checked={this.state.experience === 'senior'}
+            />
+          </label>
 
-        <br />
-        <hr />
+          <br />
+          <hr />
 
-        <label>
-          Agreed with terms and conditions
-          <input
-            type="checkbox"
-            name="licence"
-            checked={this.state.licence}
-            onChange={this.handleLicenceChange}
-          />
-        </label>
+          <label>
+            Agreed with terms and conditions
+            <input
+              type="checkbox"
+              name="licence"
+              checked={this.state.licence}
+              onChange={this.handleLicenceChange}
+            />
+          </label>
 
-        <br />
-        <hr />
+          <br />
+          <hr />
 
-        <button
-          type="submit"
-          disabled={!this.state.licence}
-        >
-          Submit
-        </button>
-      </form>
+          <button
+            type="submit"
+            disabled={!this.state.licence}
+          >
+            Submit
+          </button>
+        </form>
+      </>
     );
   }
 }

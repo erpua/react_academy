@@ -13,5 +13,10 @@
     "id": "id-3",
     "text": "Survive Redux",
     "completed": false
+  },
+  {
+    "id": "id-4",
+    "text": "Try on React Hooks",
+    "completed": false
   }
 ]
