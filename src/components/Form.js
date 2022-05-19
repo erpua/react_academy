@@ -31,7 +31,7 @@ class Form extends Component {
 
   handleLicenceChange = e => {
     console.log(
-      'event for single checkbox',
+      'event.currentTarget.checked for single checkbox',
       e.currentTarget.checked,
     );
 

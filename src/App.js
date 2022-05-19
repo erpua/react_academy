@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import Container from './components/Container/Container';
 import Form from './components/Form';
 import Checkbox from './components/Checkbox/Checkbox';
+import ColorPicker from './components/ColorPicker/ColorPicker';
+import TodoList from './components/TodoList/TodoList';
 
 //JSON
 /* SHORT HAND PROPERTY import todos from './todos.json'; */
@@ -150,6 +152,19 @@ class App extends Component {
       <Container>
         <h1>React Academy / L_4 / Forms</h1>
         <hr />
+        <TodoList />
+        <hr /> <br />
+        <ColorPicker
+          options={[
+            { label: 'red', color: '#F44336' },
+            { label: 'green', color: '#4CAF50' },
+            { label: 'blue', color: '#2196F3' },
+            { label: 'grey', color: '#607D8B' },
+            { label: 'pink', color: '#E91E63' },
+            { label: 'indigo', color: '#3F51B5' },
+          ]}
+        />
+        <hr />
         {/* onSubimt in this case it.s a property */}
         {/*  <Form onSubmit={this.formSubmitHandler} /> */}
         <Form onSubmit={this.formSubmitHandler} />
@@ -180,3 +195,12 @@ class App extends Component {
 }
 
 export default App;
+
+/* const colorPickerOptions = [
+  { label: 'red', color: '#F44336' },
+  { label: 'green', color: '#4CAF50' },
+  { label: 'blue', color: '#2196F3' },
+  { label: 'grey', color: '#607D8B' },
+  { label: 'pink', color: '#E91E63' },
+  { label: 'indigo', color: '#3F51B5' },
+]; */

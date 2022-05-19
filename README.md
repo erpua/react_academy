@@ -62,6 +62,7 @@ INSTALLATIONS:
 - npx create-react-app .
 - npm install react-scripts@latest
 - npm install --save-dev prop-types
+- npm install classnames
 
 // prettier - for formatting // husky and lint-staged for
 connecting to git during commit and making extra operations
