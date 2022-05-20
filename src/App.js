@@ -7,6 +7,7 @@ import TodoList from './components/TodoList';
 import ColorPicker from './components/ColorPicker';
 import Form from './components/Form';
 import TodoEditor from './components/TodoEditor';
+import Filter from './components/Filter';
 
 //JSON
 /* SHORT HAND PROPERTY import todos from './todos.json'; */
@@ -22,6 +23,7 @@ class App extends Component {
   state = {
     todos: initialTodos,
     inputValue: '',
+    filter: '',
   };
 
   //LOGIC
@@ -53,6 +55,10 @@ class App extends Component {
         todo => todo.id !== todoId,
       ),
     }));
+  };
+
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
   };
 
   formSubmitHandler = data => {
@@ -99,17 +105,37 @@ class App extends Component {
     }));
   };
 
-  //in REACT onChange combines onInput and onBlur (onFocus)
-  //MARKUP
-  render() {
+  getVisibleTodos = () => {
+    const { todos, filter } = this.state;
+
+    const normalizedFilter = filter.toLowerCase();
+
+    return todos.filter(todo =>
+      todo.text.toLowerCase().includes(normalizedFilter),
+    );
+  };
+
+  calculateCompletedTodos = () => {
     const { todos } = this.state;
 
-    const totalTodoCount = todos.length;
-
-    const completedTodoCount = todos.reduce(
+    return todos.reduce(
       (total, todo) => (todo.completed ? total + 1 : total),
       0,
     );
+  };
+  //in REACT onChange combines onInput and onBlur (onFocus)
+  //MARKUP
+  render() {
+    const { todos, filter } = this.state;
+    const totalTodoCount = todos.length;
+    const completedTodoCount =
+      this.calculateCompletedTodos();
+    /*   const normalizedFilter =
+      this.state.filter.toLowerCase();
+    const visibleTodos = this.state.todos.filter(todo =>
+      todo.text.toLowerCase().includes(normalizedFilter),
+    ); */
+    const visibleTodos = this.getVisibleTodos();
 
     return (
       <Container>
@@ -123,9 +149,21 @@ class App extends Component {
         <TodoEditor onSubmit={this.addTodo} />
 
         <hr />
+        <h2>Filter component</h2>
+        <Filter
+          value={filter}
+          onChange={this.changeFilter}
+        />
+
+        <hr />
         <h2>TodoList component</h2>
-        <TodoList
+        {/*  <TodoList
           todos={todos}
+          onDeleteTodo={this.deleteTodo}
+          onToggleCompleted={this.toggleCompleted}
+        /> */}
+        <TodoList
+          todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
         />
