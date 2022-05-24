@@ -123,6 +123,19 @@ class App extends Component {
       0,
     );
   };
+
+  //Life cycles
+  componentDidMount = () => {
+    console.log('componentDidMount');
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Component Did Update');
+    console.log('prevState =>', prevState);
+
+    console.log('this.state => ', this.state);
+  }
+
   //in REACT onChange combines onInput and onBlur (onFocus)
   //MARKUP
   render() {
