@@ -124,16 +124,25 @@ class App extends Component {
     );
   };
 
-  //Life cycles
-  componentDidMount = () => {
+  //Life cycles: DO NT MAKE ARROW FUNCTION
+  componentDidMount() {
     console.log('componentDidMount');
-  };
+  }
 
   componentDidUpdate(prevProps, prevState) {
     console.log('Component Did Update');
-    console.log('prevState =>', prevState);
+    console.log('prevState BEFORE update=>', prevState);
 
-    console.log('this.state => ', this.state);
+    console.log('this.state AFTER update => ', this.state);
+
+    if (prevState.todos !== this.state.todos) {
+      console.log(' STATE was updated ');
+
+      localStorage.setItem(
+        'todos',
+        JSON.stringify(this.state.todos),
+      );
+    }
   }
 
   //in REACT onChange combines onInput and onBlur (onFocus)
