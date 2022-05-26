@@ -34,11 +34,56 @@ class App extends Component {
     showModal: false,
   };
 
+  //Life cycles: DO NT MAKE ARROW FUNCTION
+  componentDidMount() {
+    console.log('componentDidMount');
+
+    const todos = localStorage.getItem('todos');
+
+    console.log(
+      'todos from componentDidMount localStorage =>',
+      todos,
+    );
+
+    const parsedTodos = JSON.parse(todos);
+
+    if (parsedTodos) {
+      /*  this.setState({ todos: parsedTodos }); */
+      setTimeout(() => {
+        this.setState({ todos: parsedTodos });
+      }, 2000);
+      console.log('parsedTodos=>', parsedTodos);
+    }
+
+    /*  setTimeout(() => {
+      this.setState({ todos: parsedTodos });
+    }, 2000); */
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Component Did Update');
+    console.log('prevState BEFORE update=>', prevState);
+
+    console.log('this.state AFTER update => ', this.state);
+
+    if (prevState.todos !== this.state.todos) {
+      console.log(' STATE was updated ');
+
+      localStorage.setItem(
+        'todos',
+        JSON.stringify(this.state.todos),
+      );
+    }
+  }
+
   //LOGIC
 
   toggleModal = () => {
-    this.setState(state => ({
+    /*  this.setState(state => ({
       showModal: !state.showModal,
+    })); */
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
     }));
   };
 
@@ -139,52 +184,10 @@ class App extends Component {
     );
   };
 
-  //Life cycles: DO NT MAKE ARROW FUNCTION
-  componentDidMount() {
-    console.log('componentDidMount');
-
-    const todos = localStorage.getItem('todos');
-
-    console.log(
-      'todos from componentDidMount localStorage =>',
-      todos,
-    );
-
-    const parsedTodos = JSON.parse(todos);
-
-    if (parsedTodos) {
-      /*  this.setState({ todos: parsedTodos }); */
-      setTimeout(() => {
-        this.setState({ todos: parsedTodos });
-      }, 2000);
-      console.log('parsedTodos=>', parsedTodos);
-    }
-
-    /*  setTimeout(() => {
-      this.setState({ todos: parsedTodos });
-    }, 2000); */
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('Component Did Update');
-    console.log('prevState BEFORE update=>', prevState);
-
-    console.log('this.state AFTER update => ', this.state);
-
-    if (prevState.todos !== this.state.todos) {
-      console.log(' STATE was updated ');
-
-      localStorage.setItem(
-        'todos',
-        JSON.stringify(this.state.todos),
-      );
-    }
-  }
-
   //in REACT onChange combines onInput and onBlur (onFocus)
   //MARKUP
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal } = this.state;
     const totalTodoCount = todos.length;
     const completedTodoCount =
       this.calculateCompletedTodos();
@@ -198,8 +201,30 @@ class App extends Component {
     return (
       <Container>
         {/*  <h1>React Academy / L_4 / Forms</h1> */}
-        <Modal />
-        {/* 
+        <button type="button" onClick={this.toggleModal}>
+          Open modal
+        </button>
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <h1>
+              Hello, this is Modal content as children
+            </h1>
+            <p>
+              lorem ipsum yada yada yada lorem ipsum yada
+              yada yada lorem ipsum yada yada yada lorem
+              ipsum yada yada yada lorem ipsum yada yada
+              yada lorem ipsum yada yada yada lorem ipsum
+              yada yada yada lorem ipsum yada yada yada
+            </p>
+            <button
+              type="button"
+              onClick={this.toggleModal}
+            >
+              Close modal
+            </button>
+          </Modal>
+        )}
+
         <div>
           <p>Total todos: {totalTodoCount}</p>
           <p>Done: {completedTodoCount}</p>
@@ -212,19 +237,19 @@ class App extends Component {
         <Filter
           value={filter}
           onChange={this.changeFilter}
-        /> */}
-        {/*   <hr /> */}
-        {/*      <h2>TodoList component</h2> */}
-        {/*  <TodoList
+        />
+        <hr />
+        <h2>TodoList component</h2>
+        {/* <TodoList
           todos={todos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        /> */}
-        {/*  <TodoList
+        />  */}
+        <TodoList
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        /> */}
+        />
         {/*   <hr /> */}
         {/*  <ColorPicker
           options={[

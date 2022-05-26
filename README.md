@@ -88,16 +88,29 @@ REACT TOOLS:
 - import React, { Component } from 'react';
 - import styles from './TodoList.module.css';
 
-class TodoList extends Component { //PROPS static
-defaultProps = {};
+class TodoList extends Component {
 
-static propTypes = {};
+//PROPS
 
-//STATE state = {};
+- static defaultProps = {};
 
-//LOGIC
+- static propTypes = {};
 
-//MARKUP render() { return ( <>
+//STATE
+
+- state = {};
+
+//LifeCycles methods / not arrow function
+
+- componentDidMount() {}
+- componentDidUpdate() {}
+- coomponentWillUnmount() {} ...
+
+//LOGIC regular methods
+
+//MARKUP
+
+- render() { return ( <>
 
 <p className={styles.todo}>TodoList component</p> </> ); } }
 
