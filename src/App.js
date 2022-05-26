@@ -8,10 +8,11 @@ import ColorPicker from './components/ColorPicker';
 import Form from './components/Form';
 import TodoEditor from './components/TodoEditor';
 import Filter from './components/Filter';
+import Modal from './components/Modal/Modal';
 
 //JSON
 /* SHORT HAND PROPERTY import todos from './todos.json'; */
-import initialTodos from './todos.json';
+/* import initialTodos from './todos.json'; */
 
 //ID__GENERATOR
 import shortid from 'shortid';
@@ -20,13 +21,27 @@ class App extends Component {
   //PROPS
 
   //STATE
-  state = {
+  /*   state = {
     todos: initialTodos,
     inputValue: '',
     filter: '',
+  }; */
+
+  state = {
+    todos: [],
+    inputValue: '',
+    filter: '',
+    showModal: false,
   };
 
   //LOGIC
+
+  toggleModal = () => {
+    this.setState(state => ({
+      showModal: !state.showModal,
+    }));
+  };
+
   addTodo = text => {
     console.log('text fom addTodo / App.js=>', text);
 
@@ -127,6 +142,27 @@ class App extends Component {
   //Life cycles: DO NT MAKE ARROW FUNCTION
   componentDidMount() {
     console.log('componentDidMount');
+
+    const todos = localStorage.getItem('todos');
+
+    console.log(
+      'todos from componentDidMount localStorage =>',
+      todos,
+    );
+
+    const parsedTodos = JSON.parse(todos);
+
+    if (parsedTodos) {
+      /*  this.setState({ todos: parsedTodos }); */
+      setTimeout(() => {
+        this.setState({ todos: parsedTodos });
+      }, 2000);
+      console.log('parsedTodos=>', parsedTodos);
+    }
+
+    /*  setTimeout(() => {
+      this.setState({ todos: parsedTodos });
+    }, 2000); */
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -161,8 +197,9 @@ class App extends Component {
 
     return (
       <Container>
-        <h1>React Academy / L_4 / Forms</h1>
-
+        {/*  <h1>React Academy / L_4 / Forms</h1> */}
+        <Modal />
+        {/* 
         <div>
           <p>Total todos: {totalTodoCount}</p>
           <p>Done: {completedTodoCount}</p>
@@ -175,23 +212,21 @@ class App extends Component {
         <Filter
           value={filter}
           onChange={this.changeFilter}
-        />
-
-        <hr />
-        <h2>TodoList component</h2>
+        /> */}
+        {/*   <hr /> */}
+        {/*      <h2>TodoList component</h2> */}
         {/*  <TodoList
           todos={todos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
         /> */}
-        <TodoList
+        {/*  <TodoList
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
-
-        <hr />
-        <ColorPicker
+        /> */}
+        {/*   <hr /> */}
+        {/*  <ColorPicker
           options={[
             { label: 'red', color: '#F44336' },
             { label: 'green', color: '#4CAF50' },
@@ -200,12 +235,11 @@ class App extends Component {
             { label: 'pink', color: '#E91E63' },
             { label: 'indigo', color: '#3F51B5' },
           ]}
-        />
-
-        <hr />
+        /> */}
+        {/*  <hr /> */}
         {/* onSubimt in this case it.s a property */}
         {/*  <Form onSubmit={this.formSubmitHandler} /> */}
-        <Form onSubmit={this.formSubmitHandler} />
+        {/*    <Form onSubmit={this.formSubmitHandler} /> */}
       </Container>
     );
   }
