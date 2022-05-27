@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 import './ColorPicker.css';
 
-class ColorPicker extends Component {
+//{ Component } has been changed for { PureComponent }
+//because in this case we can press 2 times one color
+
+class ColorPicker extends PureComponent {
   //PROPS
   static defaultProps = {};
 

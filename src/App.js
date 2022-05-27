@@ -3,12 +3,15 @@ import React, { Component } from 'react';
 
 //Components
 import Container from './components/Container';
-import TodoList from './components/TodoList';
+/* import TodoList from './components/TodoList';
 import ColorPicker from './components/ColorPicker';
 import Form from './components/Form';
 import TodoEditor from './components/TodoEditor';
-import Filter from './components/Filter';
+import Filter from './components/Filter'; */
 import Modal from './components/Modal/Modal';
+/* import Clock from './components/Clock'; */
+import Tabs from './components/Tabs';
+import tabs from './tabs.json';
 
 //JSON
 /* SHORT HAND PROPERTY import todos from './todos.json'; */
@@ -36,14 +39,14 @@ class App extends Component {
 
   //Life cycles: DO NT MAKE ARROW FUNCTION
   componentDidMount() {
-    console.log('componentDidMount');
+    /*   console.log('componentDidMount'); */
 
     const todos = localStorage.getItem('todos');
 
-    console.log(
+    /*   console.log(
       'todos from componentDidMount localStorage =>',
       todos,
-    );
+    ); */
 
     const parsedTodos = JSON.parse(todos);
 
@@ -61,13 +64,13 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('Component Did Update');
+    /*  console.log('Component Did Update');
     console.log('prevState BEFORE update=>', prevState);
 
-    console.log('this.state AFTER update => ', this.state);
+    console.log('this.state AFTER update => ', this.state); */
 
     if (prevState.todos !== this.state.todos) {
-      console.log(' STATE was updated ');
+      /*  console.log(' STATE was updated '); */
 
       localStorage.setItem(
         'todos',
@@ -88,7 +91,7 @@ class App extends Component {
   };
 
   addTodo = text => {
-    console.log('text fom addTodo / App.js=>', text);
+    /*  console.log('text fom addTodo / App.js=>', text); */
 
     /* const todo = {
       id: shortid.generate(),
@@ -122,7 +125,7 @@ class App extends Component {
   };
 
   formSubmitHandler = data => {
-    console.log('data(this.state), from App.js SYNC', data);
+    /* console.log('data(this.state), from App.js SYNC', data); */
 
     setTimeout(() => {
       console.log(
@@ -133,7 +136,7 @@ class App extends Component {
   };
 
   toggleCompleted = todoId => {
-    console.log('todoId=> ', todoId);
+    /*     console.log('todoId=> ', todoId); */
 
     /*  this.setState(prevState => ({
       todos: prevState.todos.map(todo => {
@@ -200,10 +203,18 @@ class App extends Component {
 
     return (
       <Container>
+        <Tabs items={tabs} />
+        {/*  <Clock /> */}
         {/*  <h1>React Academy / L_4 / Forms</h1> */}
+        {/*  {showModal && <Clock />}
         <button type="button" onClick={this.toggleModal}>
-          Open modal
+          Open / Close Clock
+        </button> */}
+
+        <button type="button" onClick={this.toggleModal}>
+          Open Modal
         </button>
+
         {showModal && (
           <Modal onClose={this.toggleModal}>
             <h1>
@@ -224,7 +235,7 @@ class App extends Component {
             </button>
           </Modal>
         )}
-
+        {/*
         <div>
           <p>Total todos: {totalTodoCount}</p>
           <p>Done: {completedTodoCount}</p>
@@ -238,18 +249,18 @@ class App extends Component {
           value={filter}
           onChange={this.changeFilter}
         />
-        <hr />
-        <h2>TodoList component</h2>
+        <hr /> */}
+        <br />
         {/* <TodoList
           todos={todos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
         />  */}
-        <TodoList
+        {/*  <TodoList
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
         {/*   <hr /> */}
         {/*  <ColorPicker
           options={[

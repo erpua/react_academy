@@ -11,6 +11,17 @@ import './styles/base.scss';
   document.getElementById('root'),
 ); */
 
+/* const root = ReactDOM.createRoot(
+  document.getElementById('root'),
+);
+root.render(
+
+  for lifecycle shouldComponentUpdate()
+  
+    <App />
+
+); */
+
 const root = ReactDOM.createRoot(
   document.getElementById('root'),
 );
