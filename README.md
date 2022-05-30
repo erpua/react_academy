@@ -11,6 +11,8 @@ TIPS:
 
 - https://github.com/fedosejev?tab=repositories
 
+- clear after: https requests, timers, addEventListeners
+
 ---
 
 JSON:
