@@ -3,15 +3,16 @@ import React, { Component } from 'react';
 
 //Components
 import Container from './components/Container';
-/* import TodoList from './components/TodoList';
+/* 
 import ColorPicker from './components/ColorPicker';
-import Form from './components/Form';
+import Form from './components/Form';*/
+import TodoList from './components/TodoList';
 import TodoEditor from './components/TodoEditor';
-import Filter from './components/Filter'; */
+import Filter from './components/Filter';
 import Modal from './components/Modal/Modal';
 /* import Clock from './components/Clock'; */
-import Tabs from './components/Tabs';
-import tabs from './tabs.json';
+/* import Tabs from './components/Tabs';
+import tabs from './tabs.json'; */
 
 //JSON
 /* SHORT HAND PROPERTY import todos from './todos.json'; */
@@ -203,7 +204,7 @@ class App extends Component {
 
     return (
       <Container>
-        <Tabs items={tabs} />
+        {/*  <Tabs items={tabs} /> */}
         {/*  <Clock /> */}
         {/*  <h1>React Academy / L_4 / Forms</h1> */}
         {/*  {showModal && <Clock />}
@@ -235,7 +236,7 @@ class App extends Component {
             </button>
           </Modal>
         )}
-        {/*
+
         <div>
           <p>Total todos: {totalTodoCount}</p>
           <p>Done: {completedTodoCount}</p>
@@ -244,23 +245,23 @@ class App extends Component {
         <TodoEditor onSubmit={this.addTodo} />
 
         <hr />
+
         <h2>Filter component</h2>
         <Filter
           value={filter}
           onChange={this.changeFilter}
         />
-        <hr /> */}
         <br />
+        <TodoList
+          todos={visibleTodos}
+          onDeleteTodo={this.deleteTodo}
+          onToggleCompleted={this.toggleCompleted}
+        />
         {/* <TodoList
           todos={todos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
         />  */}
-        {/*  <TodoList
-          todos={visibleTodos}
-          onDeleteTodo={this.deleteTodo}
-          onToggleCompleted={this.toggleCompleted}
-        /> */}
         {/*   <hr /> */}
         {/*  <ColorPicker
           options={[

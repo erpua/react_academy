@@ -6,7 +6,7 @@ export default class Tabs extends PureComponent {
   };
 
   //shoouldComponentUpdate using { Component }, or { PureComponent } =>
-  //that same!!
+  //that same!! => PureComponent already has shouldComponentUpdate automatically
   /*  shouldComponentUpdate(nextProps, nextState) {
     return (
       nextState.activeTabIdx !== this.state.activeTabIdx
@@ -26,6 +26,7 @@ export default class Tabs extends PureComponent {
 
     return (
       <>
+        <br />
         <div>
           {items.map((item, idx) => (
             <button
@@ -42,6 +43,7 @@ export default class Tabs extends PureComponent {
           <h2>{activeTab.label}</h2>
           <p>{activeTab.content}</p>
         </div>
+        <hr />
       </>
     );
   }

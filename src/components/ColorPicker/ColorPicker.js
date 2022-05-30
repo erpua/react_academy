@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import './ColorPicker.css';
 
 //{ Component } has been changed for { PureComponent }
-//because in this case we can press 2 times one color
+//cause we can daouble press the color. shouldComponentUpdate(){}
 
 class ColorPicker extends PureComponent {
   //PROPS
