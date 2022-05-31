@@ -128,7 +128,8 @@ class App extends Component {
     );
   };
 
-  //in REACT onChange combines with onInput and onBlur (onFocus)
+  //in REACT onChange combines with
+  //onInput and onBlur (onFocus)
   //MARKUP
   render() {
     const { todos, filter, showModal } = this.state;
