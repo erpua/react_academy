@@ -77,6 +77,15 @@ for developing
 - npm install modern-normalize => no link in html
 - npm install node-sass --save
 - npm i shortid
+- npm install json-server (npm package for local backend) =>
+  (https://github.com/typicode/json-server) {"scripts": {
+  "start": "react-scripts start", "build": "react-scripts
+  build", "test": "react-scripts test", "eject":
+  "react-scripts eject", "api-server": "json-server --watch
+  db.json" },} => "api-server": "json-server --delay 200
+  --watch db.json" => immitation for delay of real backend
+  (npm run api-server to up local json-server)
+- npm install axios
 
 ---
 

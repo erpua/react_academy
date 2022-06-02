@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": "id-1",
+      "text": "Learn React basics",
+      "completed": false
+    },
+    {
+      "id": "id-2",
+      "text": "Understand React Router",
+      "completed": false
+    },
+    {
+      "id": "id-3",
+      "text": "Get used to Redux",
+      "completed": true
+    },
+    {
+      "id": "id-4",
+      "text": "Try React Hooks",
+      "completed": false
+    }
+  ]
+}
