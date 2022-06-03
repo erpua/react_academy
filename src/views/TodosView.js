@@ -83,14 +83,18 @@ class TodosView extends Component {
       this.toggleModal();
     }); */
 
+    /*  axios
+      .post('http://localhost:3000/todos', todo)
+      .then(console.log); */
+
     axios
       .post('http://localhost:3000/todos', todo)
-      .then(console.log);
-    /*  this.setState(({ todos }) => ({
-      todos: [todo, ...todos],
-    })); */
-
-    this.toggleModal();
+      .then(({ data }) => {
+        this.setState(({ todos }) => ({
+          todos: [data, ...todos],
+        }));
+        this.toggleModal();
+      });
   };
 
   deleteTodo = todoId => {
