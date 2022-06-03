@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import shortid from 'shortid';
 import Container from '../components/Container';
 import TodoList from '../components/TodoList';
-/* import TodoEditor from '../components/TodoEditor';
-import Filter from '../components/TodoFilter'; */
-/* import Stats from '../components/Stats'; */
+import Filter from '../components/TodoFilter';
+import Stats from '../components/Stats';
+import TodoEditor from '../components/TodoEditor';
 import Modal from '../components/Modal';
 import IconButton from '../components/IconButton';
 import { ReactComponent as AddIcon } from '../icons/add.svg';
@@ -55,10 +54,8 @@ class TodosView extends Component {
       .catch(error => console.log('ERROR=>', error)); */
     axios
       .get('http://localhost:3000/todos')
-      .then(({ data }) => {
-        this.setState({ todos: data });
-      })
-      .catch(error => console.log('ERROR=>', error));
+      .then(({ data }) => this.setState({ todos: data }))
+      .catch(error => console.log('ERROR =>', error));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -86,9 +83,12 @@ class TodosView extends Component {
       this.toggleModal();
     }); */
 
-    this.setState(({ todos }) => ({
+    axios
+      .post('http://localhost:3000/todos', todo)
+      .then(console.log);
+    /*  this.setState(({ todos }) => ({
       todos: [todo, ...todos],
-    }));
+    })); */
 
     this.toggleModal();
   };
@@ -157,14 +157,14 @@ class TodosView extends Component {
     return (
       <Container>
         <div style={barStyles}>
-          {/* <Filter
+          <Filter
             value={filter}
             onChange={this.changeFilter}
-          /> */}
-          {/* <Stats
+          />
+          <Stats
             total={totalTodoCount}
             completed={completedTodoCount}
-          /> */}
+          />
           <IconButton
             onClick={this.toggleModal}
             aria-label="Добавить todo"
@@ -179,11 +179,11 @@ class TodosView extends Component {
           onToggleCompleted={this.toggleCompleted}
         />
 
-        {/*  {showModal && (
+        {showModal && (
           <Modal onClose={this.toggleModal}>
             <TodoEditor onSubmit={this.addTodo} />
           </Modal>
-        )} */}
+        )}
       </Container>
     );
   }
