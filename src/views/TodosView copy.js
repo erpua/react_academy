@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 import Container from '../components/Container';
 import TodoList from '../components/TodoList';
 import Filter from '../components/TodoFilter';
@@ -8,7 +8,7 @@ import TodoEditor from '../components/TodoEditor';
 import Modal from '../components/Modal';
 import IconButton from '../components/IconButton';
 import { ReactComponent as AddIcon } from '../icons/add.svg';
-import todosApi from '../services/todos-api';
+/* import todosApi from '../services/todos-api'; */
 
 const barStyles = {
   display: 'flex',
@@ -23,10 +23,38 @@ class TodosView extends Component {
     showModal: false,
   };
 
+  //ASYNC coomponent DidMount
+  /*  async componentDidMount() {
+    const response = await axios.get(
+      'http://localhost:3000/todos',
+    );
+
+    console.log('RESPONSE.DATA', response.data);
+  } */
+
   componentDidMount() {
-    todosApi
+    /*   todosApi
       .fetchTodos()
       .then(todos => this.setState({ todos }))
+      .catch(error => console.log(error)); */
+
+    /*   axios
+      .get('http://localhost:3000/todos')
+      .then(response => {
+        console.log(
+          'response from AXIOS =>:',
+          response.data,
+        );
+      }); */
+    /*  axios
+      .get('http://localhost:3000/todos')
+      .then(response => {
+        this.setState({ todos: response.data });
+      })
+      .catch(error => console.log('ERROR=>', error)); */
+    axios
+      .get('http://localhost:3000/todos')
+      .then(({ data }) => this.setState({ todos: data }))
       .catch(error => console.log('ERROR =>', error));
   }
 
@@ -43,43 +71,96 @@ class TodosView extends Component {
   }
 
   addTodo = text => {
-    const todoData = {
+    const todo = {
       text,
       completed: false,
     };
 
-    todosApi.addTodo(todoData).then(todo => {
+    /*  todosApi.addTodo(todoData).then(todo => {
       this.setState(({ todos }) => ({
         todos: [...todos, todo],
       }));
       this.toggleModal();
-    });
+    }); */
+
+    /*  axios
+      .post('http://localhost:3000/todos', todo)
+      .then(console.log); */
+
+    /*   axios
+      .post('http://localhost:3000/todos', todo)
+      .then(response => {
+        this.setState(({ todos }) => ({
+          todos: [response.data, ...todos],
+        }));
+        this.toggleModal();
+      }); */
+
+    axios
+      .post('http://localhost:3000/todos', todo)
+      .then(({ data }) => {
+        this.setState(({ todos }) => ({
+          todos: [...todos, data],
+        }));
+        this.toggleModal();
+      });
   };
 
   deleteTodo = todoId => {
-    todosApi.deleteTodo(todoId).then(() => {
+    /* axios.delete(`http://localhost:3000/todos/${todoId}`).then(console.log); */
+
+    /*  axios
+      .delete(`http://localhost:3000/todos/${todoId}`)
+      .then(() => {
+        this.setState(({ todos }) => ({
+          todos: todos.filter(todo => todo.id !== todoId),
+        }));
+      }); */
+
+    axios
+      .delete(`http://localhost:3000/todos/${todoId}`)
+      .then(() => {
+        this.setState(({ todos }) => ({
+          todos: todos.filter(({ id }) => id !== todoId),
+        }));
+      });
+  };
+
+  /* deleteTodo = todoId => {
+     todosApi.deleteTodo(todoId).then(() => {
       this.setState(({ todos }) => ({
         todos: todos.filter(({ id }) => id !== todoId),
       }));
     });
-  };
+  }; */
 
   toggleCompleted = todoId => {
+    /* const todo = this.state.todos.find(
+      todo => todo.id === todoId,
+    ); */
+
     const todo = this.state.todos.find(
       ({ id }) => id === todoId,
     );
+    console.log('TODO from toggle=>', todo);
 
     const { completed } = todo;
-    const update = { completed: !completed };
+    console.log('completed from todo =>', completed);
 
-    todosApi
-      .updateTodo(todoId, update)
-      .then(updatedToodo => {
+    /* axios
+      .patch(`http://localhost:3000/todos/${todoId}`, {
+        completed: !completed,
+      })
+      .then(console.log); */
+
+    axios
+      .patch(`http://localhost:3000/todos/${todoId}`, {
+        completed: !completed,
+      })
+      .then(({ data }) => {
         this.setState(({ todos }) => ({
           todos: todos.map(todo =>
-            todo.id === updatedToodo.id
-              ? updatedToodo
-              : todo,
+            todo.id === data.id ? data : todo,
           ),
         }));
       });

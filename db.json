@@ -6,13 +6,8 @@
       "completed": true
     },
     {
-      "text": "tyu",
-      "completed": true,
-      "id": "3fjjquo"
-    },
-    {
       "text": "Learn React basics\n",
-      "completed": false,
+      "completed": true,
       "id": "RKWAymb"
     },
     {
@@ -21,9 +16,14 @@
       "id": "ikUbGzp"
     },
     {
-      "text": "qwe",
+      "text": "New React Task",
       "completed": false,
-      "id": "ZeUm-Dg"
+      "id": "e_HlxFg"
+    },
+    {
+      "text": "qweqwe",
+      "completed": false,
+      "id": "PHdAfxt"
     }
   ]
 }
