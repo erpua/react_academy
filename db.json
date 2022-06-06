@@ -1,49 +1,29 @@
 {
   "todos": [
     {
-      "id": "id-1",
-      "text": "Learn React basics",
-      "completed": false
-    },
-    {
       "id": "id-2",
       "text": "Understand React Router",
-      "completed": false
-    },
-    {
-      "id": "id-3",
-      "text": "Get used to Redux",
       "completed": true
     },
     {
-      "id": "id-4",
-      "text": "Try React Hooks",
-      "completed": false
+      "text": "tyu",
+      "completed": true,
+      "id": "3fjjquo"
     },
     {
-      "text": "fwefwffq",
+      "text": "Learn React basics\n",
       "completed": false,
-      "id": "WQv6YqP"
+      "id": "RKWAymb"
+    },
+    {
+      "text": "Survive React Redux",
+      "completed": false,
+      "id": "ikUbGzp"
     },
     {
       "text": "qwe",
       "completed": false,
-      "id": "NWnFVrr"
-    },
-    {
-      "text": "345",
-      "completed": false,
-      "id": "jdp9E6O"
-    },
-    {
-      "text": "ty",
-      "completed": false,
-      "id": "CzCKxRm"
-    },
-    {
-      "text": "tyu",
-      "completed": false,
-      "id": "3fjjquo"
+      "id": "ZeUm-Dg"
     }
   ]
 }

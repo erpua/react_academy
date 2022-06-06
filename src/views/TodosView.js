@@ -87,32 +87,93 @@ class TodosView extends Component {
       .post('http://localhost:3000/todos', todo)
       .then(console.log); */
 
+    /*   axios
+      .post('http://localhost:3000/todos', todo)
+      .then(response => {
+        this.setState(({ todos }) => ({
+          todos: [response.data, ...todos],
+        }));
+        this.toggleModal();
+      }); */
+
     axios
       .post('http://localhost:3000/todos', todo)
       .then(({ data }) => {
         this.setState(({ todos }) => ({
-          todos: [data, ...todos],
+          todos: [...todos, data],
         }));
         this.toggleModal();
       });
   };
 
   deleteTodo = todoId => {
-    /* todosApi.deleteTodo(todoId).then(() => {
+    /* axios.delete(`http://localhost:3000/todos/${todoId}`).then(console.log); */
+
+    /*  axios
+      .delete(`http://localhost:3000/todos/${todoId}`)
+      .then(() => {
+        this.setState(({ todos }) => ({
+          todos: todos.filter(todo => todo.id !== todoId),
+        }));
+      }); */
+
+    axios
+      .delete(`http://localhost:3000/todos/${todoId}`)
+      .then(() => {
+        this.setState(({ todos }) => ({
+          todos: todos.filter(({ id }) => id !== todoId),
+        }));
+      });
+  };
+
+  /* deleteTodo = todoId => {
+     todosApi.deleteTodo(todoId).then(() => {
       this.setState(({ todos }) => ({
         todos: todos.filter(({ id }) => id !== todoId),
       }));
-    }); */
-  };
+    });
+  }; */
 
   toggleCompleted = todoId => {
+    /* const todo = this.state.todos.find(
+      todo => todo.id === todoId,
+    ); */
+
+    const todo = this.state.todos.find(
+      ({ id }) => id === todoId,
+    );
+    console.log('TODO from toggle=>', todo);
+
+    const { completed } = todo;
+    console.log('completed from todo =>', completed);
+
+    /* axios
+      .patch(`http://localhost:3000/todos/${todoId}`, {
+        completed: !completed,
+      })
+      .then(console.log); */
+
+    axios
+      .patch(`http://localhost:3000/todos/${todoId}`, {
+        completed: !completed,
+      })
+      .then(({ data }) => {
+        this.setState(({ todos }) => ({
+          todos: todos.map(todo =>
+            todo.id === data.id ? data : todo,
+          ),
+        }));
+      });
+  };
+
+  /*  toggleCompleted = todoId => {
     const todo = this.state.todos.find(
       ({ id }) => id === todoId,
     );
     const { completed } = todo;
     const update = { completed: !completed };
 
-    /*  todosApi
+      todosApi
       .updateTodo(todoId, update)
       .then(updatedTodo => {
         this.setState(({ todos }) => ({
@@ -120,8 +181,8 @@ class TodosView extends Component {
             todo.id === updatedTodo.id ? updatedTodo : todo,
           ),
         }));
-      }); */
-  };
+      }); 
+  }; */
 
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
