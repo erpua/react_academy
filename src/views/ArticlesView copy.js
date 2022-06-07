@@ -46,6 +46,31 @@ class ArticlesView extends Component {
       );
   }
 
+  onChangeQuery = query => {
+    const { currentPage } = this.state;
+
+    /*  axios
+      .get(
+        `https://newsapi.org/v2/everything?q=${query}&pageSize=5&page=${currentPage}`,
+      )
+      .then(response =>
+        this.setState({
+          articles: response.data.articles,
+        }),
+      ); */
+
+    axios
+      .get(
+        `https://newsapi.org/v2/everything?q=${query}&pageSize=5&page=${currentPage}`,
+      )
+      .then(response =>
+        this.setState(prevState => ({
+          articles: response.data.articles,
+          currentPage: prevState.currentPage + 1,
+        })),
+      );
+  };
+
   render() {
     const { articles } = this.state;
     return (

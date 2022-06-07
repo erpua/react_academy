@@ -8,17 +8,46 @@ axios.defaults.headers.common['Authorization'] =
 class ArticlesView extends Component {
   state = {
     articles: [],
+    currentPage: 1,
+    searchQuery: '',
   };
 
+  /*  onChangeQuery = query => {
+    //!setState is ASYNC => this.fetchAricles will go first without query
+    this.setState({ searchQuery: query });
+    this.fetchAticles();
+  };
+ */
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.searchQuery !== this.state.searchQuery) {
+      this.fetchAticles();
+    }
+  }
+
   onChangeQuery = query => {
+    this.setState({
+      searchQuery: query,
+      currentPage: 1,
+      articles: [],
+    });
+  };
+
+  fetchAticles = () => {
+    const { currentPage, searchQuery } = this.state;
+
     axios
       .get(
-        `https://newsapi.org/v2/everything?q=tesla&from=2022-05-07&sortBy=${query}`,
+        `https://newsapi.org/v2/everything?q=${searchQuery}&pageSize=5&page=${currentPage}`,
       )
       .then(response =>
-        this.setState({
-          articles: response.data.articles,
-        }),
+        this.setState(prevState => ({
+          articles: [
+            ...prevState.articles,
+            ...response.data.articles,
+          ],
+          currentPage: prevState.currentPage + 1,
+        })),
       );
   };
 
@@ -26,7 +55,7 @@ class ArticlesView extends Component {
     const { articles } = this.state;
     return (
       <div>
-        <h1>Articles</h1>
+        <br />
         <SearchForm onSubmit={this.onChangeQuery} />
         {/*  <ul>
           {articles.map(article => (
@@ -46,6 +75,10 @@ class ArticlesView extends Component {
             </li>
           ))}
         </ul>
+
+        <button type="button" onClick={this.fetchAticles}>
+          Download more
+        </button>
       </div>
     );
   }
