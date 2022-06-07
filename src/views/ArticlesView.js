@@ -77,13 +77,6 @@ class ArticlesView extends Component {
         {error && <h1>Loading error ...</h1>}
         <br />
         <SearchForm onSubmit={this.onChangeQuery} />
-        {/*  <ul>
-          {articles.map(article => (
-            <li key={article.title}></li>
-          ))}
-        </ul> */}
-
-        {/*  {isLoading && <h1>Downloading ...</h1>} */}
 
         <ul>
           {articles.map(({ title, url }) => (

@@ -81,6 +81,14 @@ class ArticlesView extends Component {
             <li key={article.title}></li>
           ))}
         </ul> */}
+
+        {/*  <ul>
+          {articles.map(article => (
+            <li key={article.title}></li>
+          ))}
+        </ul> */}
+
+        {/*  {isLoading && <h1>Downloading ...</h1>} */}
         <ul>
           {articles.map(({ title, url }) => (
             <li key={title}>
