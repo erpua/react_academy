@@ -1,78 +1,51 @@
 import React, { Component } from 'react';
-/* import SearchForm from '../components/SearchForm'; */
-/* import newsApi from '../services/news-api'; */
+import axios from 'axios';
+import SearchForm from '../components/SearchForm';
+
+axios.defaults.headers.common['Authorization'] =
+  'Bearer 299c46f2879340a98a8a92d3f1ecce28';
 
 class ArticlesView extends Component {
   state = {
     articles: [],
-    currentPage: 1,
-    searchQuery: '',
-    isLoading: false,
-    error: null,
   };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.searchQuery !== this.state.searchQuery) {
-      this.fetchArticles();
-    }
-  }
 
   onChangeQuery = query => {
-    this.setState({
-      searchQuery: query,
-      currentPage: 1,
-      articles: [],
-      error: null,
-    });
+    axios
+      .get(
+        `https://newsapi.org/v2/everything?q=tesla&from=2022-05-07&sortBy=${query}`,
+      )
+      .then(response =>
+        this.setState({
+          articles: response.data.articles,
+        }),
+      );
   };
 
-  /*   fetchArticles = () => {
-    const { currentPage, searchQuery } = this.state;
-    const options = { searchQuery, currentPage };
-
-    this.setState({ isLoading: true });
-
-    newsApi
-      .fetchArticles(options)
-      .then(articles => {
-        this.setState(prevState => ({
-          articles: [...prevState.articles, ...articles],
-          currentPage: prevState.currentPage + 1,
-        }));
-      })
-      .catch(error => this.setState({ error }))
-      .finally(() => this.setState({ isLoading: false }));
-  }; */
-
   render() {
-    const { articles, isLoading, error } = this.state;
-    const shouldRenderLoadMoreButton =
-      articles.length > 0 && !isLoading;
-
+    const { articles } = this.state;
     return (
       <div>
-        {error && <h1>Ой ошибка, всё пропало!!!</h1>}
-        {/* 
-        <SearchForm onSubmit={this.onChangeQuery} /> */}
-
+        <h1>Articles</h1>
+        <SearchForm onSubmit={this.onChangeQuery} />
+        {/*  <ul>
+          {articles.map(article => (
+            <li key={article.title}></li>
+          ))}
+        </ul> */}
         <ul>
           {articles.map(({ title, url }) => (
             <li key={title}>
-              <a href={url}>{title}</a>
+              <a
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {title}
+              </a>
             </li>
           ))}
         </ul>
-
-        {isLoading && <h1>Загружаем...</h1>}
-
-        {shouldRenderLoadMoreButton && (
-          <button
-            type="button"
-            onClick={this.fetchArticles}
-          >
-            Загрузить ещё
-          </button>
-        )}
       </div>
     );
   }
