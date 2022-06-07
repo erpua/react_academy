@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import newsApi from '../services/news-api';
 import SearchForm from '../components/SearchForm';
-
-axios.defaults.headers.common['Authorization'] =
-  'Bearer 299c46f2879340a98a8a92d3f1ecce28';
 
 class ArticlesView extends Component {
   state = {
     articles: [],
     currentPage: 1,
     searchQuery: '',
+    isLoading: false,
   };
 
   /*  onChangeQuery = query => {
@@ -36,23 +34,38 @@ class ArticlesView extends Component {
   fetchAticles = () => {
     const { currentPage, searchQuery } = this.state;
 
-    axios
-      .get(
-        `https://newsapi.org/v2/everything?q=${searchQuery}&pageSize=5&page=${currentPage}`,
-      )
-      .then(response =>
+    //pattern "options" (configuration object) of sending params:
+    //uses when in more than 2 params
+    const options = {
+      searchQuery,
+      currentPage,
+    };
+    /* 
+    newsApi.fetchAricles(options).then(response =>
+      this.setState(prevState => ({
+        articles: [
+          ...prevState.articles,
+          ...response.data.articles,
+        ],
+        currentPage: prevState.currentPage + 1,
+      })),
+    ); */
+
+    this.setState({ isLoading: true });
+
+    newsApi
+      .fetchAricles(options)
+      .then(articles =>
         this.setState(prevState => ({
-          articles: [
-            ...prevState.articles,
-            ...response.data.articles,
-          ],
+          articles: [...prevState.articles, ...articles],
           currentPage: prevState.currentPage + 1,
         })),
-      );
+      )
+      .finally(() => this.setState({ isLoading: false }));
   };
 
   render() {
-    const { articles } = this.state;
+    const { articles, isLoading } = this.state;
     return (
       <div>
         <br />
@@ -62,6 +75,9 @@ class ArticlesView extends Component {
             <li key={article.title}></li>
           ))}
         </ul> */}
+
+        {isLoading && <h1>Downloading ...</h1>}
+
         <ul>
           {articles.map(({ title, url }) => (
             <li key={title}>
@@ -76,9 +92,11 @@ class ArticlesView extends Component {
           ))}
         </ul>
 
-        <button type="button" onClick={this.fetchAticles}>
-          Download more
-        </button>
+        {articles.length > 0 && (
+          <button type="button" onClick={this.fetchAticles}>
+            Download more
+          </button>
+        )}
       </div>
     );
   }
