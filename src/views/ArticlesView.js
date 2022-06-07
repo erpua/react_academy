@@ -8,6 +8,7 @@ class ArticlesView extends Component {
     currentPage: 1,
     searchQuery: '',
     isLoading: false,
+    error: null,
   };
 
   /*  onChangeQuery = query => {
@@ -28,6 +29,7 @@ class ArticlesView extends Component {
       searchQuery: query,
       currentPage: 1,
       articles: [],
+      error: null,
     });
   };
 
@@ -40,7 +42,7 @@ class ArticlesView extends Component {
       searchQuery,
       currentPage,
     };
-    /* 
+    /*
     newsApi.fetchAricles(options).then(response =>
       this.setState(prevState => ({
         articles: [
@@ -61,13 +63,18 @@ class ArticlesView extends Component {
           currentPage: prevState.currentPage + 1,
         })),
       )
+      .catch(error => this.setState({ error: error }))
       .finally(() => this.setState({ isLoading: false }));
   };
 
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, error } = this.state;
+    const shouldRenderLoadMoreButton =
+      articles.length > 0 && !isLoading;
+
     return (
       <div>
+        {error && <h1>Loading error ...</h1>}
         <br />
         <SearchForm onSubmit={this.onChangeQuery} />
         {/*  <ul>
@@ -76,7 +83,7 @@ class ArticlesView extends Component {
           ))}
         </ul> */}
 
-        {isLoading && <h1>Downloading ...</h1>}
+        {/*  {isLoading && <h1>Downloading ...</h1>} */}
 
         <ul>
           {articles.map(({ title, url }) => (
@@ -92,9 +99,11 @@ class ArticlesView extends Component {
           ))}
         </ul>
 
-        {articles.length > 0 && (
+        {isLoading && <h1>Downloading ...</h1>}
+
+        {shouldRenderLoadMoreButton && (
           <button type="button" onClick={this.fetchAticles}>
-            Download more
+            Load more
           </button>
         )}
       </div>
