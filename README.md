@@ -86,6 +86,7 @@ for developing
   --watch db.json" => immitation for delay of real backend
   (npm run api-server to up local json-server)
 - npm install axios
+- npm install react-router-dom ( https://reactrouter.com/ )
 
 ---
 
