@@ -1,29 +1,65 @@
-import React from 'react';
-/* import { Switch, Route, Link } from 'react-router-dom'; */
-import TodosView from './views/TodosView';
-import ArticlesView from './views/ArticlesView';
+/* import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import HomeView from './views/HomeView';
+import AuthorsView from './views/AuthorsView';
 
 const App = () => (
   <>
-    {/*     <TodosView /> */}
-    <ArticlesView />
-    {/* <ul>
-      <li>
-        <Link to="/todos">Заметки</Link>
+    <Routes>
+      <Route path="/" component={HomeView} />;
+      <Route path="/authors" component={AuthorsView} />;
+    </Routes>
+  </>
+);
+
+export default App;
+ */
+
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import HomeView from './views/HomeView';
+import AuthorsView from './views/AuthorsView';
+/* import BooksView from './views/BooksView';
+import NotFoundView from './views/NotFoundView';
+import BookDetailsView from './views/BookDetailsView'; */
+
+const App = () => (
+  <>
+    {/*    <ul>
+     <li>
+        <NavLink
+          exact
+          to="/"
+          className="NavLink"
+          activeClassName="NavLink--active"
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/articles">Статьи</Link>
+        <NavLink
+          to="/authors"
+          className="NavLink"
+          activeClassName="NavLink--active"
+        >
+          Authors
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/books"
+          className="NavLink"
+          activeClassName="NavLink--active"
+        >
+          Books
+        </NavLink>
       </li>
     </ul> */}
-    {/* <Switch>
-      <Route path="/todos">
-        <TodosView />
-      </Route>
 
-      <Route path="/articles">
-        <ArticlesView />
-      </Route>
-    </Switch> */}
+    <Switch>
+      <Route exact path="/" component={HomeView} />
+      <Route path="/authors" component={AuthorsView} />
+    </Switch>
   </>
 );
 
