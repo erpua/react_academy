@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 
-const AuthorsView = () => {
-  return <h1>This is AuthorsView page</h1>;
-};
+class AuthorsView extends Component {
+  state = { authors: [] };
+
+  async componentDidMount() {
+    const response = await axios.get(
+      'http://localhost:4040/authors',
+    );
+    console.log('RESPONSE from books end point', response);
+    this.setState({ authors: response.data });
+  }
+
+  render() {
+    return (
+      <>
+        <h1>Authors</h1>
+
+        <ul>
+          {this.state.authors.map(author => (
+            <li key={author.id}>{author.name}</li>
+          ))}
+        </ul>
+      </>
+    );
+  }
+}
 
 export default AuthorsView;

@@ -30,6 +30,20 @@ npm install react-router-dom@5.2.0
 
 ---
 
+- <!-- http://localhost:4040/authors?_embed=books: -->
+
+  http://localhost:4040/authors => authors;
+  http://localhost:4040/books => only books back-end
+  <!--  http://localhost:4040/authors?_embed=books => authors together w books -->
+
+  - <!-- http://localhost:4040/authors/2?_embed=books --> => author with id=2 and all his library included
+
+  ***
+
+  - <!-- http://localhost:4040/books?_expand=author --> => each book with expanded author
+
+---
+
 JSON:
 
 - "window.zoomLevel": 0,

@@ -2,15 +2,23 @@ import React from 'react';
 /* import { Switch } from 'react-router'; */
 //Route is being used only inside of Routes
 //Link is that sama tag <a href="https://..." target="_blank">link for changing</a>, but without reloading the page
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import HomeView from './views/HomeView';
 import AuthorsView from './views/AuthorsView';
 import BooksView from './views/BooksView';
 import NotFoundView from './views/NotFoundView';
 
+/* const linkStyles = {
+  base: { color: 'teal' },
+  active: { color: 'orangered' },
+};
+ */
 const App = () => (
   <>
+    {/*
+    import { Route, Link, Switch } from 'react-router-dom';
+
     <ul>
       <li>
         <Link to="/">Home</Link>
@@ -23,23 +31,83 @@ const App = () => (
       </li>
     </ul>
 
-    {/*  <Route exact path="/" component={HomeView} />; */}
-    {/*  <Route path="/authors" component={AuthorsView} />;
-      <Route path="/books" component={BooksView} />; */}
-    {/* exact prop use only when it's exact match. In case
-      of  http://localhost:3000/auhors/?q=...  => it is not exact render
-      of this page*/}
-    {/*  <Switch>
+    <Routes>
+      <Switch>
+        //for later version of react-router-dom 6.0
         <Route exact path="/" element={<HomeView />} />;
         <Route path="/authors" element={<AuthorsView />} />;
         <Route path="/books" element={<BooksView />} />;
-        <Route element={<NotFoundView />} />
-      </Switch> */}
+        <Route path="*" element={<NotFoundView />} />
+      </Switch>
+    </Routes>
+    */}
+
+    {/* style => general activeStyle => if we are at current path */}
+    {/*   <ul>
+      <li>
+        <NavLink
+          style={linkStyles.base}
+          activeStyle={linkStyles.active}
+          to="/"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          style={linkStyles.base}
+          activeStyle={linkStyles.active}
+          to="/authors"
+        >
+          AuthorsView
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          style={linkStyles.base}
+          activeStyle={linkStyles.active}
+          to="/books"
+        >
+          BooksView
+        </NavLink>
+      </li>
+    </ul> */}
+    <ul>
+      <li>
+        <NavLink
+          exact
+          to="/"
+          className="NavLink"
+          activeClassName="NavLink--active"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className="NavLink"
+          activeClassName="NavLink--active"
+          to="/authors"
+        >
+          AuthorsView
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className="NavLink"
+          activeClassName="NavLink--active"
+          to="/books"
+        >
+          BooksView
+        </NavLink>
+      </li>
+    </ul>
+
     <Switch>
       <Route exact path="/" component={HomeView} />;
       <Route path="/authors" component={AuthorsView} />;
       <Route path="/books" component={BooksView} />;
-      <Route path="*" component={NotFoundView} />;
+      <Route component={NotFoundView} />;
     </Switch>
   </>
 );
