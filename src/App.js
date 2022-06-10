@@ -1,65 +1,37 @@
-/* import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import HomeView from './views/HomeView';
-import AuthorsView from './views/AuthorsView';
-
-const App = () => (
-  <>
-    <Routes>
-      <Route path="/" component={HomeView} />;
-      <Route path="/authors" component={AuthorsView} />;
-    </Routes>
-  </>
-);
-
-export default App;
- */
-
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+//Route is being used only inside of Routes
+//Link is that sama tag <a href="https://..." target="_blank">link for changing</a>, but without reloading the page
+import { Route, Routes, Link } from 'react-router-dom';
 import HomeView from './views/HomeView';
 import AuthorsView from './views/AuthorsView';
-/* import BooksView from './views/BooksView';
+import BooksView from './views/BooksView';
 import NotFoundView from './views/NotFoundView';
-import BookDetailsView from './views/BookDetailsView'; */
 
 const App = () => (
   <>
-    {/*    <ul>
-     <li>
-        <NavLink
-          exact
-          to="/"
-          className="NavLink"
-          activeClassName="NavLink--active"
-        >
-          Home
-        </NavLink>
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <NavLink
-          to="/authors"
-          className="NavLink"
-          activeClassName="NavLink--active"
-        >
-          Authors
-        </NavLink>
+        <Link to="/authors">AuthorsView</Link>
       </li>
       <li>
-        <NavLink
-          to="/books"
-          className="NavLink"
-          activeClassName="NavLink--active"
-        >
-          Books
-        </NavLink>
+        <Link to="/books">BooksView</Link>
       </li>
-    </ul> */}
-
-    <Switch>
-      <Route exact path="/" component={HomeView} />
-      <Route path="/authors" component={AuthorsView} />
-    </Switch>
+    </ul>
+    <Routes>
+      {/*  <Route exact path="/" component={HomeView} />; */}
+      {/*  <Route path="/authors" component={AuthorsView} />;
+      <Route path="/books" component={BooksView} />; */}
+      {/* exact prop use only when it's exact match. In case
+      of  http://localhost:3000/auhors/?q=...  => it is not exact render
+      of this page*/}
+      <Route exact path="/" element={<HomeView />} />;
+      <Route path="/authors" element={<AuthorsView />} />;
+      <Route path="/books" element={<BooksView />} />;
+      <Route element={<NotFoundView />} />
+    </Routes>
   </>
 );
 
