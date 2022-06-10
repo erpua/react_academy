@@ -13,6 +13,21 @@ TIPS:
 
 - clear after: https requests, timers, addEventListeners
 
+- if Switch or other library not found in npm packges =>
+  possible solution might be to uninstall current version
+  and install earlier / later:
+
+I also faced the same problem, and I searched towards the
+Internet so much, but I didn't get any answer according to
+my question.
+
+So I uninstalled the version 6 of react-router-dom:
+
+npm uninstall react-router-dom And installed version 5.2.0
+of react-router-dom:
+
+npm install react-router-dom@5.2.0
+
 ---
 
 JSON:
