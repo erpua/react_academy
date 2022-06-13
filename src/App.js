@@ -8,6 +8,7 @@ import HomeView from './views/HomeView';
 import AuthorsView from './views/AuthorsView';
 import BooksView from './views/BooksView';
 import NotFoundView from './views/NotFoundView';
+import BookDetailsView from './views/BookDetailsView';
 
 /* const linkStyles = {
   base: { color: 'teal' },
@@ -106,7 +107,19 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={HomeView} />;
       <Route path="/authors" component={AuthorsView} />;
-      <Route path="/books" component={BooksView} />;
+      {/* One way of rendering only choseen book */}
+      {/* /:bookId is dynamic parametr. Can be any: qwe => this is pattern */}
+      {/*  <Route
+        path="/books/:bookId"
+        component={BookDetailsView}
+      />
+      <Route path="/books" component={BooksView} />; */}
+      {/* Another way */}
+      <Route exact path="/books" component={BooksView} />;
+      <Route
+        path="/books/:bookId"
+        component={BookDetailsView}
+      />
       <Route component={NotFoundView} />;
     </Switch>
   </>

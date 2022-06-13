@@ -44,19 +44,39 @@ class BooksView extends Component {
     const response = await axios.get(
       'http://localhost:4040/books',
     );
-    console.log('response from books end point', response);
+    /*   console.log('response from books end point', response); */
     this.setState({ books: response.data });
   }
 
   render() {
+    /*  console.log(
+      'this.props.match.url => ',
+      this.props.match.url,
+    ); */
     return (
       <>
         <h1>Books</h1>
 
-        <ul>
+        {/*
+        
+        Bad practice. No control in case if url will change
+         <ul>
           {this.state.books.map(book => (
             <li key={book.id}>
               <Link to={`/books/${book.id}`}>
+                {book.title}
+              </Link>
+            </li>
+          ))}
+        </ul> */}
+
+        {/* Dynamic routing(parameters: history, location, match) */}
+        <ul>
+          {this.state.books.map(book => (
+            <li key={book.id}>
+              <Link
+                to={`${this.props.match.url}/${book.id}`}
+              >
                 {book.title}
               </Link>
             </li>
