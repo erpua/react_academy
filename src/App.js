@@ -114,7 +114,7 @@ const App = () => (
         component={BookDetailsView}
       />
       <Route path="/books" component={BooksView} />; */}
-      {/* Another way */}
+      {/* Second way */}
       <Route exact path="/books" component={BooksView} />;
       <Route path="/books/:bookId" component={BookDetailsView} />
       <Route component={NotFoundView} />;
