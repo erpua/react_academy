@@ -116,10 +116,7 @@ const App = () => (
       <Route path="/books" component={BooksView} />; */}
       {/* Another way */}
       <Route exact path="/books" component={BooksView} />;
-      <Route
-        path="/books/:bookId"
-        component={BookDetailsView}
-      />
+      <Route path="/books/:bookId" component={BookDetailsView} />
       <Route component={NotFoundView} />;
     </Switch>
   </>

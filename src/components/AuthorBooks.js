@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+/* import React, { Component } from 'react'; */
 
-class AuthorBooks extends Component {
-  /*   state = {
+/* class AuthorBooks extends Component { */
+/*   state = {
     books: [],
   }; */
 
-  /*  componentDidMount() {
+/*  componentDidMount() {
     console.log('componentDidMount');
 
     console.log(
@@ -19,7 +19,7 @@ class AuthorBooks extends Component {
     );
   } */
 
-  /*  componentDidMount() {
+/*  componentDidMount() {
     const id = Number(this.props.match.params.authorId);
     const author = this.props.authors.find(
       author => author.id === id,
@@ -35,7 +35,7 @@ class AuthorBooks extends Component {
     this.setState({ books });
   } */
 
-  /*   componentDidUpdate(prevProps, prevState) {
+/*   componentDidUpdate(prevProps, prevState) {
     console.log('componentDidUpdate');
 
     console.log(
@@ -49,7 +49,7 @@ class AuthorBooks extends Component {
     );
   } */
 
-  /*  render() {
+/*  render() {
     return (
       <>
         <h1>Author book Component</h1>
@@ -61,13 +61,32 @@ class AuthorBooks extends Component {
       </>
     );
   } */
-  render() {
+/*  render() {
     return (
       <>
-        <h1>Author book Component</h1>
+        <ul>
+          {this.state.books.map(book => (
+            <li key={book.id}>{book.title}</li>
+          ))}
+        </ul>
       </>
     );
   }
-}
+} */
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const AuthorBooks = ({ books }) => {
+  return (
+    <ul>
+      {books.map(book => (
+        <li key={book.id}>
+          <Link to={`/books/${book.id}`}>{book.title}</Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 export default AuthorBooks;

@@ -8,12 +8,13 @@ class BookDetailsView extends Component {
     id: null,
     imgUrl: null,
     title: null,
+    author: null,
   };
 
   async componentDidMount() {
     const { bookId } = this.props.match.params;
     const response = await axios.get(
-      `http://localhost:4040/books/${bookId}`,
+      `http://localhost:4040/books/${bookId}?_expand=author`,
     );
     console.log('response.data =>', response.data);
 
@@ -31,6 +32,14 @@ class BookDetailsView extends Component {
 
         <img src={this.state.imgUrl} alt="Front book" />
         <h2>{this.state.title}</h2>
+        {this.state.author && (
+          <p>
+            <i>
+              <b>Author:&#32;</b>
+            </i>
+            {this.state.author.name}
+          </p>
+        )}
         <p>{this.state.descr}</p>
       </>
     );

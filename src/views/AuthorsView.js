@@ -25,9 +25,7 @@ class AuthorsView extends Component {
         <ul>
           {this.state.authors.map(author => (
             <li key={author.id}>
-              <NavLink to={`${match.url}/${author.id}`}>
-                {author.name}
-              </NavLink>
+              <NavLink to={`${match.url}/${author.id}`}>{author.name}</NavLink>
             </li>
           ))}
         </ul>
@@ -40,16 +38,46 @@ class AuthorsView extends Component {
           render={() => <h1>Inner Router</h1>}
         /> */}
         {/* render={props => ...} => Router props: history, location, match */}
+        {/*
+        {this.state.authors.length > 0 && (
+          <Route
+            path={`${match.path}/:authorId`}
+            render={props => {
+              console.log('PROPS =>', props);
+              const bookId = Number(
+                props.match.params.authorId,
+              );
+              console.log('bookId =>', bookId);
+              const author = this.state.authors.find(
+                ({ id }) => id === bookId,
+              );
+              console.log('author =>', author);
+              console.log('author.books =>', author.books);
+
+              return (
+                <AuthorBooks
+                  {...props}
+                  authors={this.state.authors}
+                />
+              );
+            }}
+          />
+        )} */}
+
+        {/* Do NOT work if we show Route before asigning books to state */}
+
         <Route
           path={`${match.path}/:authorId`}
           render={props => {
-            console.log('PROPS =<', props);
-            return (
-              <AuthorBooks
-                {...props}
-                authors={this.state.authors}
-              />
-            );
+            const bookId = Number(props.match.params.authorId);
+            const author = this.state.authors.find(({ id }) => id === bookId);
+
+            if (author) {
+              console.log('author =>', author);
+              console.log('author.books =>', author.books);
+            }
+
+            return author && <AuthorBooks {...props} books={author.books} />;
           }}
         />
       </>
