@@ -39,14 +39,18 @@ class AuthorsView extends Component {
           path={`${match.path}/:authorId`}
           render={() => <h1>Inner Router</h1>}
         /> */}
+        {/* render={props => ...} => Router props: history, location, match */}
         <Route
           path={`${match.path}/:authorId`}
-          render={props => (
-            <AuthorBooks
-              {...props}
-              authors={this.state.authors}
-            />
-          )}
+          render={props => {
+            console.log('PROPS =<', props);
+            return (
+              <AuthorBooks
+                {...props}
+                authors={this.state.authors}
+              />
+            );
+          }}
         />
       </>
     );
