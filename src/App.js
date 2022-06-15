@@ -115,6 +115,7 @@ const App = () => (
       />
       <Route path="/books" component={BooksView} />; */}
       {/* Another way */}
+      {/*  <Route path="/books/:bookId" component={BookDetailsView} /> path="path="/books/:bookId"  => pattern*/}
       <Route exact path="/books" component={BooksView} />;
       <Route path="/books/:bookId" component={BookDetailsView} />
       <Route component={NotFoundView} />;

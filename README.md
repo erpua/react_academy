@@ -2,38 +2,39 @@
 
 TIPS:
 
-- keep state in nearest parent, or global one (in case of
-  many dif children), component.
+- git push --set-upstream origin 07-react-router
 
-  - REACT has render fase and commit fase => that is why in
-    each method with console it appears double console.
-    React compairs real DOM and virtual DOM.
+- keep state in nearest parent, or global one (in case of many dif children),
+  component.
+
+  - REACT has render fase and commit fase => that is why in each method with
+    console it appears double console. React compairs real DOM and virtual DOM.
 
 - https://github.com/fedosejev?tab=repositories
 
 - clear after: https requests, timers, addEventListeners
 
-- if Switch or other library not found in npm packges =>
-  possible solution might be to uninstall current version
-  and install earlier / later:
+- if Switch or other library not found in npm packges => possible solution might
+  be to uninstall current version and install earlier / later:
 
-I also faced the same problem, and I searched towards the
-Internet so much, but I didn't get any answer according to
-my question.
+I also faced the same problem, and I searched towards the Internet so much, but
+I didn't get any answer according to my question.
 
 So I uninstalled the version 6 of react-router-dom:
 
-npm uninstall react-router-dom And installed version 5.2.0
-of react-router-dom:
+npm uninstall react-router-dom And installed version 5.2.0 of react-router-dom:
 
 npm install react-router-dom@5.2.0
+
+- port change for back-end in json: "api-server": "json-server --delay 200
+  --port 4040 --watch db.json"
 
 ---
 
 - <!-- http://localhost:4040/authors?_embed=books: -->
 
-  http://localhost:4040/authors => authors;
-  http://localhost:4040/books => only books back-end
+  http://localhost:4040/authors => authors; http://localhost:4040/books => only
+  books back-end
   <!--  http://localhost:4040/authors?_embed=books => authors together w books -->
 
   - <!-- http://localhost:4040/authors/2?_embed=books --> => author with id=2 and all his library included
@@ -49,11 +50,9 @@ JSON:
 - "window.zoomLevel": 0,
 - "editor.renderWhitespace": "all",
 - "editor.wordWrap": "wordWrapColumn",
-- "[html]": { "editor.defaultFormatter":
-  "vscode.html-language-features" },
+- "[html]": { "editor.defaultFormatter": "vscode.html-language-features" },
 - "editor.defaultFormatter": "esbenp.prettier-vscode",
-- "[javascript]": { "editor.defaultFormatter":
-  "esbenp.prettier-vscode" },
+- "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
 - "prettier.trailingComma": "all",
 - "prettier.singleQuote": true,
 - "editor.minimap.enabled": false,
@@ -68,8 +67,7 @@ JSON:
 - "files.associations": {},
 - "files.autoSave": "onFocusChange",
 - "editor.formatOnSave": true,
-- "editor.codeActionsOnSave": { "source.fixAll.eslint": true
-  } }
+- "editor.codeActionsOnSave": { "source.fixAll.eslint": true } }
 
 VSCode extentions:
 
@@ -95,9 +93,8 @@ INSTALLATIONS:
 - npm install --save-dev prop-types
 - npm install classnames
 
-// prettier - for formatting // husky and lint-staged for
-connecting to git during commit and making extra operations
-for developing
+// prettier - for formatting // husky and lint-staged for connecting to git
+during commit and making extra operations for developing
 
 - npm install --save-dev prettier husky lint-staged
 - create file .huskyrc
@@ -107,13 +104,12 @@ for developing
 - npm install node-sass --save
 - npm i shortid
 - npm install json-server (npm package for local backend) =>
-  (https://github.com/typicode/json-server) {"scripts": {
-  "start": "react-scripts start", "build": "react-scripts
-  build", "test": "react-scripts test", "eject":
-  "react-scripts eject", "api-server": "json-server --watch
-  db.json" },} => "api-server": "json-server --delay 200
-  --watch db.json" => immitation for delay of real backend
-  (npm run api-server to up local json-server)
+  (https://github.com/typicode/json-server) {"scripts": { "start":
+  "react-scripts start", "build": "react-scripts build", "test": "react-scripts
+  test", "eject": "react-scripts eject", "api-server": "json-server --watch
+  db.json" },} => "api-server": "json-server --delay 200 --watch db.json" =>
+  immitation for delay of real backend (npm run api-server to up local
+  json-server)
 - npm install axios
 - npm install react-router-dom ( https://reactrouter.com/ )
 
@@ -171,8 +167,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it
-in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
@@ -186,37 +181,33 @@ for more information.
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the
-build for the best performance.
+It correctly bundles React in production mode and optimizes the build for the best
+performance.
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment)
-for more information.
+[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
+more information.
 
 ### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you
-can't go back!**
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and
-configuration choices, you can `eject` at any time. This
-command will remove the single build dependency from your
-project.
+If you aren't satisfied with the build tool and configuration choices, you can
+`eject` at any time. This command will remove the single build dependency from
+your project.
 
-Instead, it will copy all the configuration files and the
-transitive dependencies (webpack, Babel, ESLint, etc) right
-into your project so you have full control over them. All of
-the commands except `eject` will still work, but they will
-point to the copied scripts so you can tweak them. At this
-point you're on your own.
+Instead, it will copy all the configuration files and the transitive
+dependencies (webpack, Babel, ESLint, etc) right into your project so you have
+full control over them. All of the commands except `eject` will still work, but
+they will point to the copied scripts so you can tweak them. At this point
+you're on your own.
 
-You don't have to ever use `eject`. The curated feature set
-is suitable for small and middle deployments, and you
-shouldn't feel obligated to use this feature. However we
-understand that this tool wouldn't be useful if you couldn't
+You don't have to ever use `eject`. The curated feature set is suitable for
+small and middle deployments, and you shouldn't feel obligated to use this
+feature. However we understand that this tool wouldn't be useful if you couldn't
 customize it when you are ready for it.
 
 ## Learn More
@@ -224,8 +215,7 @@ customize it when you are ready for it.
 You can learn more in the
 [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the
-[React documentation](https://reactjs.org/).
+To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Code Splitting
 
