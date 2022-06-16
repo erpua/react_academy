@@ -1,8 +1,5 @@
 import React from 'react';
-/* import { Switch } from 'react-router'; */
-//Route is being used only inside of Routes
-//Link is that sama tag <a href="https://..." target="_blank">link for changing</a>, but without reloading the page
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import HomeView from './views/HomeView';
 import AuthorsView from './views/AuthorsView';
@@ -10,47 +7,47 @@ import BooksView from './views/BooksView';
 import NotFoundView from './views/NotFoundView';
 import BookDetailsView from './views/BookDetailsView';
 
+import routes from './routes';
+import AppBar from './components/AppBar/AppBar';
+
 const App = () => (
   <>
-    <header className="AppBar">
-      <nav></nav>
-    </header>
-    <ul>
-      <li>
+    {/*  <header className="AppBar">
+      <nav className="nav nav-pills">
         <NavLink
           exact
-          to="/"
-          className="NavLink"
-          activeClassName="NavLink--active"
+          to={routes.home}
+          className="nav-link"
+          activeClassName="active"
         >
           Home
         </NavLink>
-      </li>
-      <li>
+
         <NavLink
-          className="NavLink"
-          activeClassName="NavLink--active"
-          to="/authors"
+          to={routes.authors}
+          className="nav-link"
+          activeClassName="active"
         >
           Authors
         </NavLink>
-      </li>
-      <li>
+
         <NavLink
-          className="NavLink"
-          activeClassName="NavLink--active"
-          to="/books"
+          to={routes.books}
+          className="nav-link"
+          activeClassName="active"
         >
           Books
         </NavLink>
-      </li>
-    </ul>
+      </nav>
+    </header> */}
+
+    <AppBar />
 
     <Switch>
-      <Route exact path="/" component={HomeView} />;
-      <Route path="/authors" component={AuthorsView} />;
-      <Route exact path="/books" component={BooksView} />;
-      <Route path="/books/:bookId" component={BookDetailsView} />
+      <Route exact path={routes.home} component={HomeView} />;
+      <Route path={routes.authors} component={AuthorsView} />;
+      <Route exact path={routes.books} component={BooksView} />;
+      <Route path={routes.bookDetails} component={BookDetailsView} />
       <Route component={NotFoundView} />;
     </Switch>
   </>

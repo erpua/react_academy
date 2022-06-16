@@ -12,14 +12,14 @@ class AuthorsView extends Component {
     const response = await axios.get(
       'http://localhost:4040/authors?_embed=books',
     );
-    console.log('RESPONSE from books end point', response);
     this.setState({ authors: response.data });
   }
 
   render() {
     const { match } = this.props;
+
     return (
-      <>
+      <div className="container-fluid">
         <h1>Authors Page</h1>
 
         <ul>
@@ -29,42 +29,6 @@ class AuthorsView extends Component {
             </li>
           ))}
         </ul>
-        {/*  <Route
-          path="/authors/:authorId"
-          render={() => <h1>Inner Router</h1>}
-        /> */}
-        {/*  <Route
-          path={`${match.path}/:authorId`}
-          render={() => <h1>Inner Router</h1>}
-        /> */}
-        {/* render={props => ...} => Router props: history, location, match */}
-        {/*
-        {this.state.authors.length > 0 && (
-          <Route
-            path={`${match.path}/:authorId`}
-            render={props => {
-              console.log('PROPS =>', props);
-              const bookId = Number(
-                props.match.params.authorId,
-              );
-              console.log('bookId =>', bookId);
-              const author = this.state.authors.find(
-                ({ id }) => id === bookId,
-              );
-              console.log('author =>', author);
-              console.log('author.books =>', author.books);
-
-              return (
-                <AuthorBooks
-                  {...props}
-                  authors={this.state.authors}
-                />
-              );
-            }}
-          />
-        )} */}
-
-        {/* Do NOT work if we show Route before asigning books to state */}
 
         <Route
           path={`${match.path}/:authorId`}
@@ -77,10 +41,17 @@ class AuthorsView extends Component {
               console.log('author.books =>', author.books);
             }
 
-            return author && <AuthorBooks {...props} books={author.books} />;
+            return (
+              author && (
+                <>
+                  <h2>Books of {author.name}</h2>
+                  <AuthorBooks {...props} books={author.books} />
+                </>
+              )
+            );
           }}
         />
-      </>
+      </div>
     );
   }
 }
