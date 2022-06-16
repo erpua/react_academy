@@ -22,7 +22,7 @@ class BookDetailsView extends Component {
     this.setState({ ...response.data });
   }
 
-  render() {
+  /*  render() {
     return (
       <>
         <h1>
@@ -41,6 +41,30 @@ class BookDetailsView extends Component {
           </p>
         )}
         <p>{this.state.descr}</p>
+      </>
+    );
+  } */
+  render() {
+    const { imgUrl, title, author, descr } = this.state;
+
+    return (
+      <>
+        <h1>
+          Book page
+          {this.props.match.params.bookId}
+        </h1>
+
+        <img src={imgUrl} alt="Front book" />
+        <h2>{title}</h2>
+        {author && (
+          <p>
+            <i>
+              <b>Author:&#32;</b>
+            </i>
+            {this.state.author.name}
+          </p>
+        )}
+        <p>{descr}</p>
       </>
     );
   }
