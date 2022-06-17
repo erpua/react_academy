@@ -7,8 +7,8 @@ import BooksView from './views/BooksView';
 import NotFoundView from './views/NotFoundView';
 import BookDetailsView from './views/BookDetailsView';
 
-import routes from './routes';
 import AppBar from './components/AppBar/AppBar';
+import routes from './routes';
 
 const App = () => (
   <>

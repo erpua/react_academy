@@ -11,17 +11,17 @@ const Navigation = () => {
         className="nav-link"
         activeClassName="active"
       >
-        Главная
+        Main
       </NavLink>
       <NavLink
         to={routes.authors}
         className="nav-link"
         activeClassName="active"
       >
-        Авторы
+        Authors
       </NavLink>
       <NavLink to={routes.books} className="nav-link" activeClassName="active">
-        Книги
+        Books
       </NavLink>
     </nav>
   );
