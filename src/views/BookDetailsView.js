@@ -48,14 +48,17 @@ class BookDetailsView extends Component {
     const { imgUrl, title, author, descr } = this.state;
 
     return (
-      <>
-        <h1>
+      <div className="container-fluid">
+        {/*  <h1>
           Book page
           {this.props.match.params.bookId}
-        </h1>
+        </h1> */}
+        <button type="button">Go back</button>
 
         <img src={imgUrl} alt="Front book" />
+
         <h2>{title}</h2>
+
         {author && (
           <p>
             <i>
@@ -65,7 +68,7 @@ class BookDetailsView extends Component {
           </p>
         )}
         <p>{descr}</p>
-      </>
+      </div>
     );
   }
 }

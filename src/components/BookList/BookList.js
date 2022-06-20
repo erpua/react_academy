@@ -1,7 +1,7 @@
 import React from 'react';
 /* import { Link, withRouter } from 'react-router-dom'; */
 import { Link } from 'react-router-dom';
-/* withRouter => component (function) of highest level
+/* withRouter => component of highest level (function composition)
 It wrappes component BookList in our case and gives thrugh props: histy, location, match */
 import './BookList.scss';
 
