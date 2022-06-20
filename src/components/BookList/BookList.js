@@ -1,6 +1,6 @@
 import React from 'react';
 /* import { Link, withRouter } from 'react-router-dom'; */
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 /* withRouter => component of highest level (function composition)
 It wrappes component BookList in our case and gives thrugh props: histy, location, match */
 import './BookList.scss';
@@ -34,7 +34,7 @@ import BookPreview from '../BookPreview/BookPreview';
 
 export default withRouter(BookList); */
 
-const BookList = ({ books }) => {
+/* const BookList = ({ books }) => {
   return (
     <ul className="BookList">
       {books.map(({ id, imgUrl, title }) => (
@@ -46,6 +46,46 @@ const BookList = ({ books }) => {
       ))}
     </ul>
   );
+}; */
+
+/* const BookList = ({ books }) => {
+  return (
+    <ul className="BookList">
+      {books.map(({ id, imgUrl, title }) => (
+        <li key={id}>
+          <Link
+            to={{
+              pathname: `/books/${id}`,
+            }}
+          >
+            <BookPreview imgUrl={imgUrl} title={title} />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}; */
+
+//in location we recieve all previos data, like hash, key, pathname etc.
+//to get previous pathname where we came from
+
+const BookList = ({ books, location }) => {
+  return (
+    <ul className="BookList">
+      {books.map(({ id, imgUrl, title }) => (
+        <li key={id}>
+          <Link
+            to={{
+              pathname: `/books/${id}`,
+              state: { from: location },
+            }}
+          >
+            <BookPreview imgUrl={imgUrl} title={title} />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
-export default BookList;
+export default withRouter(BookList);

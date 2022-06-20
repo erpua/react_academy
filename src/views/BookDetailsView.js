@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import routes from '../routes';
 
 class BookDetailsView extends Component {
   state = {
@@ -16,7 +17,7 @@ class BookDetailsView extends Component {
     const response = await axios.get(
       `http://localhost:4040/books/${bookId}?_expand=author`,
     );
-    console.log('response.data =>', response.data);
+    /*   console.log('response.data =>', response.data); */
 
     /*  this.setState({ book: response.data }); */
     this.setState({ ...response.data });
@@ -44,8 +45,22 @@ class BookDetailsView extends Component {
       </>
     );
   } */
+
+  handleGoBack = () => {
+    /*   const { location, history } = this.props;
+    if (location.state && location.state.from) {
+      return history.push(location.state.from);
+    }
+
+    history.push(routes.books); */
+  };
+
   render() {
     const { imgUrl, title, author, descr } = this.state;
+
+    /*    console.log('location =>', location); */
+
+    /*    console.log('location.state.from =>', location.state.from); */
 
     return (
       <div className="container-fluid">
@@ -53,7 +68,12 @@ class BookDetailsView extends Component {
           Book page
           {this.props.match.params.bookId}
         </h1> */}
-        <button type="button">Go back</button>
+        {/*  <button type="button" onClick={() => this.props.history.push('/books')}>
+          Go back
+        </button> */}
+        <button type="button" onClick={this.handleGoBack}>
+          Go back
+        </button>
 
         <img src={imgUrl} alt="Front book" />
 

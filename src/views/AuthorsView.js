@@ -37,11 +37,6 @@ class AuthorsView extends Component {
             const bookId = Number(props.match.params.authorId);
             const author = this.state.authors.find(({ id }) => id === bookId);
 
-            if (author) {
-              console.log('author =>', author);
-              console.log('author.books =>', author.books);
-            }
-
             return (
               author && (
                 <>
@@ -57,5 +52,10 @@ class AuthorsView extends Component {
     );
   }
 }
+
+/*  if (author) {
+   console.log('author =>', author);
+   console.log('author.books =>', author.books);
+ } */
 
 export default AuthorsView;

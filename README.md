@@ -26,8 +26,23 @@ npm uninstall react-router-dom And installed version 5.2.0 of react-router-dom:
 
 npm install react-router-dom@5.2.0
 
+---
+
 - port change for back-end in json: "api-server": "json-server --delay 200
   --port 4040 --watch db.json"
+
+---
+
+- Optional chaining operator:
+- /_ const x = { a: 3, }; _/
+- console.log(x?.a || 'oopsy dayzi');
+
+const x = { b: 3, };
+
+- //chaining operator
+- //if x.a exists => console it
+- //if x.a is differrent => console oopsy dayzi,
+- //if x.a does not exist => do not reffer as an error
 
 ---
 
