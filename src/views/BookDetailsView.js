@@ -47,12 +47,16 @@ class BookDetailsView extends Component {
   } */
 
   handleGoBack = () => {
-    /*   const { location, history } = this.props;
+    const { location, history } = this.props;
+    /*
     if (location.state && location.state.from) {
       return history.push(location.state.from);
     }
 
     history.push(routes.books); */
+
+    //Optional chaining operator
+    history.push(location?.state?.from || routes.books);
   };
 
   render() {

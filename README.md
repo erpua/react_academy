@@ -40,9 +40,16 @@ npm install react-router-dom@5.2.0
 const x = { b: 3, };
 
 - //chaining operator
-- //if x.a exists => console it
+- //if x.a exists => console x.a itself
 - //if x.a is differrent => console oopsy dayzi,
 - //if x.a does not exist => do not reffer as an error
+
+---
+
+- let customer = { name: "Carl", details: { age: 82 } };
+
+- const customerCity = customer?.city ?? "Unknown city";
+- console.log(customerCity); // Unknown city
 
 ---
 

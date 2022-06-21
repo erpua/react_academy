@@ -1,6 +1,6 @@
 export default {
   home: '/',
-  authors: '/atuhors',
+  authors: '/authors',
   books: '/books',
   bookDetails: '/books/:bookId',
 };
