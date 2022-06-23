@@ -23,11 +23,15 @@ class TodosView extends Component {
     showModal: false,
   };
 
-  componentDidMount() {
+  /*  componentDidMount() {
     todosApi
       .fetchTodos()
       .then(todos => this.setState({ todos }))
       .catch(error => console.log('ERROR =>', error));
+  } */
+
+  componentDidMount() {
+    todosApi.fetchTodos().then(todos => this.setState({ todos }));
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -35,10 +39,7 @@ class TodosView extends Component {
     const prevTodos = prevState.todos;
 
     if (nextTodos !== prevTodos) {
-      localStorage.setItem(
-        'todos',
-        JSON.stringify(nextTodos),
-      );
+      localStorage.setItem('todos', JSON.stringify(nextTodos));
     }
   }
 
@@ -65,24 +66,18 @@ class TodosView extends Component {
   };
 
   toggleCompleted = todoId => {
-    const todo = this.state.todos.find(
-      ({ id }) => id === todoId,
-    );
+    const todo = this.state.todos.find(({ id }) => id === todoId);
 
     const { completed } = todo;
     const update = { completed: !completed };
 
-    todosApi
-      .updateTodo(todoId, update)
-      .then(updatedToodo => {
-        this.setState(({ todos }) => ({
-          todos: todos.map(todo =>
-            todo.id === updatedToodo.id
-              ? updatedToodo
-              : todo,
-          ),
-        }));
-      });
+    todosApi.updateTodo(todoId, update).then(updatedToodo => {
+      this.setState(({ todos }) => ({
+        todos: todos.map(todo =>
+          todo.id === updatedToodo.id ? updatedToodo : todo,
+        ),
+      }));
+    });
   };
 
   /*  toggleCompleted = todoId => {
@@ -100,7 +95,7 @@ class TodosView extends Component {
             todo.id === updatedTodo.id ? updatedTodo : todo,
           ),
         }));
-      }); 
+      });c
   }; */
 
   changeFilter = e => {
@@ -134,25 +129,15 @@ class TodosView extends Component {
   render() {
     const { todos, filter, showModal } = this.state;
     const totalTodoCount = todos.length;
-    const completedTodoCount =
-      this.calculateCompletedTodos();
+    const completedTodoCount = this.calculateCompletedTodos();
     const visibleTodos = this.getVisibleTodos();
 
     return (
       <Container>
         <div style={barStyles}>
-          <Filter
-            value={filter}
-            onChange={this.changeFilter}
-          />
-          <Stats
-            total={totalTodoCount}
-            completed={completedTodoCount}
-          />
-          <IconButton
-            onClick={this.toggleModal}
-            aria-label="Добавить todo"
-          >
+          <Filter value={filter} onChange={this.changeFilter} />
+          <Stats total={totalTodoCount} completed={completedTodoCount} />
+          <IconButton onClick={this.toggleModal} aria-label="Добавить todo">
             <AddIcon width="40" height="40" fill="#fff" />
           </IconButton>
         </div>
