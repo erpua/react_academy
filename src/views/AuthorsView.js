@@ -23,10 +23,18 @@ class AuthorsView extends Component {
       <div className="container-fluid">
         <h1>Authors Page</h1>
 
-        <ul>
+        {/*  <ul>
           {this.state.authors.map(author => (
             <li key={author.id}>
               <NavLink to={`${match.url}/${author.id}`}>{author.name}</NavLink>
+            </li>
+          ))}
+        </ul> */}
+
+        <ul>
+          {this.state.authors.map(({ id, name }) => (
+            <li key={id}>
+              <NavLink to={`${match.url}/${id}`}>{name}</NavLink>
             </li>
           ))}
         </ul>
@@ -40,7 +48,7 @@ class AuthorsView extends Component {
             return (
               author && (
                 <>
-                  <h2>Books of {author.name}</h2>
+                  <h2>Books of: {author.name}</h2>
                   {/*  <AuthorBooks {...props} books={author.books} /> */}
                   <BookList {...props} books={author.books} />
                 </>
