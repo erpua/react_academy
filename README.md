@@ -33,7 +33,9 @@ npm install react-router-dom@5.2.0
 
 ---
 
-- Optional chaining operator:
+- Optional chaining operator: (
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+  )
 - /_ const x = { a: 3, }; _/
 - console.log(x?.a || 'oopsy dayzi');
 
@@ -66,6 +68,8 @@ const x = { b: 3, };
   - <!-- http://localhost:4040/books?_expand=author --> => each book with expanded author
 
 ---
+
+- REDUX ( https://redux.js.org/ )
 
 JSON:
 
@@ -134,6 +138,7 @@ during commit and making extra operations for developing
   json-server)
 - npm install axios
 - npm install react-router-dom ( https://reactrouter.com/ )
+- npm i reedux
 
 ---
 
