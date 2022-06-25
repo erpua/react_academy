@@ -24,10 +24,10 @@
 
 export const increment = value => ({
   type: 'counter/Increment',
-  payload: '',
+  payload: value,
 });
 
 export const decrement = value => ({
   type: 'counter/Decrement',
-  payload: '',
+  payload: value,
 });

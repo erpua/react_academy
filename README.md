@@ -138,7 +138,8 @@ during commit and making extra operations for developing
   json-server)
 - npm install axios
 - npm install react-router-dom ( https://reactrouter.com/ )
-- npm i reedux
+- npm i redux
+- npm install react-redux
 
 ---
 
