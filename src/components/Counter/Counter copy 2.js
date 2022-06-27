@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Controls from './Controls';
-import Value from './Value';
+/* import Controls from './Controls';
+import Value from './Value'; */
 import './Counter.css';
 
-function Counter({ value }) {
+function Counter() {
   return (
     <div className="Counter">
-      <Value value={value} />
-      {/* <Controls
+      {/* <Value value={value} />
+      <Controls
         onIncrement={this.handleIncrement}
         onDecrement={this.handleDecrement}
       /> */}
@@ -24,15 +24,8 @@ function Counter({ value }) {
     b: 10,
     c: 15,
   };
-}; */
-
-/* mapStateToProps => map of Redux state to component props */
-
-const mapStateToProps = state => {
-  return {
-    value: state.counterValue,
-  };
 };
+ */
 
 /* const mapStateToProps = state => ({
   value: state.counter.value,
@@ -40,6 +33,8 @@ const mapStateToProps = state => {
 }); */
 
 export default connect(mapStateToProps)(Counter);
+
+/* mapStateToProps => map of Redux state to component props */
 
 /* const a = (x) => (y) => x+y; */
 /* a(2)(3); return 5; */

@@ -1,7 +1,9 @@
 /* here => ONLY SYNC code, NO HTTP requests est.... */
 import { createStore } from 'redux';
 
-const initialState = { counterValue: 0 };
+const initialState = {
+  counterValue: 3450,
+};
 
 /* const reducer = (state = initialState, action) => {
 
@@ -21,7 +23,7 @@ const initialState = { counterValue: 0 };
 
     default:
       return state;
-  } 
+  }
 
   switch (action.type) {
     case 'counter/Increment':
