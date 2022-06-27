@@ -7,6 +7,8 @@ import store from './redux/store';
 import 'modern-normalize/modern-normalize.css';
 import './styles/base.scss';
 
+console.log(store.getState());
+
 /* import { myAction } from './redux/actions'; */
 
 /* action creators */

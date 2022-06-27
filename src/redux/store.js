@@ -1,56 +1,31 @@
-/* here => ONLY SYNC code, NO HTTP requests est.... */
+/* here => ONLY SYNC code, NO HTTP requests etc.... */
 import { createStore } from 'redux';
 
 const initialState = {
-  counterValue: 3450,
+  counter: {
+    value: 10,
+    step: 15,
+  },
 };
-
-/* const reducer = (state = initialState, action) => {
-
-  console.log('action from store.js in reducer =>', action);
-
-   
-  switch (action.type) {
-    case 'counter/Increment':
-      return {
-        counterValue: state.counterValue + 1,
-      };
-
-    case 'counter/Decrement':
-      return {
-        counterValue: state.counterValue - 1,
-      };
-
-    default:
-      return state;
-  }
-
-  switch (action.type) {
-    case 'counter/Increment':
-      return {
-        counterValue: state.counterValue + action.payload,
-      };
-
-    case 'counter/Decrement':
-      return {
-        counterValue: state.counterValue - action.payload,
-      };
-
-    default:
-      return state;
-  }
-}; */
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case 'counter/Increment':
       return {
-        counterValue: state.counterValue + payload,
+        ...state,
+        counter: {
+          ...state.counter,
+          value: state.counter.value + payload,
+        },
       };
 
     case 'counter/Decrement':
       return {
-        counterValue: state.counterValue - payload,
+        ...state,
+        counter: {
+          ...state.counter,
+          value: state.counter.value - payload,
+        },
       };
 
     default:
