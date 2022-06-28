@@ -1,5 +1,7 @@
 /* here => ONLY SYNC code, NO HTTP requests etc.... */
+/* import { createStore, applyMiddleware } from 'redux'; */
 import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initialState = {
   counter: {
@@ -32,6 +34,21 @@ const reducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
+
+/* const store = createStore(
+  reducer,
+  composeWithDevTools(applyMiddleware(...middleWare)),
+);
+ */
+
+/* const store = createStore(
+  reducer,
+  composeWithDevTools(applyMiddleware([])),
+); */
+
+/* const store = createStore(reducer, composeWithDevTools()); */
+
+/* const store = createStore(reducer, composeWithDevTools(applyMiddleware([]))); */
 
 const store = createStore(reducer);
 

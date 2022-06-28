@@ -140,6 +140,7 @@ during commit and making extra operations for developing
 - npm install react-router-dom ( https://reactrouter.com/ )
 - npm i redux
 - npm install react-redux
+- npm install --save-dev redux-devtools-extension
 
 ---
 
