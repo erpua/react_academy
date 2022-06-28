@@ -147,6 +147,8 @@ during commit and making extra operations for developing
 REACT TOOLS:
 
 - Chrome dev tools React: React Developer Tools Extension
+- Chrome devtools for Redux:
+  https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=es-419EditCookies
 
 ---
 
