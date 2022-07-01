@@ -17,9 +17,14 @@ const barStyles = {
 };
 
 class TodosView extends Component {
-  state = {
+  /*  state = {
     todos: [],
     filter: '',
+    showModal: false,
+  };
+ */
+
+  state = {
     showModal: false,
   };
 
@@ -30,20 +35,21 @@ class TodosView extends Component {
       .catch(error => console.log('ERROR =>', error));
   } */
 
-  componentDidMount() {
+  /*   componentDidMount() {
     todosApi.fetchTodos().then(todos => this.setState({ todos }));
   }
+ */
 
-  componentDidUpdate(prevProps, prevState) {
+  /*  componentDidUpdate(prevProps, prevState) {
     const nextTodos = this.state.todos;
     const prevTodos = prevState.todos;
 
     if (nextTodos !== prevTodos) {
       localStorage.setItem('todos', JSON.stringify(nextTodos));
     }
-  }
+  } */
 
-  addTodo = text => {
+  /*  addTodo = text => {
     const todoData = {
       text,
       completed: false,
@@ -55,7 +61,7 @@ class TodosView extends Component {
       }));
       this.toggleModal();
     });
-  };
+  }; */
 
   deleteTodo = todoId => {
     todosApi.deleteTodo(todoId).then(() => {
@@ -137,7 +143,7 @@ class TodosView extends Component {
         <div style={barStyles}>
           <Filter value={filter} onChange={this.changeFilter} />
           <Stats total={totalTodoCount} completed={completedTodoCount} />
-          <IconButton onClick={this.toggleModal} aria-label="Добавить todo">
+          <IconButton onClick={this.toggleModal} aria-label="Add todo">
             <AddIcon width="40" height="40" fill="#fff" />
           </IconButton>
         </div>
