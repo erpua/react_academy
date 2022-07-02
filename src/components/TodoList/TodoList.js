@@ -25,8 +25,29 @@ const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => (
   </ul>
 );
 
-const mapStateToProps = state => ({
-  todos: state.todos.items,
+const getVisibleTodos = (allTodos, filter) => {
+  const normalizedFilter = filter.toLowerCase();
+  return allTodos.filter(({ text }) =>
+    text.toLowerCase().includes(normalizedFilter),
+  );
+};
+
+/* const mapStateToProps = state => {
+  const { filter, items } = state.todos;
+  const visibleTodos = getVisibleTodos(items, filter);
+
+  return {
+    todos: visibleTodos,
+  };
+}; */
+
+/* const mapStateToProps = state => ({
+  todos: getVisibleTodos(state.todos.items, state.todos.filter),
+});
+ */
+
+const mapStateToProps = ({ todos: { items, filter } }) => ({
+  todos: getVisibleTodos(items, filter),
 });
 
 const mapDispatchToProps = dispatch => ({

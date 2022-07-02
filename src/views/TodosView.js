@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Container from '../components/Container';
 import TodoList from '../components/TodoList';
 import Filter from '../components/TodoFilter';
@@ -104,18 +103,18 @@ class TodosView extends Component {
       });c
   }; */
 
-  changeFilter = e => {
+  /*   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
-  };
+  }; */
 
-  getVisibleTodos = () => {
+  /*   getVisibleTodos = () => {
     const { filter, todos } = this.state;
     const normalizedFilter = filter.toLowerCase();
 
     return todos.filter(({ text }) =>
       text.toLowerCase().includes(normalizedFilter),
     );
-  };
+  }; */
 
   calculateCompletedTodos = () => {
     const { todos } = this.state;
