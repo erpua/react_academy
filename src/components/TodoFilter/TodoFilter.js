@@ -1,24 +1,25 @@
 import React from 'react';
-/*  Filter by name: <input type="text" value={this.state.filter}/> */
+import { connect } from 'react-redux';
+import './TodoFilter.scss';
 
 const Filter = ({ value, onChange }) => (
-  <label>
-    Filter by name:
-    <input type="text" value={value} onChange={onChange} />
-  </label>
+  <div className="TodoFilter">
+    <p className="TodoFilter__label">Filter by content</p>
+    <input
+      type="text"
+      className="TodoFilter__input"
+      value={value}
+      onChange={onChange}
+    ></input>
+  </div>
 );
 
-/* const Filter = ({ value, onChange }) => {
-  return (
-    <label>
-      Filter by name:
-      <input
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </label>
-  );
-}; */
+const mapStateToProps = state => ({
+  value: state.todos.filter,
+});
 
-export default Filter;
+const mapDispatchToProps = dispatch => ({
+  onChange:
+});
+
+export default connect()(Filter);

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import todosActions from '../../redux/todos/todos-actions';
 import './TodoEditor.scss';
 
 class TodoEditor extends Component {
@@ -31,19 +33,13 @@ class TodoEditor extends Component {
   //RENDER - MARKUP
   render() {
     return (
-      <form
-        className="TodoEditor"
-        onSubmit={this.handleSubmit}
-      >
+      <form className="TodoEditor" onSubmit={this.handleSubmit}>
         <textarea
           className="TodoEditor__textarea"
           value={this.state.message}
           onChange={this.handleChange}
         ></textarea>
-        <button
-          type="submit"
-          className="TodoEditor__button"
-        >
+        <button type="submit" className="TodoEditor__button">
           SAVE
         </button>
       </form>
@@ -51,4 +47,10 @@ class TodoEditor extends Component {
   }
 }
 
-export default TodoEditor;
+const mapDispatchToProps = dispatch => ({
+  onSubmit: text => dispatch(todosActions.addTodo(text)),
+});
+
+export default connect(null, mapDispatchToProps)(TodoEditor);
+/* export default connect(null)(TodoEditor);
+null => mapStateToProps */

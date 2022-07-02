@@ -63,14 +63,14 @@ class TodosView extends Component {
     });
   }; */
 
-  deleteTodo = todoId => {
+  /*   deleteTodo = todoId => {
     todosApi.deleteTodo(todoId).then(() => {
       this.setState(({ todos }) => ({
         todos: todos.filter(({ id }) => id !== todoId),
       }));
     });
   };
-
+ */
   toggleCompleted = todoId => {
     const todo = this.state.todos.find(({ id }) => id === todoId);
 
@@ -133,30 +133,33 @@ class TodosView extends Component {
   };
 
   render() {
-    const { todos, filter, showModal } = this.state;
-    const totalTodoCount = todos.length;
+    const { showModal } = this.state;
+    /*     const totalTodoCount = todos.length;
     const completedTodoCount = this.calculateCompletedTodos();
-    const visibleTodos = this.getVisibleTodos();
+    const visibleTodos = this.getVisibleTodos(); */
 
     return (
       <Container>
         <div style={barStyles}>
-          <Filter value={filter} onChange={this.changeFilter} />
-          <Stats total={totalTodoCount} completed={completedTodoCount} />
+          {/* Filter automatically connects to redux and gets props/events */}
+          <Filter />
+          {/*   <Stats total={totalTodoCount} completed={completedTodoCount} /> */}
           <IconButton onClick={this.toggleModal} aria-label="Add todo">
             <AddIcon width="40" height="40" fill="#fff" />
           </IconButton>
         </div>
 
-        <TodoList
+        {/*  <TodoList
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
+        {/* now TodoList automatically will connect to redux and take what it needs */}
+        <TodoList />
 
         {showModal && (
           <Modal onClose={this.toggleModal}>
-            <TodoEditor onSubmit={this.addTodo} />
+            <TodoEditor />
           </Modal>
         )}
       </Container>

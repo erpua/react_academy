@@ -10,4 +10,14 @@ const addTodo = text => ({
   },
 });
 
-export default { addTodo };
+const deleteTodo = todoId => ({
+  type: types.DELETE,
+  payload: todoId,
+});
+
+const filter = value => ({
+  type: types.CHANGE_FILTER,
+  payload: value,
+});
+
+export default { addTodo, deleteTodo, filter };
