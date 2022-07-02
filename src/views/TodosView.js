@@ -21,6 +21,7 @@ class TodosView extends Component {
     filter: '',
     showModal: false,
   };
+  
  */
 
   state = {
