@@ -141,6 +141,7 @@ during commit and making extra operations for developing
 - npm i redux
 - npm install react-redux
 - npm install --save-dev redux-devtools-extension
+- npm install @reduxjs/toolkit
 
 ---
 
