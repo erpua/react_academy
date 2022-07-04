@@ -1,46 +1,18 @@
 import { combineReducers } from 'redux';
-import types from './todos-types';
+import { createReducer } from '@reduxjs/toolkit';
+import actions from './todos-actions';
 
-/* {
-  counter: {},
-  todos: {
-    items: [],
-    filter: '',
-  }
-} */
+console.log('actions.addTodo.type ===>', actions.addTodo.type);
 
-/* const items = (state = [], action) => {
-  return state;
-};
-
-const filter = (state = '', action) => {
-  return state;
-};
-
-export default combineReducers({
-  items,
-  filter,
-}); */
-
-const items = (state = [], { type, payload }) => {
-  switch (type) {
-    case types.ADD:
-      return [...state, payload];
-
-    /*  case types.DELETE:
-      return state.filter(todo => todo.id !== payload); */
-
-    case types.DELETE:
-      return state.filter(({ id }) => id !== payload);
-
-    default:
-      return state;
-  }
-};
+const items = createReducer([], {
+  'todos/add': (state, { payload }) => [...state, payload],
+  'todos/delete': (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
+});
 
 const filter = (state = '', { type, payload }) => {
   switch (type) {
-    case types.CHANGE_FILTER:
+    case 'todos/changeFilter':
       return payload;
 
     default:
