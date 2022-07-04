@@ -70,7 +70,8 @@ class TodosView extends Component {
     });
   };
  */
-  toggleCompleted = todoId => {
+
+  /*  toggleCompleted = todoId => {
     const todo = this.state.todos.find(({ id }) => id === todoId);
 
     const { completed } = todo;
@@ -83,7 +84,15 @@ class TodosView extends Component {
         ),
       }));
     });
-  };
+  }; */
+
+  /*  toggleCompleted = todoId => {
+    this.setState(({ todos }) => ({
+      todos: todos.map(todo =>
+        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    }));
+  }; */
 
   /*  toggleCompleted = todoId => {
     const todo = this.state.todos.find(
@@ -116,14 +125,14 @@ class TodosView extends Component {
     );
   }; */
 
-  calculateCompletedTodos = () => {
+  /*   calculateCompletedTodos = () => {
     const { todos } = this.state;
 
     return todos.reduce(
       (total, todo) => (todo.completed ? total + 1 : total),
       0,
     );
-  };
+  };*/
 
   toggleModal = () => {
     this.setState(({ showModal }) => ({
@@ -142,7 +151,7 @@ class TodosView extends Component {
         <div style={barStyles}>
           {/* Filter automatically connects to redux and gets props/events */}
           <Filter />
-          {/*   <Stats total={totalTodoCount} completed={completedTodoCount} /> */}
+          <Stats />
           <IconButton onClick={this.toggleModal} aria-label="Add todo">
             <AddIcon width="40" height="40" fill="#fff" />
           </IconButton>
@@ -158,7 +167,7 @@ class TodosView extends Component {
 
         {showModal && (
           <Modal onClose={this.toggleModal}>
-            <TodoEditor />
+            <TodoEditor onSave={this.toggleModal} />
           </Modal>
         )}
       </Container>

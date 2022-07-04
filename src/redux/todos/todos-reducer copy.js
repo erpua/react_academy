@@ -101,3 +101,14 @@ export default combineReducers({
   items,
   filter,
 });
+
+
+///
+
+
+const items = createReducer([], {
+  'todos/add': (state, { payload }) => [...state, payload],
+  'todos/delete': (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
+});
+s

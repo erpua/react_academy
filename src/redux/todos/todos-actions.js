@@ -9,9 +9,12 @@ const addTodo = createAction('todos/add', text => ({
   },
 }));
 
-console.log('addTodo =>', addTodo('addTodo'));
+/* console.log('addTodo =>', addTodo('addTodo')); */
 
 const deleteTodo = createAction('todos/delete');
+
 const changeFilter = createAction('todos/changeFilter');
 
-export default { addTodo, deleteTodo, changeFilter };
+const toggleCompleted = createAction('todo/toggleCompleted');
+
+export default { addTodo, deleteTodo, changeFilter, toggleCompleted };
