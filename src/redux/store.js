@@ -33,6 +33,7 @@ const middleware = [
 ];
 
 //in todosReducer is going to save everything except filter
+
 const store = configureStore({
   reducer: {
     todos: persistReducer(todosPersistConfig, todosReducer),
