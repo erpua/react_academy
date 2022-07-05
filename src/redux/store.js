@@ -1,41 +1,42 @@
 /* here => ONLY SYNC code, NO HTTP requests etc.... */
-import {
-  configureStore,
-  getDefaultMiddleware,
-  combineReducers,
-} from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import todosReducer from './todos/todos-reducer';
 
-const persistConfig = {
-  key: 'hello',
+//todosPersistConfig instead of componentDidMount, DidUpdate etc.
+const todosPersistConfig = {
+  key: 'todos',
   storage,
+  blacklist: ['filter'],
 };
 
-/* const store = createStore(rootReducer, composeWithDevTools()); */
+// blacklist: ['filter'] => to save everything, except filter
 
-/* const store = configureStore({
-  reducer: rootReducer,
-  devTools: false,
-}); */
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+  logger,
+];
 
-console.log('process.env.NODE_ENV =>', process.env.NODE_ENV);
-
-console.log('getDefaultMiddleware()', getDefaultMiddleware());
-
-const middleware = [...getDefaultMiddleware(), logger];
-
-const rootReducer = combineReducers({
-  todos: todosReducer,
-});
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-// devTools setup for deveolopment only
-//automatic creation of combine reducer
+//in todosReducer is going to save everything except filter
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    todos: persistReducer(todosPersistConfig, todosReducer),
+  },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
