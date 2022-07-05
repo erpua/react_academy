@@ -1,8 +1,8 @@
 import React from 'react';
-/* import { connect } from 'react-redux'; */
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 import Todo from '../Todo';
-/* import todosActions from '../../redux/todos/todos-actions'; */
+import todosActions from '../../redux/todos/todos-actions';
 import './TodoList.scss';
 
 const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => (
@@ -25,12 +25,26 @@ const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => (
   </ul>
 );
 
-/* const getVisibleTodos = (allTodos, filter) => {
+const getVisibleTodos = (allTodos, filter) => {
   const normalizedFilter = filter.toLowerCase();
   return allTodos.filter(({ text }) =>
     text.toLowerCase().includes(normalizedFilter),
   );
 };
+
+/* const mapStateToProps = state => {
+  const { filter, items } = state.todos;
+  const visibleTodos = getVisibleTodos(items, filter);
+
+  return {
+    todos: visibleTodos,
+  };
+}; */
+
+/* const mapStateToProps = state => ({
+  todos: getVisibleTodos(state.todos.items, state.todos.filter),
+});
+ */
 
 const mapStateToProps = ({ todos: { items, filter } }) => ({
   todos: getVisibleTodos(items, filter),
@@ -41,6 +55,4 @@ const mapDispatchToProps = dispatch => ({
   onToggleCompleted: id => dispatch(todosActions.toggleCompleted(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList); */
-
-export default TodoList;
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

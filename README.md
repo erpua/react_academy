@@ -107,6 +107,7 @@ VSCode extentions:
 - Bracket Pair Colorizer
 - Traling Spaces
 - HTML Hint
+- Material Icon Theme
 
 ---
 

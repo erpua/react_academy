@@ -163,6 +163,7 @@ class TodosView extends Component {
           onToggleCompleted={this.toggleCompleted}
         /> */}
         {/* now TodoList automatically will connect to redux and take what it needs */}
+        {/* since TodoList has a TodoList.container.js => the continer is being rendered, and under the hood (pod kapotom) render of TodoList itself */}
         <TodoList />
 
         {showModal && (
