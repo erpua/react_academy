@@ -1,6 +1,8 @@
 import shortId from 'shortid';
 import { createAction } from '@reduxjs/toolkit';
 
+const asyncActionCreator = args => dispatch => {};
+
 const addTodo = createAction('todos/add', text => ({
   payload: {
     id: shortId.generate(),

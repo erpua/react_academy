@@ -7,7 +7,7 @@ import TodoEditor from '../components/TodoEditor';
 import Modal from '../components/Modal';
 import IconButton from '../components/IconButton';
 import { ReactComponent as AddIcon } from '../icons/add.svg';
-import todosApi from '../services/todos-api';
+/* import todosApi from '../services/todos-api'; */
 
 const barStyles = {
   display: 'flex',

@@ -2,8 +2,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -11,17 +9,26 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 import todosReducer from './todos/todos-reducer';
 
-//todosPersistConfig instead of componentDidMount, DidUpdate etc.
-const todosPersistConfig = {
-  key: 'todos',
-  storage,
-  blacklist: ['filter'],
-};
+/* const myMiddleware = (store = next => action => {
+  //wqerthedf
+});
 
-// blacklist: ['filter'] => to save everything, except filter
+function myMiddleware(store) {
+  return function(next) {
+    return function (action) {
+
+    };
+  };
+}
+ */
+
+const myMiddleware = store => next => action => {
+  console.log('myMiddleware; action', action);
+
+  next(action);
+};
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -30,17 +37,17 @@ const middleware = [
     },
   }),
   logger,
+  myMiddleware,
 ];
 
-//in todosReducer is going to save everything except filter
 const store = configureStore({
   reducer: {
-    todos: persistReducer(todosPersistConfig, todosReducer),
+    todos: todosReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
 
-const persistor = persistStore(store);
+/* const persistor = persistStore(store); */
 
-export default { store, persistor };
+export default store;
