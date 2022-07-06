@@ -19,13 +19,7 @@ class TodoEditor extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    /* 
-    console.log(
-      'this.state.message from TodoEditor.js =>---',
-      this.state.message,
-    ); */
 
-    /* GuardClose to start all Redux chain with dispatch of action, or not */
     if (this.state.message !== '') {
       this.props.onSubmit(this.state.message);
       this.props.onSave();
@@ -58,5 +52,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(null, mapDispatchToProps)(TodoEditor);
-/* export default connect(null)(TodoEditor);
-null => mapStateToProps */
