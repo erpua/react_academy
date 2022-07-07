@@ -6,14 +6,14 @@ const fetchTodos = () => {
   return axios.get('/todos').then(response => response.data);
 };
 
-const addTodo = todo => {
+/* const addTodo = todo => {
   return axios.post('/todos', todo).then(({ data }) => data);
-};
+}; */
 
-const deleteTodo = todoId => {
+/* const deleteTodo = todoId => {
   return axios.delete(`/todos/${todoId}`);
 };
-
+ */
 const updateTodo = (todoId, update) => {
   return axios.patch(`/todos/${todoId}`, update).then(({ data }) => data);
 };

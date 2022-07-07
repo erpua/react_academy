@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import todosActions from '../../redux/todos/todos-actions';
+import * as todosActions from '../../redux/todos/todos-actions';
 import './TodoFilter.scss';
 
 const Filter = ({ value, onChange }) => (

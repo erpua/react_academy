@@ -1,42 +1,21 @@
-import shortId from 'shortid';
-import axios from 'axios';
 import { createAction } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:4040';
+export const addTodoRequest = createAction('todos/addTodoRequest');
+export const addTodoSuccess = createAction('todos/addTodoSuccess');
+export const addTodoError = createAction('todos/addTodoError');
 
-const addTodo = text => dispatch => {
-  const todo = {
-    text,
-    completed: false,
-  };
+export const deleteTodoRequest = createAction('todos/deleteTodoRequest');
+export const deleteTodoSuccess = createAction('todos/deleteTodoSuccess');
+export const deleteTodoError = createAction('todos/deleteTodoError');
 
-  //for start
-  dispatch({ type: 'todos/addTodoRequest' });
+export const toggleCompletedRequest = createAction(
+  'todos/toggleCompletedRequest',
+);
+export const toggleCompletedSuccess = createAction(
+  'todos/toggleCompletedSuccess',
+);
+export const toggleCompletedError = createAction('todos/toggleCompletedError');
 
-  axios
-    .post('/todos', todo)
-    .then(({ data }) =>
-      dispatch({ type: 'todos/addTodoSuccess', payload: data }),
-    )
-    .catch(error => dispatch({ type: 'todos/addTodoError', payload: error }));
-};
+export const changeFilter = createAction('todos/changeFilter');
 
-const asyncActionCreator = args => dispatch => {};
-
-/* const addTodo = createAction('todos/add', text => ({
-  payload: {
-    id: shortId.generate(),
-    text,
-    completed: false,
-  },
-})); */
-
-/* console.log('addTodo =>', addTodo('addTodo')); */
-
-const deleteTodo = createAction('todos/delete');
-
-const changeFilter = createAction('todos/changeFilter');
-
-const toggleCompleted = createAction('todo/toggleCompleted');
-
-export default { addTodo, deleteTodo, changeFilter, toggleCompleted };
+export const toggleCompleted = createAction('todo/toggleCompleted');
