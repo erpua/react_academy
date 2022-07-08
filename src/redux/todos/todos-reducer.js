@@ -23,20 +23,30 @@ import {
   deleteTodoSuccess,
   deleteTodoError,
   changeFilter,
-  toggleCompleted,
+  toggleCompletedRequest,
+  toggleCompletedSuccess,
+  toggleCompletedError,
 } from './todos-actions';
 
-const items = createReducer([], {
-  /* state is [] => value of items */
+/* state is [] => value of items */
+/* const items = createReducer([], {
   [addTodoSuccess]: (state, { payload }) => [...state, payload],
   [deleteTodoSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
-  [toggleCompleted]: (state, action) =>
+  [toggleCompletedSuccess]: (state, action) =>
     state.map(todo =>
       todo.id === action.payload
         ? { ...todo, completed: !todo.completed }
         : todo,
     ),
+}); */
+
+const items = createReducer([], {
+  [addTodoSuccess]: (state, { payload }) => [...state, payload],
+  [deleteTodoSuccess]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
+  [toggleCompletedSuccess]: (state, { payload }) =>
+    state.map(todo => (todo.id === payload.id ? payload : todo)),
 });
 
 /* underline ( _ ) instead of variable name > this variable is not being used */
@@ -53,6 +63,9 @@ const loading =
     [deleteTodoRequest]: () => true,
     [deleteTodoSuccess]: () => false,
     [deleteTodoError]: () => false,
+    [toggleCompletedRequest]: () => true,
+    [toggleCompletedSuccess]: () => false,
+    [toggleCompletedError]: () => false,
   });
 
 export default combineReducers({

@@ -14,8 +14,8 @@ const fetchTodos = () => {
   return axios.delete(`/todos/${todoId}`);
 };
  */
-const updateTodo = (todoId, update) => {
+/* const updateTodo = (todoId, update) => {
   return axios.patch(`/todos/${todoId}`, update).then(({ data }) => data);
 };
-
+ */
 export default { fetchTodos, addTodo, deleteTodo, updateTodo };

@@ -6,6 +6,9 @@ import {
   deleteTodoRequest,
   deleteTodoSuccess,
   deleteTodoError,
+  toggleCompletedRequest,
+  toggleCompletedSuccess,
+  toggleCompletedError,
 } from './todos-actions';
 
 axios.defaults.baseURL = 'http://localhost:4040';
@@ -34,5 +37,18 @@ const deleteTodo = todoId => dispatch => {
     .then(() => dispatch(deleteTodoSuccess(todoId)))
     .catch(error => dispatch(deleteTodoError(error)));
 };
+
+const toggleCompleted =
+  ({ id, completed }) =>
+  dispatch => {
+    const update = { completed };
+
+    dispatch(toggleCompletedRequest());
+    axios
+      .patch(`/todos/${id}`, update)
+      .then(({ data }) => dispatch(toggleCompletedSuccess(data)))
+      .catch.catch(error => dispatch(toggleCompletedError(error)));
+  };
+
 //esport of addTodo not as function, but as operation
-export default { addTodo, deleteTodo };
+export default { addTodo, deleteTodo, toggleCompleted };
