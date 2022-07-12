@@ -26,6 +26,9 @@ import {
   toggleCompletedRequest,
   toggleCompletedSuccess,
   toggleCompletedError,
+  fetchTodosRequest,
+  fetchTodosSuccess,
+  fetchTodosError,
 } from './todos-actions';
 
 /* state is [] => value of items */
@@ -42,6 +45,8 @@ import {
 }); */
 
 const items = createReducer([], {
+  /* [fetchTodosSuccess]: (state, { payload => array of todos }) => payload, */
+  [fetchTodosSuccess]: (_, { payload }) => payload,
   [addTodoSuccess]: (state, { payload }) => [...state, payload],
   [deleteTodoSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
@@ -57,6 +62,9 @@ const filter = createReducer('', {
 const loading =
   (false,
   {
+    [fetchTodosRequest]: () => true,
+    [fetchTodosSuccess]: () => false,
+    [fetchTodosError]: () => false,
     [addTodoRequest]: () => true,
     [addTodoSuccess]: () => false,
     [addTodoError]: () => false,
@@ -68,8 +76,11 @@ const loading =
     [toggleCompletedError]: () => false,
   });
 
+const error = createReducer(null, {});
+
 export default combineReducers({
   items,
   filter,
   loading,
+  error,
 });

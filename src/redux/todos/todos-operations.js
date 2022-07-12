@@ -9,9 +9,33 @@ import {
   toggleCompletedRequest,
   toggleCompletedSuccess,
   toggleCompletedError,
+  fetchTodosRequest,
+  fetchTodosSuccess,
+  fetchTodosError,
 } from './todos-actions';
 
 axios.defaults.baseURL = 'http://localhost:4040';
+/* 
+const fetchTodos = () => dispatch => {
+  dispatch(fetchTodosRequest());
+
+  axios
+    .get('/todos')
+    .then(({ data }) => dispatch(fetchTodosSuccess(data)))
+    .catch(error => dispatch(fetchTodosError(error)));
+}; */
+
+const fetchTodos = () => async dispatch => {
+  dispatch(fetchTodosRequest());
+
+  try {
+    /*  const response = await axios.get('/todos'); */
+    const { data } = await axios.get('/todos');
+    dispatch(fetchTodosSuccess(data));
+  } catch (error) {
+    dispatch(fetchTodosError(error));
+  }
+};
 
 const addTodo = text => dispatch => {
   const todo = {
@@ -47,8 +71,13 @@ const toggleCompleted =
     axios
       .patch(`/todos/${id}`, update)
       .then(({ data }) => dispatch(toggleCompletedSuccess(data)))
-      .catch.catch(error => dispatch(toggleCompletedError(error)));
+      .catch(error => dispatch(toggleCompletedError(error)));
   };
 
 //esport of addTodo not as function, but as operation
-export default { addTodo, deleteTodo, toggleCompleted };
+export default {
+  fetchTodos,
+  addTodo,
+  deleteTodo,
+  toggleCompleted,
+};
