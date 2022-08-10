@@ -13,8 +13,11 @@ export default {
   toggleCompleted,
 }; from todos-actions
 
+
+//Onw way
 const { addTodoRequest, addTodoSuccess, addTodoError } = actions; */
 
+//another
 import {
   addTodoRequest,
   addTodoSuccess,
@@ -47,7 +50,7 @@ import {
 const items = createReducer([], {
   /* [fetchTodosSuccess]: (state, { payload => array of todos }) => payload, */
   [fetchTodosSuccess]: (_, { payload }) => payload,
-  [addTodoSuccess]: (state, { payload }) => [...state, payload],
+  [addTodoSuccess]: (state, { payload }) => [payload, ...state],
   [deleteTodoSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
   [toggleCompletedSuccess]: (state, { payload }) =>

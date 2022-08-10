@@ -27,13 +27,13 @@ class TodoEditor extends Component {
       return;
     }
 
-    alert('Add note title');
+    alert('Add note title!');
   };
 
   //RENDER - MARKUP
   render() {
     return (
-      <form className="TodoEditor" onSubmit={this.handleSubmit}>
+      <form lassName="TodoEditor" onSubmit={this.handleSubmit}>
         <textarea
           className="TodoEditor__textarea"
           value={this.state.message}

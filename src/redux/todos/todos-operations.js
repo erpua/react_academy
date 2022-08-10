@@ -37,6 +37,17 @@ const fetchTodos = () => async dispatch => {
   }
 };
 
+//prepared callback
+/* const addTodo = createAction(types.ADD, text => {
+  return {
+    id: shortId.generate(),
+    text,
+    completed: false,
+  };
+}
+); */
+
+//thunk is doing API request and then dispatches results of new todo component
 const addTodo = text => dispatch => {
   const todo = {
     text,
