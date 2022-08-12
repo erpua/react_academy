@@ -53,7 +53,9 @@ const items = createReducer([], {
   [addTodoSuccess]: (state, { payload }) => [payload, ...state],
   [deleteTodoSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
-  [toggleCompletedSuccess]: (state, { payload }) =>
+  /* [toggleCompletedSuccess]: (state, { payload }) =>
+    state.map(todo => (todo.id === payload ? {...todo, completed: !todo.completed} : todo)), */
+    [toggleCompletedSuccess]: (state, { payload }) =>
     state.map(todo => (todo.id === payload.id ? payload : todo)),
 });
 

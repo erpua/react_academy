@@ -34,6 +34,7 @@ const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => (
   );
 };
 
+
 const mapStateToProps = ({ todos: { items, filter } }) => ({
   todos: getVisibleTodos(items, filter),
 });

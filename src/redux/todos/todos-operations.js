@@ -15,7 +15,7 @@ import {
 } from './todos-actions';
 
 axios.defaults.baseURL = 'http://localhost:4040';
-/* 
+/*
 const fetchTodos = () => dispatch => {
   dispatch(fetchTodosRequest());
 
@@ -47,7 +47,7 @@ const fetchTodos = () => async dispatch => {
 }
 ); */
 
-//thunk is doing API request and then dispatches results of new todo component
+//function asyncActionCreator => is doing API request and then dispatches results of new todo component
 const addTodo = text => dispatch => {
   const todo = {
     text,
@@ -73,6 +73,7 @@ const deleteTodo = todoId => dispatch => {
     .catch(error => dispatch(deleteTodoError(error)));
 };
 
+//const toggleCompleted = (params) =>...
 const toggleCompleted =
   ({ id, completed }) =>
   dispatch => {
@@ -81,6 +82,7 @@ const toggleCompleted =
     dispatch(toggleCompletedRequest());
     axios
       .patch(`/todos/${id}`, update)
+      //.then(({ data }) => dispatch(toggleCompletedSuccess(data))) is full object of todo
       .then(({ data }) => dispatch(toggleCompletedSuccess(data)))
       .catch(error => dispatch(toggleCompletedError(error)));
   };
