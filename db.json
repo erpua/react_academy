@@ -8,32 +8,42 @@
     {
       "id": "id-4",
       "text": "Try React Hooks",
-      "completed": false
+      "completed": true
     },
     {
-      "text": "qqweqeq",
+      "text": "Learn React basics\n",
       "completed": true,
-      "id": "Z1P-R-j"
+      "id": "eE3TrWs"
+    },
+    {
+      "text": "dfghjk",
+      "completed": true,
+      "id": "TPeAYwp"
+    },
+    {
+      "text": "er",
+      "completed": false,
+      "id": "i3VXT_v"
+    },
+    {
+      "text": "dfg",
+      "completed": false,
+      "id": "Ik5KwbN"
+    },
+    {
+      "text": "df",
+      "completed": false,
+      "id": "-srb4R2"
+    },
+    {
+      "text": "sdfgh",
+      "completed": false,
+      "id": "q4kEFW6"
     },
     {
       "text": "qwe",
-      "completed": true,
-      "id": "yE2aBnF"
-    },
-    {
-      "text": "rty",
       "completed": false,
-      "id": "GE0iA_P"
-    },
-    {
-      "text": "qwedf",
-      "completed": false,
-      "id": "ncZEBaS"
-    },
-    {
-      "text": "asdfg",
-      "completed": false,
-      "id": "Nd_qfPW"
+      "id": "_qAq7jq"
     }
   ]
 }
