@@ -12,6 +12,8 @@ import {
 
 import todosReducer from './todos/todos-reducer';
 
+//redux thunk package catches functions
+
 /* const myMiddleware = (store = next => action => {
   //wqerthedf
 });

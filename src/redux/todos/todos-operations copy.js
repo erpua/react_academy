@@ -15,27 +15,47 @@ import {
 } from './todos-actions';
 
 axios.defaults.baseURL = 'http://localhost:4040';
+/*
+const fetchTodos = () => dispatch => {
+  dispatch(fetchTodosRequest());
+
+  axios
+    .get('/todos')
+    .then(({ data }) => dispatch(fetchTodosSuccess(data)))
+    .catch(error => dispatch(fetchTodosError(error)));
+}; */
 
 const fetchTodos = () => async dispatch => {
   dispatch(fetchTodosRequest());
 
-  /* const response = await axios.get('/todos'); */
-
   try {
+    /*  const response = await axios.get('/todos'); */
     const { data } = await axios.get('/todos');
-
     dispatch(fetchTodosSuccess(data));
   } catch (error) {
     dispatch(fetchTodosError(error));
   }
 };
 
+//prepared callback
+/* const addTodo = createAction(types.ADD, text => {
+  return {
+    id: shortId.generate(),
+    text,
+    completed: false,
+  };
+}
+); */
+
+//function asyncActionCreator => is doing API request and then dispatches results of new todo component
 const addTodo = text => dispatch => {
   const todo = {
     text,
     completed: false,
   };
 
+  //for start
+  /*  dispatch({ type: 'todos/addTodoRequest' }); */
   dispatch(addTodoRequest());
 
   axios
@@ -53,6 +73,7 @@ const deleteTodo = todoId => dispatch => {
     .catch(error => dispatch(deleteTodoError(error)));
 };
 
+//const toggleCompleted = (params) =>...
 const toggleCompleted =
   ({ id, completed }) =>
   dispatch => {
@@ -61,10 +82,12 @@ const toggleCompleted =
     dispatch(toggleCompletedRequest());
     axios
       .patch(`/todos/${id}`, update)
+      //.then(({ data }) => dispatch(toggleCompletedSuccess(data))) is full object of todo
       .then(({ data }) => dispatch(toggleCompletedSuccess(data)))
       .catch(error => dispatch(toggleCompletedError(error)));
   };
 
+//export of addTodo not as function, but as operation
 export default {
   fetchTodos,
   addTodo,
