@@ -8,8 +8,8 @@ import TodoEditor from '../components/TodoEditor';
 import Modal from '../components/Modal';
 import IconButton from '../components/IconButton';
 import { ReactComponent as AddIcon } from '../icons/add.svg';
-/* import todosApi from '../services/todos-api'; */
 import todosOperations from '../redux/todos/todos-operations';
+import todosSelectors from '../redux/todos/todos-selectors';
 
 const barStyles = {
   display: 'flex',
@@ -18,13 +18,6 @@ const barStyles = {
 };
 
 class TodosView extends Component {
-  /*  state = {
-    todos: [],
-    filter: '',
-    showModal: false,
-  };
- */
-
   state = {
     showModal: false,
   };
@@ -32,113 +25,6 @@ class TodosView extends Component {
   componentDidMount() {
     this.props.fetchTodos();
   }
-
-  /*  componentDidMount() {
-    todosApi
-      .fetchTodos()
-      .then(todos => this.setState({ todos }))
-      .catch(error => console.log('ERROR =>', error));
-  } */
-
-  /*   componentDidMount() {
-    todosApi.fetchTodos().then(todos => this.setState({ todos }));
-  }
- */
-
-  /*  componentDidUpdate(prevProps, prevState) {
-    const nextTodos = this.state.todos;
-    const prevTodos = prevState.todos;
-
-    if (nextTodos !== prevTodos) {
-      localStorage.setItem('todos', JSON.stringify(nextTodos));
-    }
-  } */
-
-  /*  addTodo = text => {
-    const todoData = {
-      text,
-      completed: false,
-    };
-
-    todosApi.addTodo(todoData).then(todo => {
-      this.setState(({ todos }) => ({
-        todos: [...todos, todo],
-      }));
-      this.toggleModal();
-    });
-  }; */
-
-  /*   deleteTodo = todoId => {
-    todosApi.deleteTodo(todoId).then(() => {
-      this.setState(({ todos }) => ({
-        todos: todos.filter(({ id }) => id !== todoId),
-      }));
-    });
-  };
- */
-
-  /*  toggleCompleted = todoId => {
-    const todo = this.state.todos.find(({ id }) => id === todoId);
-
-    const { completed } = todo;
-    const update = { completed: !completed };
-
-    todosApi.updateTodo(todoId, update).then(updatedToodo => {
-      this.setState(({ todos }) => ({
-        todos: todos.map(todo =>
-          todo.id === updatedToodo.id ? updatedToodo : todo,
-        ),
-      }));
-    });
-  }; */
-
-  /*  toggleCompleted = todoId => {
-    this.setState(({ todos }) => ({
-      todos: todos.map(todo =>
-        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo,
-      ),
-    }));
-  }; */
-
-  /*  toggleCompleted = todoId => {
-    const todo = this.state.todos.find(
-      ({ id }) => id === todoId,
-    );
-    const { completed } = todo;
-    const update = { completed: !completed };
-
-      todosApi
-      .updateTodo(todoId, update)
-      .then(updatedTodo => {
-        this.setState(({ todos }) => ({
-          todos: todos.map(todo =>
-            todo.id === updatedTodo.id ? updatedTodo : todo,
-          ),
-        }));
-      });c
-  }; */
-
-  /*   changeFilter = e => {
-    this.setState({ filter: e.currentTarget.value });
-  }; */
-
-  /*   getVisibleTodos = () => {
-    const { filter, todos } = this.state;
-    const normalizedFilter = filter.toLowerCase();
-
-    return todos.filter(({ text }) =>
-      text.toLowerCase().includes(normalizedFilter),
-    );
-  }; */
-
-  /*   calculateCompletedTodos = () => {
-    const { todos } = this.state;
-
-    return todos.reduce(
-      (total, todo) => (todo.completed ? total + 1 : total),
-      0,
-    );
-  };*/
 
   toggleModal = () => {
     this.setState(({ showModal }) => ({
@@ -148,14 +34,10 @@ class TodosView extends Component {
 
   render() {
     const { showModal } = this.state;
-    /*     const totalTodoCount = todos.length;
-    const completedTodoCount = this.calculateCompletedTodos();
-    const visibleTodos = this.getVisibleTodos(); */
 
     return (
       <Container>
         <div style={barStyles}>
-          {/* Filter automatically connects to redux and gets props/events */}
           <Filter />
           <Stats />
           <IconButton onClick={this.toggleModal} aria-label="Add todo">
@@ -164,13 +46,6 @@ class TodosView extends Component {
           {this.props.isLoadingTodos && <h1>Downloading...</h1>}
         </div>
 
-        {/*  <TodoList
-          todos={visibleTodos}
-          onDeleteTodo={this.deleteTodo}
-          onToggleCompleted={this.toggleCompleted}
-        /> */}
-        {/* now TodoList automatically will connect to redux and take what it needs */}
-        {/* since TodoList has a TodoList.container.js => the continer is being rendered, and under the hood (pod kapotom) render of TodoList itself */}
         <TodoList />
 
         {showModal && (
@@ -184,7 +59,7 @@ class TodosView extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoadingTodos: state.todos.loading,
+  isLoadingTodos: todosSelectors.getLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({

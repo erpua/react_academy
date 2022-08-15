@@ -1,23 +1,5 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-/* import * as actions from './todos-actions';
- */
-
-/*
-export default {
-  addTodoRequest,
-  addTodoSuccess,
-  addTodoError,
-  deleteTodo,
-  changeFilter,
-  toggleCompleted,
-}; from todos-actions
-
-
-//Onw way
-const { addTodoRequest, addTodoSuccess, addTodoError } = actions; */
-
-//another
 import {
   addTodoRequest,
   addTodoSuccess,
@@ -34,28 +16,12 @@ import {
   fetchTodosError,
 } from './todos-actions';
 
-/* state is [] => value of items */
-/* const items = createReducer([], {
-  [addTodoSuccess]: (state, { payload }) => [...state, payload],
-  [deleteTodoSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
-  [toggleCompletedSuccess]: (state, action) =>
-    state.map(todo =>
-      todo.id === action.payload
-        ? { ...todo, completed: !todo.completed }
-        : todo,
-    ),
-}); */
-
 const items = createReducer([], {
-  /* [fetchTodosSuccess]: (state, { payload => array of todos }) => payload, */
   [fetchTodosSuccess]: (_, { payload }) => payload,
   [addTodoSuccess]: (state, { payload }) => [payload, ...state],
   [deleteTodoSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
-  /* [toggleCompletedSuccess]: (state, { payload }) =>
-    state.map(todo => (todo.id === payload ? {...todo, completed: !todo.completed} : todo)), */
-    [toggleCompletedSuccess]: (state, { payload }) =>
+  [toggleCompletedSuccess]: (state, { payload }) =>
     state.map(todo => (todo.id === payload.id ? payload : todo)),
 });
 
