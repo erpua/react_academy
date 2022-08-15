@@ -21,7 +21,7 @@ import todosReducer from './todos/todos-reducer';
 function myMiddleware(store) {
   return function(next) {
     return function (action) {
-
+      //example
     };
   };
 }
