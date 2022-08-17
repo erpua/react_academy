@@ -10,22 +10,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import todosReducer from './todos/todos-reducer';
-
-//redux thunk package catches functions
-
-/* const myMiddleware = (store = next => action => {
-  //wqerthedf
-});
-
-function myMiddleware(store) {
-  return function(next) {
-    return function (action) {
-
-    };
-  };
-}
- */
+import todosReducer from './todos';
+import counterReducer from './counter';
 
 const myMiddleware = store => next => action => {
   console.log('myMiddleware; action', action);
@@ -46,11 +32,10 @@ const middleware = [
 const store = configureStore({
   reducer: {
     todos: todosReducer,
+    counter: counterReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
-
-/* const persistor = persistStore(store); */
 
 export default store;
