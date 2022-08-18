@@ -17,8 +17,8 @@ const Stats = ({ total, completed }) => (
 );
 
 const mapStateToProps = state => ({
-  total: todosSelectors.getCompletedTodosItems(state),
-  completed: todosSelectors.getCompletedTodosItems(state),
+  total: todosSelectors.getCompletedTodosCount(state),
+  completed: todosSelectors.getCompletedTodosCount(state),
 });
 
 export default connect(mapStateToProps)(Stats);

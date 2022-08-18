@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import todosReducer from './todos';
+import { todosReducer } from './todos';
 import counterReducer from './counter';
 
 const myMiddleware = store => next => action => {

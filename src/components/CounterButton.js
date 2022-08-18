@@ -9,4 +9,8 @@ function CounterButton({ click, onClick }) {
   );
 }
 
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = {};
+
 export default connect()(CounterButton);

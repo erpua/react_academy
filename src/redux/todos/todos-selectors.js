@@ -10,7 +10,7 @@ const getTotalTodoCount = state => {
   return todos.length;
 };
 
-const getCompletedTodosItems = state => {
+const getCompletedTodosCount = state => {
   const todos = getAllTodos(state);
 
   return todos.reduce((total, todo) => (todo.completed ? total + 1 : total), 0);
@@ -32,5 +32,5 @@ export default {
   getFilter,
   getVisibleTodos,
   getTotalTodoCount,
-  getCompletedTodosItems,
+  getCompletedTodosCount,
 };

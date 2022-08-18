@@ -1,4 +1,4 @@
-import { combineReducers, createAction, createReducer } from '@reduxjs/toolkit';
+import { createAction, createReducer, combineReducers } from '@reduxjs/toolkit';
 
 export const increment = createAction('counter/add');
 
