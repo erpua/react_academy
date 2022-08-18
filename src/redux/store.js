@@ -1,6 +1,6 @@
 /* here => ONLY SYNC code, NO HTTP requests etc.... */
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import logger from 'redux-logger';
+/* import logger from 'redux-logger'; */
 import {
   FLUSH,
   REHYDRATE,
@@ -10,14 +10,14 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import { todosReducer } from './todos';
+import todosReducer from './todos/todos-reducer';
 import counterReducer from './counter';
 
-const myMiddleware = store => next => action => {
+/* const myMiddleware = store => next => action => {
   console.log('myMiddleware; action', action);
 
   next(action);
-};
+}; */
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -25,8 +25,8 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  logger,
-  myMiddleware,
+  /*  logger, */
+  /* myMiddleware, */
 ];
 
 const store = configureStore({
