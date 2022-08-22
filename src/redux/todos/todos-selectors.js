@@ -23,7 +23,10 @@ const getCompletedTodoCount = createSelector([getAllTodos], todos => {
   return todos.reduce((total, todo) => (todo.completed ? total + 1 : total), 0);
 });
 
-/* const getVisibleTodos = state => {
+/*
+kompozitniy selector
+
+const getVisibleTodos = state => {
   const todos = getAllTodos(state);
   const filter = getFilter(state);
 
@@ -35,7 +38,9 @@ const getCompletedTodoCount = createSelector([getAllTodos], todos => {
 };
  */
 const getVisibleTodos = createSelector(
+  //First argument- needed selectors Array
   [getAllTodos, getFilter],
+  //Second argument - function for calculation
   (todos, filter) => {
     const normalizedFilter = filter.toLowerCase();
 
@@ -48,7 +53,7 @@ const getVisibleTodos = createSelector(
 export default {
   getLoading,
   getFilter,
-  getVisibleTodos,
   getTotalTodoCount,
+  getVisibleTodos,
   getCompletedTodoCount,
 };

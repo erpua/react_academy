@@ -17,7 +17,7 @@ const Stats = ({ total, completed }) => (
 );
 
 const mapStateToProps = state => ({
-  total: todosSelectors.getTotalTodosCount(state),
+  total: todosSelectors.getTotalTodoCount(state),
   completed: todosSelectors.getCompletedTodoCount(state),
 });
 
