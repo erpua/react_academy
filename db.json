@@ -3,7 +3,7 @@
     {
       "id": "id-3",
       "text": "Get used to Redux",
-      "completed": true
+      "completed": false
     },
     {
       "id": "id-4",
@@ -26,11 +26,6 @@
       "id": "i3VXT_v"
     },
     {
-      "text": "dfg",
-      "completed": true,
-      "id": "Ik5KwbN"
-    },
-    {
       "text": "df",
       "completed": false,
       "id": "-srb4R2"
@@ -38,42 +33,7 @@
     {
       "text": "sdfgh",
       "completed": false,
-      "id": "q4kEFW6"
-    },
-    {
-      "text": "qwe",
-      "completed": false,
-      "id": "_qAq7jq"
-    },
-    {
-      "text": "sdfgh",
-      "completed": false,
       "id": "4pwuwAl"
-    },
-    {
-      "text": "sdf",
-      "completed": false,
-      "id": "BZvjG89"
-    },
-    {
-      "text": "123",
-      "completed": false,
-      "id": "2wCpRGr"
-    },
-    {
-      "text": "345",
-      "completed": false,
-      "id": "0PxL8lW"
-    },
-    {
-      "text": "sdf",
-      "completed": false,
-      "id": "k0XY3L-"
-    },
-    {
-      "text": "5688",
-      "completed": false,
-      "id": "6zEqKbt"
     }
   ]
 }

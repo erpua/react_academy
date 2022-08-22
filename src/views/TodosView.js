@@ -8,8 +8,8 @@ import TodoEditor from '../components/TodoEditor';
 import Modal from '../components/Modal';
 import IconButton from '../components/IconButton';
 import { ReactComponent as AddIcon } from '../icons/add.svg';
-import todosOperations from '../redux/todos/todos-operations';
-import todosSelectors from '../redux/todos/todos-selectors';
+
+import { todosOperations, todosSelectors } from '../redux/todos';
 
 import Btn from '../components/CounterButton';
 
