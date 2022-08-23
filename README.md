@@ -12,6 +12,8 @@ TIPS:
 
 - https://github.com/fedosejev?tab=repositories
 
+- https://github.com/pdffiller/selectors-samples
+
 - clear after: https requests, timers, addEventListeners
 
 - if Switch or other library not found in npm packges => possible solution might
