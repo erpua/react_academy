@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 
 import { todosReducer } from './todos';
-import counterReducer from './counter';
+/* import counterReducer from './counter'; */
 
 /* const myMiddleware = store => next => action => {
   console.log('myMiddleware; action', action);
@@ -32,7 +32,7 @@ const middleware = [
 const store = configureStore({
   reducer: {
     todos: todosReducer,
-    counter: counterReducer,
+    /*   counter: counterReducer, */
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

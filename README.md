@@ -14,6 +14,8 @@ TIPS:
 
 - https://github.com/pdffiller/selectors-samples
 
+- Octotree - GitHub code tree
+
 - clear after: https requests, timers, addEventListeners
 
 - if Switch or other library not found in npm packges => possible solution might

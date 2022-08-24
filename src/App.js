@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar';
-import TodosView from './views/TodosView';
 import HomeView from './views/HomeView';
 import RegisterView from './views/RegisterView';
 import LoginView from './views/LoginView';
+import TodosView from './views/TodosView';
 import Container from './components/Container';
 
 const App = () => (
