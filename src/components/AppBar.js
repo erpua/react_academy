@@ -1,5 +1,6 @@
 import React from 'react';
-import Navigation from '../Navigation';
+import { Switch, Route } from 'react-router-dom';
+import Navigation from './Navigation';
 
 const AppBar = () => {
   return (
