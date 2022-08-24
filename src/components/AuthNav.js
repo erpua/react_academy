@@ -14,21 +14,25 @@ const styles = {
   },
 };
 
-const Navigation = () => (
-  <nav>
-    <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
-      Главная
-    </NavLink>
-
+const AuthNav = () => (
+  <div>
     <NavLink
-      to="/todos"
+      to="/register"
       exact
       style={styles.link}
       activeStyle={styles.activeLink}
     >
-      Заметки
+      Регистрация
     </NavLink>
-  </nav>
+    <NavLink
+      to="/login"
+      exact
+      style={styles.link}
+      activeStyle={styles.activeLink}
+    >
+      Логин
+    </NavLink>
+  </div>
 );
 
-export default Navigation;
+export default AuthNav;

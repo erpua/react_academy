@@ -1,13 +1,22 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
 import Navigation from './Navigation';
+import UserMenu from './UserMenu';
+import AuthNav from './AuthNav';
 
-const AppBar = () => {
-  return (
-    <header className="AppBar">
-      <Navigation />
-    </header>
-  );
+const styles = {
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderBottom: '1px solid #2A363B',
+  },
 };
+
+const AppBar = ({ isAuthenticated }) => (
+  <header style={styles.header}>
+    <Navigation />
+    {isAuthenticated ? <UserMenu /> : <AuthNav />}
+  </header>
+);
 
 export default AppBar;
