@@ -81,6 +81,12 @@ class RegisterView extends Component {
   }
 }
 
+/* const mapDispatchToProps = dispatch => ({
+  onRegister: (data) => dispatch(authOperations.register(data)),
+}); */
+
+//Same as =>
+
 /* const mapDispatchToProps = {
   onRegister: authOperations.register,
 }; */
