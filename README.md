@@ -35,6 +35,8 @@ npm install react-router-dom@5.2.0
 - port change for back-end in json: "api-server": "json-server --delay 200
   --port 4040 --watch db.json"
 
+- Backend heroku: https://www.youtube.com/watch?v=SWbUTOmT-gg
+
 ---
 
 - Optional chaining operator: (
