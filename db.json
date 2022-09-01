@@ -1,0 +1,39 @@
+{
+  "todos": [
+    {
+      "id": "id-3",
+      "text": "Get used to Redux",
+      "completed": false
+    },
+    {
+      "id": "id-4",
+      "text": "Try React Hooks",
+      "completed": true
+    },
+    {
+      "text": "Learn React basics\n",
+      "completed": true,
+      "id": "eE3TrWs"
+    },
+    {
+      "text": "dfghjk",
+      "completed": true,
+      "id": "TPeAYwp"
+    },
+    {
+      "text": "er",
+      "completed": true,
+      "id": "i3VXT_v"
+    },
+    {
+      "text": "df",
+      "completed": false,
+      "id": "-srb4R2"
+    },
+    {
+      "text": "sdfgh",
+      "completed": false,
+      "id": "4pwuwAl"
+    }
+  ]
+}

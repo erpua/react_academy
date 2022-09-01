@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import authActions from './auth-actions';
 
-axios.defaults.baseURL = 'https://lpj-tasker.herokuapp.com';
+axios.defaults.baseURL = 'https://lpj-tasker.herokuapp.com'; //update
 
 const token = {
   set(token) {
@@ -18,17 +18,19 @@ const token = {
  *
  * После успешной регистрации добавляем токен в HTTP-заголовок
  */
+
+//credentials => user data
 const register = credentials => async dispatch => {
   dispatch(authActions.registerRequest());
 
   try {
     const response = await axios.post('/users/signup', credentials);
-
-    token.set(response.data.token);
+  
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
-    dispatch(authActions.registerError(error.message));
+    dispatch(authActions.registerError(error));
   }
+  
 };
 
 /*
@@ -38,18 +40,7 @@ const register = credentials => async dispatch => {
  *
  * После успешного логина добавляем токен в HTTP-заголовок
  */
-const logIn = credentials => async dispatch => {
-  dispatch(authActions.loginRequest());
-
-  try {
-    const response = await axios.post('/users/login', credentials);
-
-    token.set(response.data.token);
-    dispatch(authActions.loginSuccess(response.data));
-  } catch (error) {
-    dispatch(authActions.loginError(error.message));
-  }
-};
+const logIn = credentials => async dispatch => { };
 
 /*
  * POST @ /users/logout
@@ -58,18 +49,7 @@ const logIn = credentials => async dispatch => {
  *
  * 1. После успешного логаута, удаляем токен из HTTP-заголовка
  */
-const logOut = () => async dispatch => {
-  dispatch(authActions.logoutRequest());
-
-  try {
-    await axios.post('/users/logout');
-
-    token.unset();
-    dispatch(authActions.logoutSuccess());
-  } catch (error) {
-    dispatch(authActions.logoutError(error.message));
-  }
-};
+const logOut = () => async dispatch => { };
 
 /*
  * GET @ /users/current
