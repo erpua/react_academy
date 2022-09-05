@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 
 import { todosReducer } from './todos';
+import { authReducer } from './auth';
 /* import counterReducer from './counter'; */
 
 /* const myMiddleware = store => next => action => {
@@ -25,14 +26,13 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  /*  logger, */
-  /* myMiddleware, */
+  myMiddleware
 ];
 
 const store = configureStore({
   reducer: {
+    auth: authReducer,
     todos: todosReducer,
-    /*   counter: counterReducer, */
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

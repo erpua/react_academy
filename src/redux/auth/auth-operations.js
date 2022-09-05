@@ -1,7 +1,11 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import authActions from './auth-actions';
 
-axios.defaults.baseURL = 'https://lpj-tasker.herokuapp.com'; //update
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com'; //??? 
+/* 
+axios.defaults.baseURL = 'https'; //??? */
+
+/* axios.defaults.baseURL = 'https://connections-api.herokuapp.com'; //??? */
 
 const token = {
   set(token) {
@@ -26,9 +30,11 @@ const register = credentials => async dispatch => {
   try {
     const response = await axios.post('/users/signup', credentials);
   
+  /*   console.log('response from try register', response); */
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
-    dispatch(authActions.registerError(error));
+    console.log('error', error);
+    dispatch(authActions.registerError(error.message));
   }
   
 };

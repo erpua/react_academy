@@ -13,7 +13,7 @@ const styles = {
   },
 };
 
-class RegisterView extends Component {
+export class RegisterView extends Component {
   state = {
     name: '',
     email: '',

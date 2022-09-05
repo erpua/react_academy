@@ -14,7 +14,7 @@ import {
   fetchTodosError,
 } from './todos-actions';
 
-axios.defaults.baseURL = 'http://localhost:4040';
+/* axios.defaults.baseURL = 'http://localhost:4040'; */
 
 const fetchTodos = () => async dispatch => {
   dispatch(fetchTodosRequest());

@@ -8,16 +8,16 @@ import TodosView from './views/TodosView';
 import Container from './components/Container';
 
 const App = () => (
-  <Container>
-    <AppBar />
+      <Container>
+        <AppBar />
 
-    <Switch>
-      <Route exact path="/" component={HomeView} />
-      <Route path="/register" component={RegisterView} />
-      <Route path="/login" component={LoginView} />
-      <Route path="/todos" component={TodosView} />
-    </Switch>
-  </Container>
+        <Switch>
+          <Route exact path="/" component={HomeView} />
+          <Route path="/register" component={RegisterView} />
+          <Route path="/login" component={LoginView} />
+          <Route path="/todos" component={TodosView} />
+        </Switch>
+      </Container>
 );
 
 export default App;
