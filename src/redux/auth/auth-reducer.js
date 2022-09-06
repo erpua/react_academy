@@ -40,6 +40,7 @@ const token = createReducer(null, {
 });
 
 //payload here is a error.message
+
 /* const error = createReducer(null, {
   [authActions.registerError]: (_, { payload }) => payload,
   [authActions.loginError]: (_, { payload }) => payload,
