@@ -1,7 +1,8 @@
-/* here => ONLY SYNC code, NO HTTP requests etc.... */
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-/* import logger from 'redux-logger'; */
+// import logger from 'redux-logger';
 import {
+  persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,16 +10,9 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-
+import storage from 'redux-persist/lib/storage';
 import { todosReducer } from './todos';
 import { authReducer } from './auth';
-/* import counterReducer from './counter'; */
-
-/* const myMiddleware = store => next => action => {
-  console.log('myMiddleware; action', action);
-
-  next(action);
-}; */
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -26,16 +20,24 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  myMiddleware
+  // logger,
 ];
+
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 const store = configureStore({
   reducer: {
-    auth: authReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
     todos: todosReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
 
-export default store;
+const persistor = persistStore(store);
+
+export default { store, persistor };

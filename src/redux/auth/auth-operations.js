@@ -53,6 +53,7 @@ const logIn = credentials => async dispatch => {
   try {
     const response = await axios.post('/users/login', credentials);
 
+    token.set(response.data.token);
     dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
     dispatch(authActions.loginError(error.message));
@@ -71,12 +72,13 @@ const logOut = () => async dispatch => {
 
   try {
     await axios.post('/users/logout');
-
+    
     token.unset();
     dispatch(authActions.logoutSuccess());
   } catch (error) {
     dispatch(authActions.logoutError(error.message));
   }
+
 };
 
 /*
@@ -88,6 +90,8 @@ const logOut = () => async dispatch => {
  * 2. Если токена нет, выходим не выполняя никаких операций
  * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
  */
+
+//getState is a function, that returns Redux state
 const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
