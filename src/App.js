@@ -1,27 +1,3 @@
-/* import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import AppBar from './components/AppBar';
-import HomeView from './views/HomeView';
-import RegisterView from './views/RegisterView';
-import LoginView from './views/LoginView';
-import TodosView from './views/TodosView';
-import Container from './components/Container';
-
-const App = () => (
-      <Container>
-        <AppBar />
-
-        <Switch>
-          <Route exact path="/" component={HomeView} />
-          <Route path="/register" component={RegisterView} />
-          <Route path="/login" component={LoginView} />
-          <Route path="/todos" component={TodosView} />
-        </Switch>
-      </Container>
-);
-
-export default App; */
-
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar';
@@ -32,6 +8,8 @@ import LoginView from './views/LoginView';
 import Container from './components/Container';
 import { authOperations } from './redux/auth';
 import { connect } from 'react-redux';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
 class App extends Component {
   componentDidMount() {
@@ -44,10 +22,26 @@ class App extends Component {
         <AppBar />
 
         <Switch>
-          <Route exact path="/" component={HomeView} />
-          <Route path="/register" component={RegisterView} />
-          <Route path="/login" component={LoginView} />
-          <Route path="/todos" component={TodosView} />
+          <PublicRoute 
+            exact 
+            path="/" 
+            component={HomeView} />
+          <PublicRoute 
+            path="/register" 
+            resticted
+            component={RegisterView}
+            redirectTo="/home"
+             />
+          <PublicRoute 
+            path="/login"
+            restricted 
+            component={LoginView} 
+            redirectTo="/todos"/>
+          <PrivateRoute 
+            path="/todos" 
+            component={TodosView} 
+            redirectTo="/login"
+            />
         </Switch>
       </Container>
     );
