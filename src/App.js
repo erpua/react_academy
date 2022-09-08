@@ -1,56 +1,56 @@
-import React, { Component, Suspense, lazy } from 'react';
-import { Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+/* import Container from './components/Container'; */
+import Layout from './Layout';
 import AppBar from './components/AppBar';
-import Container from './components/Container';
-import { authOperations } from './redux/auth';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
+import Counter from './components/Counter';
+import SignupForm from './components/SignupForm';
+import Clock from './components/Clock';
+import News from './components/News';
+import ColorPicker from './components/ColorPicker';
+import UserMenu from './components/UserMenu';
 
-const HomeView = lazy(() => import('./views/HomeView'));
-const RegisterView = lazy(() => import('./views/RegisterView'));
-const LoginView = lazy(() => import('./views/LoginView'));
-const TodosView = lazy(() => import('./views/TodosView'));
+/* const colorPickerOptions = [
+  { label: 'red', color: '#F44336' },
+  { label: 'green', color: '#4CAF50' },
+  { label: 'blue', color: '#2196F3' },
+  { label: 'grey', color: '#607D8B' },
+  { label: 'pink', color: '#E91E63' },
+  { label: 'indigo', color: '#3F51B5' },
+]; */
 
-class App extends Component {
-  componentDidMount() {
-    this.props.onGetCurrentUser();
-  }
+export default function App() {
+  return (
+    <BrowserRouter>
+    <Layout>
+      <AppBar />
 
-  render() {
-    return (
-      <Container>
-        <AppBar />
+      <Switch>
+        <Route path="/counter">
+          <Counter />
+        </Route>
 
-        <Suspense fallback={<p>Downloading ...</p>}>
-          <Switch>
-            <PublicRoute exact path="/" component={HomeView} />
-            <PublicRoute
-              path="/register"
-              restricted
-              redirectTo="/todos"
-              component={RegisterView}
-            />
-            <PublicRoute
-              path="/login"
-              restricted
-              redirectTo="/todos"
-              component={LoginView}
-            />
-            <PrivateRoute
-              path="/todos"
-              redirectTo="/login"
-              component={TodosView}
-            />
-          </Switch>
-        </Suspense>
-      </Container>
-    );
-  }
+        <Route path="/signup">
+          <SignupForm />
+        </Route>
+
+        <Route path="/colorpicker">
+          <ColorPicker options={colorPickerOptions} />
+        </Route>
+
+        <Route path="/clock">
+          <Clock />
+        </Route>
+
+        <Route path="/news">
+          <News />
+        </Route>
+
+        <Route path="/context">
+          <UserMenu />
+        </Route>
+      </Switch>
+    </Layout>
+  </BrowserRouter>
+  );
 }
-
-const mapDispatchToProps = {
-  onGetCurrentUser: authOperations.getCurrentUser,
-};
-
-export default connect(null, mapDispatchToProps)(App);
