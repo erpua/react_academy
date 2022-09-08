@@ -23,7 +23,8 @@ class TodosView extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchTodos();
+    this.props.fetchTodosAsync;
+  /*   this.props.fetchTodos(); */
   }
 
   toggleModal = () => {
@@ -64,6 +65,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchTodos: () => dispatch(todosOperations.fetchTodos()),
+  fetchTodosAsync: () => dispatch(todosOperations.fetchTodosAsync()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodosView);

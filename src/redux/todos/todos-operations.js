@@ -1,3 +1,4 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import {
   addTodoRequest,
@@ -26,6 +27,12 @@ const fetchTodos = () => async dispatch => {
     dispatch(fetchTodosError(error.message));
   }
 };
+
+const fetchTodosAsync = createAsyncThunk('todos/fetchTodos', async () => {
+  const { data } = await axios.get('/tasks');
+
+  return data;
+});
 
 // POST @ /tasks
 const addTodo = description => dispatch => {

@@ -34,7 +34,7 @@ const register = credentials => async dispatch => {
   /*   console.log('response from try register', response); */
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
-    console.log('error', error);
+    /* console.log('error', error); */
     dispatch(authActions.registerError(error.message));
   }
   

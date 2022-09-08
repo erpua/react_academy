@@ -16,8 +16,11 @@ import {
   fetchTodosError,
 } from './todos-actions';
 
+import {operations} from './todos-operations';
+
 const items = createReducer([], {
-  [fetchTodosSuccess]: (_, { payload }) => payload,
+  /*   [fetchTodosSuccess]: (_, { payload }) => payload, */
+  [operations.fetchTodosSuccess.fullfilled]: (_, { payload }) => payload,
   [addTodoSuccess]: (state, { payload }) => [payload, ...state],
   [deleteTodoSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
