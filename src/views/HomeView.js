@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactButton from 'react-button';
 
 const styles = {
   container: {
@@ -14,15 +15,23 @@ const styles = {
   },
 };
 
+var Button = require('react-button');
+
 const HomeView = () => (
   <div style={styles.container}>
     <h1 style={styles.title}>
+
+    <Button>Export</Button>
+
       Welcome page of our service{' '}
+
       <span role="img" aria-label="Welcome icon">
         💁‍♀️
       </span>
     </h1>
   </div>
 );
+
+
 
 export default HomeView;

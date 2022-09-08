@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import AppBar from './components/AppBar';
 import TodosView from './views/TodosView';
 import HomeView from './views/HomeView';

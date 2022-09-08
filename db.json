@@ -1,0 +1,21 @@
+{
+  "auth": {
+    "user": {
+      "name": "",
+      "email": ""
+    },
+    "isAuthenticated": false,
+    "token": "",
+    "error": null,
+    "_persist": {
+      "version": -1,
+      "rehydrated": true
+    }
+  },
+  "todos": {
+    "items": [],
+    "filter": "",
+    "loading": false,
+    "error": null
+  }
+}
