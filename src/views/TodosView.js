@@ -24,6 +24,7 @@ class TodosView extends Component {
 
   componentDidMount() {
     this.props.fetchTodosAsync;
+    
   /*   this.props.fetchTodos(); */
   }
 
