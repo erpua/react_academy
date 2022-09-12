@@ -16,6 +16,11 @@ const styles = {
 
 export default function Counter() {
   const [counterA, setCounterA] = useState(0);
+  //=> { counterA: 0 }, setCounterA => method for this counterA
+  //Hooks don't merge state
+
+  console.log('counterA =>', counterA);
+  console.log('setCounterA => ', setCounterA)
 
   const handleCounterAIncrement = () => {
     setCounterA(prevCounterA => prevCounterA + 1);
@@ -28,7 +33,7 @@ export default function Counter() {
   };
 
   useEffect(() => {
-    document.title = `Кликнули ${counterA + counterB} раз`;
+    document.title = `Clicked ${counterA + counterB} times`;
   }, [counterA, counterB]);
 
   return (
@@ -38,7 +43,7 @@ export default function Counter() {
         type="button"
         onClick={handleCounterAIncrement}
       >
-        Кликнули counterA {counterA} раз
+        Clicked counterA {counterA} times
       </button>
 
       <button
@@ -46,7 +51,7 @@ export default function Counter() {
         type="button"
         onClick={handleCounterBIncrement}
       >
-        Кликнули counterB {counterB} раз
+        Clicked counterB {counterB} times
       </button>
     </>
   );
@@ -70,7 +75,7 @@ export default function Counter() {
 //   const { counterA, counterB } = this.state;
 //   const totalClicks = counterA + counterB;
 
-//   document.title = `Кликнули ${totalClicks} раз`;
+//   document.title = `Clicked ${totalClicks} times`;
 // }
 
 // componentDidUpdate(prevProps, prevState) {
@@ -79,7 +84,7 @@ export default function Counter() {
 //   if (prevState.counterA !== counterA || prevState.counterB !== counterB) {
 //     const totalClicks = counterA + counterB;
 
-//     document.title = `Кликнули ${totalClicks} раз`;
+//     document.title = `Clicked ${totalClicks} times`;
 //   }
 // }
 
@@ -91,7 +96,7 @@ export default function Counter() {
 //           type="button"
 //           onClick={this.handleCounterAIncrement}
 //         >
-//           Кликнули counterA {this.state.counterA} раз
+//           Clicked counterA {this.state.counterA} times
 //         </button>
 
 //         <button
@@ -99,7 +104,7 @@ export default function Counter() {
 //           type="button"
 //           onClick={this.handleCounterBIncrement}
 //         >
-//           Кликнули counterB {this.state.counterB} раз
+//           Clicked counterB {this.state.counterB} times
 //         </button>
 //       </>
 //     );

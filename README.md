@@ -78,6 +78,9 @@ const x = { b: 3, };
 ---
 
 - REDUX ( https://redux.js.org/ )
+- REACT hooks: https://ru.reactjs.org/docs/hooks-intro.html
+
+---
 
 JSON:
 
