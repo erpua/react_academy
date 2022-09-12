@@ -9,10 +9,10 @@ const styles = {
   },
 };
 
-// Первый рендер
-// Каждый рендер
-// Каждый рендер при изменении какого-то стейта или пропса
-// Последний рендер
+// First render()
+// Each render()
+// Each render() due to changing of some state / props
+// Last render()
 
 export default function Counter() {
   const [counterA, setCounterA] = useState(0);
