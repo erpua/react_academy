@@ -1,23 +1,25 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar';
 import Counter from './components/Counter';
-import UserMenu from './components/UserMenu';
+import SignupForm from './components/SignupForm';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AppBar />
+   <>
+   <AppBar />
 
-      <Switch>
-        <Route path="/counter">
-          <Counter />
-        </Route>
+<Switch>
+  <Route path="/counter">
+    <Counter />
+  </Route>
 
-        <Route path="/context">
-          <UserMenu />
-        </Route>
-      </Switch>
-  </BrowserRouter>
+  <Route path="/signup">
+    <SignupForm />
+  </Route>
+</Switch>
+   </>
+      
+
   );
 }
