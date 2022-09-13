@@ -30,6 +30,15 @@ const Navigation = () => (
       activeStyle={styles.activeLink}>
       Form
     </NavLink>
+
+    <NavLink
+      to="/colorpicker"
+      style={styles.link}
+      activeStyle={styles.activeLink}
+    >
+      Color Picker
+    </NavLink>
+
   </nav>
 );
 

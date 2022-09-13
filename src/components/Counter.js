@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const styles = {
+  qwe: {
+    width: 560,
+    border: '1px solid teal',
+    borderRadius: 4,
+    margin: '30px 0 0 30px',
+    padding: 20
+  },
   btn: {
     display: 'inline-flex',
     fontSize: 20,
@@ -38,7 +45,7 @@ export default function Counter() {
   }, [counterA, counterB]);
 
   return (
-    <>
+    <div style={styles.qwe}>
       <button
         style={styles.btn}
         type="button"
@@ -54,7 +61,7 @@ export default function Counter() {
       >
         Clicked counterB {counterB} times
       </button>
-    </>
+    </div>
   );
 }
 

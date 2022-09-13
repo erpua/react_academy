@@ -2,6 +2,10 @@
 
 TIPS:
 
+- manual path changing, through render() => autoomatically is changing path of components
+
+- CMND + SHIFT + FORWARD SLASH => comment / uncomment block of code with double forward slashes
+
 - git push --set-upstream origin 07-react-router
 
 - keep state in nearest parent, or global one (in case of many dif children),

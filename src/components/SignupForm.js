@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 
 const styles = {
+ /*  form: {
+    width: 320,
+    margin: '30px 0 0 30px',
+    border: '1px solid teal',
+    padding: 20,
+    'border-radius': '4px',
+  }, */
   form: {
     width: 320,
+    margin: '30px 0 0 30px',
+    border: '1px solid teal',
+    padding: 20,
+    borderRadius: 4,
   },
   label: {
     display: 'flex',
@@ -18,7 +29,7 @@ export default function SignupForm() {
   const handleChange = event => {
     const {name, value} = event.target;
 
-    switch (name) {
+    switch (name) { 
       case 'email':
         setEmail(value);
         break;
@@ -27,8 +38,11 @@ export default function SignupForm() {
         setPassword(value);
         break;
 
-      default:
-        console.warn(`This type of filed ${name} DOES NOT process!`);
+     /*  default:
+        console.warn(`This field type ${name} DOES NOT process!`); */
+
+        default:
+          throw new Error();
     }
   };
 
@@ -46,6 +60,12 @@ export default function SignupForm() {
       onSubmit={handleSubmit}>
          <label style={styles.label} >
            <span>Email</span>
+           {/* <input
+             type="email"
+             name="email123456"
+             onChange={handleChange}
+              value={email}
+           /> */}
            <input
              type="email"
              name="email"
