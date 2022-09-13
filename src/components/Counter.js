@@ -15,6 +15,7 @@ const styles = {
 // Last render()
 
 export default function Counter() {
+  //state cretes only on first render of component
   const [counterA, setCounterA] = useState(0);
   //=> { counterA: 0 }, setCounterA => method for this counterA
   //Hooks don't merge state
