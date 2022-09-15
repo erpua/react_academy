@@ -18,7 +18,7 @@ const styles = {
 
 // First render()
 // Each render()
-// Each render() due to changing of some state / props
+// Each render() due to changing of some state or props
 // Last render()
 
 export default function Counter() {
@@ -43,6 +43,8 @@ export default function Counter() {
   useEffect(() => {
     document.title = `Clicked ${counterA + counterB} times`;
   }, [counterA, counterB]);
+  //TODO://terminate useEffect
+
 
   return (
     <div style={styles.qwe}>

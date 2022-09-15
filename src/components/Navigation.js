@@ -17,6 +17,14 @@ const styles = {
 
 const Navigation = () => (
   <nav>
+
+    <NavLink 
+      to="/home" 
+      style={styles.link} 
+      activeStyle={styles.activeLink}>
+      Home
+    </NavLink>
+    
     <NavLink 
       to="/counter" 
       style={styles.link} 

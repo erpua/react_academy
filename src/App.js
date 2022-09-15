@@ -4,6 +4,8 @@ import AppBar from './components/AppBar';
 import ColorPicker from './components/ColorPicker/ColorPicker';
 import Counter from './components/Counter';
 import SignupForm from './components/SignupForm';
+import Welcome from './components/Welcome'
+import Home from './components/Home';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -20,6 +22,15 @@ export default function App() {
             <AppBar />
 
             <Switch>
+
+              <Route exact path="/">
+                <Welcome />
+              </Route>
+
+              <Route path="/home">
+                <Home />
+              </Route>
+
               <Route path="/counter">
                 <Counter />
               </Route>

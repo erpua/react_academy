@@ -38,11 +38,11 @@ export default function SignupForm() {
         setPassword(value);
         break;
 
-     /*  default:
-        console.warn(`This field type ${name} DOES NOT process!`); */
-
         default:
-          throw new Error();
+          /*   throw new Error(); */
+         /*  console.warn(`This field type "${name}" - is not being processed!`); */
+         console.error(`This field type "${name}" - is not being processed!`);
+      
     }
   };
 
@@ -66,7 +66,18 @@ export default function SignupForm() {
              onChange={handleChange}
               value={email}
            /> */}
-           <input
+          {/*  
+          
+          //
+          
+          For Error
+            <input
+             type="email"
+             name="email123"
+             onChange={handleChange}
+              value={email}
+            /> */}
+            <input
              type="email"
              name="email"
              onChange={handleChange}
