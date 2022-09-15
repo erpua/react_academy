@@ -16,10 +16,10 @@ const styles = {
   },
 };
 
-// First render()
-// Each render()
-// Each render() due to changing of some state or props
-// Last render()
+// First render() | []
+// Each render() | nothing
+// Each render() due to changing of some state or props | [counterA, counterB etc...]
+// Last render() | 
 
 export default function Counter() {
   //state cretes only on first render of component
@@ -27,8 +27,8 @@ export default function Counter() {
   //=> { counterA: 0 }, setCounterA => method for this counterA
   //Hooks don't merge state
 
-  console.log('counterA =>', counterA);
-  console.log('setCounterA => ', setCounterA)
+  /* console.log('counterA =>', counterA);
+  console.log('setCounterA => ', setCounterA) */
 
   const handleCounterAIncrement = () => {
     setCounterA(prevCounterA => prevCounterA + 1);
@@ -40,11 +40,47 @@ export default function Counter() {
     setCounterB(prevCounterB => prevCounterB + 1);
   };
 
-  useEffect(() => {
-    document.title = `Clicked ${counterA + counterB} times`;
-  }, [counterA, counterB]);
-  //TODO://terminate useEffect
+  //useEffect does not block code until anoother sync compiles (it is sync) => 
+  //=> the app is faster comparing to componentDidMount and componentDidUpdate;
+  /* 
+    useEffect(() => {
+      console.log('Hi, this is useEffect =>' + Date.now());
+      document.title = `Clicked ${counterA + counterB} times`;
+    }, [counterA, counterB]); */
 
+  /* useEffect(() => {
+      console.log('Hi, this is useEffect =>' + Date.now());
+    }); // no array - processes on each render componentDidUpdate () {} */
+
+  //---
+
+  /* useEffect(() => {
+      console.log('Hi, this is useEffect =>' + Date.now());
+    }, []); // empty array - processes only on first render => componentDidMount() {} */
+
+  //---
+ 
+  /* useEffect(() => {
+    console.log(counterA + ' Hi, this is useEffect for counterA => ' + Date.now());
+  }, [counterA]); // compiles when componentDidMount, and then each render, when variable counterA from state is being changed (state / props)
+
+  //---
+
+  useEffect(() => {
+    console.log(counterB + ' Hi, this is useEffect for counterB =>' + Date.now());
+  }, [counterB]); // compiles when componentDidMount, and then each render, when variable counterB from state is being changed (state / props) */
+
+  //---
+
+ /*  useEffect(() => {
+    console.log( counterA + ' Hi, this is useEffect for counterA + counterB =>' + counterB + Date.now());
+  }, [counterA, counterB]); // counterA + counterB */
+
+  useEffect(() => {
+    const totalClicks = counterA + counterB;
+    console.log(`counterA + counterB clicked together ${totalClicks} times`);
+    document.title = `Clicked ${totalClicks} times`;
+  }, [counterA, counterB]);
 
   return (
     <div style={styles.qwe}>
