@@ -74,7 +74,7 @@ export default function Counter() {
 
  /*  useEffect(() => {
     console.log( counterA + ' Hi, this is useEffect for counterA + counterB =>' + counterB + Date.now());
-  }, [counterA, counterB]); // counterA + counterB */
+  }, [counterA, counterB]); // counterA or counterB */
 
   useEffect(() => {
     const totalClicks = counterA + counterB;

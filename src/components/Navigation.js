@@ -47,6 +47,14 @@ const Navigation = () => (
       Color Picker
     </NavLink>
 
+    <NavLink
+      to="/clock"
+      style={styles.link}
+      activeStyle={styles.activeLink}
+    >
+      Clock
+    </NavLink>
+
   </nav>
 );
 

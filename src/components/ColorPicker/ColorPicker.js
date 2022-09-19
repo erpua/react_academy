@@ -1,9 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import classNames from 'classnames';
 import './ColorPicker.css';
 
 //in react hooks => props are coming straigt to function: options from colors f.e.
-function ColorPicker({ options }) {
+// function ColorPicker({ options }) {
+//   const [activeOptIdx, setActiveOptIdx] = useState(0);
+
+//   const setActiveIdx = index => {
+//     setActiveOptIdx(index);
+//   };
+
+//   const makeOptionClassName = index => {
+//     return classNames('ColorPicker__option', {
+//       'ColorPicker__option--active': index === activeOptIdx,
+//     });
+//   };
+
+//   /*   const activeIdx = options[activeOptIdx]; */
+//   const { label } = options[activeOptIdx];
+
+//   return ( 
+//     <div className="ColorPicker">
+//       <h2 className="ColorPicker__title">Color Picker</h2>
+//       <p>Picked color: {label}</p>
+//       <div>
+//           {options.map(({ label, color }, index) => (
+//             <button
+//               key={label}
+//               className={makeOptionClassName(index)}
+//               style={{ backgroundColor: color }}
+//               onClick={() => setActiveIdx(index)}
+//               >
+//             </button>
+//           ))}
+//       </div>
+//     </div>
+//   )
+// };
+
+// export default ColorPicker;
+
+//---
+
+//memo, is function, that wrapes our component function, 
+//and is checking if props / state had been changed
+export default memo(function ColorPicker({ options }) {
   const [activeOptIdx, setActiveOptIdx] = useState(0);
 
   const setActiveIdx = index => {
@@ -35,11 +76,9 @@ function ColorPicker({ options }) {
           ))}
       </div>
     </div>
-  )
-};
-
-export default ColorPicker;
-
+    )
+  }
+); 
 
 // class ColorPicker extends PureComponent {
 //   state = {
