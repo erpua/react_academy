@@ -1,5 +1,5 @@
 /* import React, {Component} from "react"; */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const styles = {
   clockface: {
@@ -12,7 +12,7 @@ const styles = {
 export default function Clock() {
   const[time, setTime] = useState(new Date());
 
-  useEffect(()=> {
+/*   useEffect(()=> {
     const intervalId = setInterval(() => {
       console.log('This is inerval of each 1000ms => ' + Date.now());
       setTime(new Date());
@@ -24,14 +24,41 @@ export default function Clock() {
       console.log('If missing [] => this function calls (cleans), before each useEffect.If [] => this function calls when componentDidUnmount()');
       clearInterval(intervalId);
     };
+  }, []);//depends on nothing */
+
+
+  /* let intervalId = null; */ 
+  //in functions when goes render() => values of variables do not save! CAN be done only with hook "useRefs"
+
+/*   const intervalId = useRef(5); */
+  const intervalId = useRef(); // for saving same id in function
+  console.log('intervalId =>', intervalId)
+
+  useEffect(()=> {
+    intervalId.current = setInterval(() => {
+      console.log('This is inerval of each 1000ms => ' + Date.now());
+      setTime(new Date());
+    }, 1000);
+
+    return () => {
+      console.log('If missing [] => this function calls (cleans), before each useEffect.If [] => this function calls when componentDidUnmount()');
+      console.log('interval stopped from unmounting component in useEffect');
+     /*  clearInterval(intervalId.current); */
+      stop();
+    };
   }, []);//depends on nothing
 
+  const stop = () => {
+    console.log('interval stopped from button stop');
+    clearInterval(intervalId.current);
+  };
+
   return (
-<>
+      <>
         <p style={styles.clockface}>
           Local time (GMT-5): {time.toLocaleTimeString()}
         </p>
-        <button type="button" onClick={()=> {}}>
+        <button type="button" onClick={stop}>
           Stop
         </button>
       </>
