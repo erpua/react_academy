@@ -55,6 +55,14 @@ const Navigation = () => (
       Clock
     </NavLink>
 
+    <NavLink
+      to="/news"
+      style={styles.link}
+      activeStyle={styles.activeLink}
+    >
+      News
+    </NavLink>
+
   </nav>
 );
 

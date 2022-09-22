@@ -7,6 +7,7 @@ import SignupForm from './components/SignupForm';
 import Welcome from './components/Welcome'
 import Home from './components/Home';
 import Clock from './components/Clock';
+import News from './components/News';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -46,6 +47,10 @@ export default function App() {
 
               <Route path="/clock">
                 <Clock />
+              </Route>
+
+              <Route path="/news">
+                <News />
               </Route>
 
             </Switch>
