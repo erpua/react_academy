@@ -19,18 +19,38 @@ const fetchArticles = ({
 
 export default function News(){
   const[articles, setArticles] = useState([]);
+  const[query, setQuery] = useState('');
+  const[currentPage, setCurrentPage] = useState(1);
+  const[isLoading, setIsLoading] = useState(false);
+  const[error, setError] = useState(null);
 
   useEffect(() => {
-    fetchArticles({searchQuery: 'css'}).then(responseArticles => setArticles(responseArticles));
-  }, []);
-/* 
+    setIsLoading(true);
+
+    fetchArticles({searchQuery: query, currentPage})
+      .then(responseArticles => {
+        setArticles(prevArticles => [...prevArticles, ...responseArticles]);
+        setCurrentPage(prevCurrentPage => prevCurrentPage  + 1);
+      },
+    ).catch(error => setError(error.message))
+     .finally(() => setIsLoading(false));
+  }, [query, currentPage]);//it calls only if changes currentPage or query
+
   const onChangeQuery = query => {
     setQuery(query);
-  }; */
+    setCurrentPage(1);
+    setArticles([]);
+  };
+
+  const shouldRenderLoadMoreButton = articles.length > 0 && !isLoading;
 
   return(
     <>
-      <NewsSearchForm/>
+
+      { error && <h1>ERROR ERROR ERROR!</h1> }
+
+      <NewsSearchForm onSubmit={onChangeQuery}/>
+
       <ul>
         {articles.map(({ title, url }) => (
           <li key={title}>
@@ -40,6 +60,25 @@ export default function News(){
           </li>
         ))}
       </ul>
+
+      {shouldRenderLoadMoreButton && (
+        <button type="button" onClick={this.fetchArticles}>
+          Download more
+        </button>
+      )}
+
+      { isLoading && (
+        <p style={{ fontSize: 24, display: 'flex', alignItems: 'center' }}>
+          Downloading...
+          <span
+            aria-label="icon"
+            role="img"
+            style={{ fontSize: 32, marginLeft: 10 }}
+          >🧙‍♂️</span>
+        </p>
+        )
+      }
+
     </>
   )
 }
