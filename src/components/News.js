@@ -47,7 +47,7 @@ export default function News(){
   return(
     <>
 
-      { error && <h1>ERROR ERROR ERROR!</h1> }
+      { error && <h1>ERROR, something went wrong. Check console, try, catch, debug, etc...!</h1> }
 
       <NewsSearchForm onSubmit={onChangeQuery}/>
 
@@ -62,7 +62,7 @@ export default function News(){
       </ul>
 
       {shouldRenderLoadMoreButton && (
-        <button type="button" onClick={this.fetchArticles}>
+        <button type="button" onClick={() => {}}>
           Download more
         </button>
       )}
