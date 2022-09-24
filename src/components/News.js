@@ -5,7 +5,7 @@ import NewsSearchForm from "./NewsSearchForm";
 axios.defaults.headers.common['Authorization'] =
   'Bearer 4330ebfabc654a6992c2aa792f3173a3';
 
-const fetchArticles = ({ 
+const APIfetchArticles = ({ 
     searchQuery = '', 
     currentPage = 1, 
     pageSize = 5,
@@ -24,22 +24,35 @@ export default function News(){
   const[isLoading, setIsLoading] = useState(false);
   const[error, setError] = useState(null);
 
-  useEffect(() => {
-    setIsLoading(true);
+ /*  const fetchArticles = () => {
+    return APIfetchArticles({searchQuery: query, currentPage});
+  } */
 
-    fetchArticles({searchQuery: query, currentPage})
+ 
+
+  useEffect(() => {
+
+  const fetchArticles = () => {
+    setIsLoading(true);
+  
+    APIfetchArticles({searchQuery: query, currentPage})
       .then(responseArticles => {
         setArticles(prevArticles => [...prevArticles, ...responseArticles]);
         setCurrentPage(prevCurrentPage => prevCurrentPage  + 1);
       },
-    ).catch(error => setError(error.message))
-     .finally(() => setIsLoading(false));
-  }, [query, currentPage]);//it calls only if changes currentPage or query
+     ).catch(error => setError(error.message))
+      .finally(() => setIsLoading(false));
+    };
+
+   fetchArticles();
+
+  }, [currentPage, query]);//it calls only if changes currentPage or query
 
   const onChangeQuery = query => {
     setQuery(query);
     setCurrentPage(1);
     setArticles([]);
+    setError(null);
   };
 
   const shouldRenderLoadMoreButton = articles.length > 0 && !isLoading;
