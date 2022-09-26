@@ -63,6 +63,14 @@ const Navigation = () => (
       News
     </NavLink>
 
+    <NavLink
+      to="/context"
+      style={styles.link}
+      activeStyle={styles.activeLink}
+    >
+      Context
+    </NavLink>
+
   </nav>
 );
 

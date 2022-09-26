@@ -17,34 +17,32 @@ const APIfetchArticles = ({
     .then(response => response.data.articles);
 };
 
-export default function News(){
-  const[articles, setArticles] = useState([]);
-  const[query, setQuery] = useState('');
-  const[currentPage, setCurrentPage] = useState(1);
-  const[isLoading, setIsLoading] = useState(false);
-  const[error, setError] = useState(null);
-
- /*  const fetchArticles = () => {
-    return APIfetchArticles({searchQuery: query, currentPage});
-  } */
-
- 
-
-  useEffect(() => {
-
-  const fetchArticles = () => {
-    setIsLoading(true);
+export default function News() {
+  const [articles, setArticles] = useState([]);
+  const [query, setQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   
-    APIfetchArticles({searchQuery: query, currentPage})
-      .then(responseArticles => {
-        setArticles(prevArticles => [...prevArticles, ...responseArticles]);
-        setCurrentPage(prevCurrentPage => prevCurrentPage  + 1);
-      },
-     ).catch(error => setError(error.message))
-      .finally(() => setIsLoading(false));
-    };
+  /* const fetchArticles = () => {
+    return APIfetchArticles({searchQuery: query, currentPage});
+  } 
+ */
+ //TODO: fix useEffect lifecycle
+  useEffect(() => {
+    const fetchArticles = () => {
+      setIsLoading(true);
+    
+      APIfetchArticles({searchQuery: query, currentPage})
+        .then(responseArticles => {
+          setArticles(prevArticles => [...prevArticles, ...responseArticles]);
+          setCurrentPage(prevCurrentPage => prevCurrentPage  + 1);
+        },
+      ).catch(error => setError(error.message))
+        .finally(() => setIsLoading(false));
+      };
 
-   fetchArticles();
+    fetchArticles();
 
   }, [currentPage, query]);//it calls only if changes currentPage or query
 
