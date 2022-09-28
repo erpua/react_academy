@@ -12,6 +12,8 @@ const styles = {
 export default function Clock() {
   const[time, setTime] = useState(new Date());
 
+  
+
 /*   useEffect(()=> {
     const intervalId = setInterval(() => {
       console.log('This is inerval of each 1000ms => ' + Date.now());
