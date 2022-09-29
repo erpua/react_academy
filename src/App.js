@@ -1,65 +1,59 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { Suspense, lazy, useEffect } from 'react';
+import { Switch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import AppBar from './components/AppBar';
-import ColorPicker from './components/ColorPicker/ColorPicker';
-import Counter from './components/Counter';
-import SignupForm from './components/SignupForm';
-import Welcome from './components/Welcome'
-import Home from './components/Home';
-import Clock from './components/Clock';
-import News from './components/News';
-import UserMenu from './components/UserMenu';
+import Container from './components/Container';
+import { authOperations } from './redux/auth';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
-const colorPickerOptions = [
-  { label: 'red', color: '#F44336' },
-  { label: 'green', color: '#4CAF50' },
-  { label: 'blue', color: '#2196F3' },
-  { label: 'grey', color: '#607D8B' },
-  { label: 'pink', color: '#E91E63' },
-  { label: 'indigo', color: '#3F51B5' },
-];
+const HomeView = lazy(() => import('./views/HomeView'));
+const RegisterView = lazy(() => import('./views/RegisterView'));
+const LoginView = lazy(() => import('./views/LoginView'));
+const TodosView = lazy(() => import('./views/TodosView'));
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('useEffect changing for componentDidMount');
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
+
   return (
-          <>
-            <AppBar />
+    <Container>
+      <AppBar />
 
-            <Switch>
+        <Suspense fallback={<p>Downloading...</p>}>
+          <Switch>
+            <PublicRoute exact path="/">
+              <HomeView />
+            </PublicRoute>
 
-              <Route exact path="/">
-                <Welcome />
-              </Route>
+            <PublicRoute
+              path="/register"
+              restricted
+              redirectTo="/todos"
+            >
+              <RegisterView />
+            </PublicRoute>
 
-              <Route path="/home">
-                <Home />
-              </Route>
+            <PublicRoute 
+              path="/login" 
+              restricted 
+              redirectTo="/todos"
+            >
+              <LoginView />
+            </PublicRoute>
 
-              <Route path="/counter">
-                <Counter />
-              </Route>
-
-              <Route path="/signup">
-                <SignupForm />
-              </Route>
-
-              <Route path="/colorpicker">
-                <ColorPicker options={colorPickerOptions} />
-              </Route>
-
-              <Route path="/clock">
-                <Clock />
-              </Route>
-
-              <Route path="/news">
-                <News />
-              </Route>
-
-              <Route path="/context">
-                <UserMenu />
-              </Route>
-
-            </Switch>
-          </>
-
-  );
+            <PrivateRoute 
+              path="/todos" 
+              redirectTo="/login"
+            >
+              <TodosView />
+            </PrivateRoute>
+          </Switch>
+        </Suspense>
+    </Container>
+    );
 }

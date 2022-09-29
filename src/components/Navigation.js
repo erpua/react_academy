@@ -1,77 +1,125 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+// For AppBar of todos
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../redux/auth';
 
 const styles = {
   link: {
     display: 'inline-block',
     textDecoration: 'none',
     padding: 12,
-    fontWeight: 500,
+    fontWeight: 700,
     color: '#2A363B',
-    fontSize: 18,
   },
   activeLink: {
-    color: '#F21D41',
+    color: '#E84A5F',
   },
 };
 
-const Navigation = () => (
-  <nav>
+export default function Navigation() {
+  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
 
-    <NavLink 
-      to="/home" 
-      style={styles.link} 
-      activeStyle={styles.activeLink}>
-      Home
-    </NavLink>
+  return (
+    <nav>
+      <NavLink
+        to="/"
+        exact
+        style={styles.link}
+        activeStyle={styles.activeLink}
+      >
+        Home
+      </NavLink>
+
+      {isLoggedIn && (
+        <NavLink
+          to="/todos"
+          exact
+          style={styles.link}
+          activeStyle={styles.activeLink}
+        >
+          Todos
+        </NavLink>
+      )}
+    </nav>
+  );
+}
+//For AppBar of all Components
+
+// import React from 'react';
+// import { NavLink } from 'react-router-dom';
+
+// const styles = {
+//   link: {
+//     display: 'inline-block',
+//     textDecoration: 'none',
+//     padding: 12,
+//     fontWeight: 500,
+//     color: '#2A363B',
+//     fontSize: 18,
+//   },
+//   activeLink: {
+//     color: '#F21D41',
+//   },
+// };
+
+// const Navigation = () => (
+//   <nav>
+
+//     <NavLink 
+//       to="/home" 
+//       style={styles.link} 
+//       activeStyle={styles.activeLink}>
+//       Home
+//     </NavLink>
     
-    <NavLink 
-      to="/counter" 
-      style={styles.link} 
-      activeStyle={styles.activeLink}>
-      Counter
-    </NavLink>
+//     <NavLink 
+//       to="/counter" 
+//       style={styles.link} 
+//       activeStyle={styles.activeLink}>
+//       Counter
+//     </NavLink>
 
-    <NavLink 
-      to="/signup" 
-      style={styles.link} 
-      activeStyle={styles.activeLink}>
-      Form
-    </NavLink>
+//     <NavLink 
+//       to="/signup" 
+//       style={styles.link} 
+//       activeStyle={styles.activeLink}>
+//       Form
+//     </NavLink>
 
-    <NavLink
-      to="/colorpicker"
-      style={styles.link}
-      activeStyle={styles.activeLink}
-    >
-      Color Picker
-    </NavLink>
+//     <NavLink
+//       to="/colorpicker"
+//       style={styles.link}
+//       activeStyle={styles.activeLink}
+//     >
+//       Color Picker
+//     </NavLink>
 
-    <NavLink
-      to="/clock"
-      style={styles.link}
-      activeStyle={styles.activeLink}
-    >
-      Clock
-    </NavLink>
+//     <NavLink
+//       to="/clock"
+//       style={styles.link}
+//       activeStyle={styles.activeLink}
+//     >
+//       Clock
+//     </NavLink>
 
-    <NavLink
-      to="/news"
-      style={styles.link}
-      activeStyle={styles.activeLink}
-    >
-      News
-    </NavLink>
+//     <NavLink
+//       to="/news"
+//       style={styles.link}
+//       activeStyle={styles.activeLink}
+//     >
+//       News
+//     </NavLink>
 
-    <NavLink
-      to="/context"
-      style={styles.link}
-      activeStyle={styles.activeLink}
-    >
-      Context
-    </NavLink>
+//     <NavLink
+//       to="/context"
+//       style={styles.link}
+//       activeStyle={styles.activeLink}
+//     >
+//       Context
+//     </NavLink>
 
-  </nav>
-);
+//   </nav>
+// );
 
-export default Navigation;
+// export default Navigation;

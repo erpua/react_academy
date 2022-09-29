@@ -1,5 +1,8 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 // import logger from 'redux-logger';
+import storage from 'redux-persist/lib/storage';
+import { todosReducer } from './todos';
+import { authReducer } from './auth';
 
 import {
     persistStore,
@@ -11,9 +14,8 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { todosReducer } from './todos';
-import { authReducer } from './auth';
+
+
 
 const middleware = [
     ...getDefaultMiddleware({

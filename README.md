@@ -1,5 +1,10 @@
 # REACT ( node 14 ++ )
 
+---
+Links:
+- https://react-redux.js.org/api/hooks
+- https://v5.reactrouter.com/web/api/Hooks
+
 TIPS:
 
 - manual path changing, through render() => autoomatically is changing path of components
