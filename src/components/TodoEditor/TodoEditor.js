@@ -122,7 +122,8 @@ export default function TodoEditor ({onSave}) {
         dispatch(todosOperations.addTodo(message));
         onSave();
         setMessage('');
-    }, [message, dispatch, onSave]);
+        //return;
+    }, [dispatch, message, onSave]);
 
     return (
       <form lassName="TodoEditor" onSubmit={handleSubmit}>
@@ -135,6 +136,5 @@ export default function TodoEditor ({onSave}) {
           SAVE
         </button>
       </form>
-    );
-
+  );
 };
