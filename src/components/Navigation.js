@@ -31,7 +31,7 @@ export default function Navigation() {
         Home
       </NavLink>
 
-      {isLoggedIn && (
+    {/*   {isLoggedIn && (
         <NavLink
           to="/todos"
           exact
@@ -40,7 +40,17 @@ export default function Navigation() {
         >
           Todos
         </NavLink>
-      )}
+      )} */}
+
+      <NavLink
+        to="/todos"
+        exact
+        style={styles.link}
+        activeStyle={styles.activeLink}
+      >
+        Todos
+      </NavLink>
+
     </nav>
   );
 }

@@ -56,7 +56,9 @@ export default function TodosView () {
   //   setShowModal(prevShowModal => !prevShowModal);
   // };
 
-  const toggleModal = useCallback(()=> {
+  //memoize function toggleModal();
+  const toggleModal = useCallback(
+    () => {
     setShowModal(prevShowModal => !prevShowModal);
   }, [] );
 
