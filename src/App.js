@@ -1,11 +1,13 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import AppBar from './components/AppBar';
 import Container from './components/Container';
 import { authOperations } from './redux/auth';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+
+import Test from '../src/views/Test';
 
 const HomeView = lazy(() => import('./views/HomeView'));
 const RegisterView = lazy(() => import('./views/RegisterView'));
@@ -26,6 +28,11 @@ export default function App() {
 
         <Suspense fallback={<p>Downloading...</p>}>
           <Switch>
+
+          <Route path="/test/:testId">
+            <Test/>
+          </Route>
+
             <PublicRoute exact path="/">
               <HomeView />
             </PublicRoute>

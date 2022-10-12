@@ -4,46 +4,29 @@ import './Modal.scss';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default function Modal({children}) {
-  /* componentDidMount() {
-    console.log('Modal componentDidMount');
-    window.addEventListener('keydown', this.handleKeyDown, { once: true });
-  }; */
+export default function Modal({onClose, children}) {
 
   useEffect(()=> {
-    window.addEventListener('keydown', this.handleKeyDown, { once: true });
-  }, []);
+    //didMount
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
 
-  /* componentWillUnmount() {
-    console.log('Modal ComponentWillUnmount');
-
-    window.removeEventListener(
-      'keydown',
-      this.handleKeyDown,
-    );
-  }; */
-
-  const handleKeyDown = e => {
-    console.log('e.code ========>', e.code);
-
-    if (e.code === 'Escape') {
-      console.log('You have pressed ESC, must close Modal');
-
-      this.props.onClose();
+    //willUnmount
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
     }
-  };
+  }, [onClose]);
 
   const handleBackdropCick = e => {
-    /*   console.log('Clicked Backdrop');
-
-    console.log('e.currentTarget: ', e.currentTarget);
-    console.log('e.target: ', e.target); */
-
+    
     if (e.target === e.currentTarget) {
       this.props.onClose();
     }
   };
-
 
   return createPortal(
     <div
@@ -56,70 +39,3 @@ export default function Modal({children}) {
     );
 
 };
-
-
-// import React, { Component } from 'react';
-// import { createPortal } from 'react-dom';
-
-// /* STYLES */
-// import './Modal.scss';
-
-// const modalRoot = document.querySelector('#modal-root');
-
-// export default class Modal extends Component {
-//   /*  componentDidMount() {
-//     console.log('Modal componentDidMount');
-
-//     window.addEventListener('keydown', this.handleKeyDown);
-//   }
-//   */
-
-//   componentDidMount() {
-//     console.log('Modal componentDidMount');
-//     window.addEventListener('keydown', this.handleKeyDown, { once: true });
-//   };
-
-//   /* componentWillUnmount() {
-//     console.log('Modal ComponentWillUnmount');
-
-//     window.removeEventListener(
-//       'keydown',
-//       this.handleKeyDown,
-//     );
-//   } */
-
-//   handleKeyDown = e => {
-//     console.log('e.code ========>', e.code);
-
-//     if (e.code === 'Escape') {
-//       console.log('You have pressed ESC, must close Modal');
-
-//       this.props.onClose();
-//     }
-//   };
-
-//   handleBackdropCick = e => {
-//     /*   console.log('Clicked Backdrop');
-
-//     console.log('e.currentTarget: ', e.currentTarget);
-//     console.log('e.target: ', e.target); */
-
-//     if (e.target === e.currentTarget) {
-//       this.props.onClose();
-//     }
-//   };
-
-//   render() {
-//     return createPortal(
-//       <div
-//         className="Modal__backdrop"
-//         onClick={this.handleBackdropCick}
-//       >
-//         <div className="Modal__content">
-//           {this.props.children}
-//         </div>
-//       </div>,
-//       modalRoot,
-//     );
-//   }
-// };

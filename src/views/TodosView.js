@@ -5,11 +5,11 @@ import TodoList from '../components/TodoList';
 import Filter from '../components/TodoFilter';
 import Stats from '../components/Stats';
 import TodoEditor from '../components/TodoEditor';
-import Modal from '../components/Modal';
 import IconButton from '../components/IconButton';
 import { ReactComponent as AddIcon } from '../icons/add.svg';
 
 import { todosOperations, todosSelectors } from '../redux/todos';
+import Modal from '../components/Modal/Modal';
 
 const barStyles = {
   display: 'flex',
@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodosView); */
 
-export default function TodosView () {
+export default function TodosView() {
   // state = {
   //   showModal: false,
   // };
